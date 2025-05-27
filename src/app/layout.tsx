@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Footer from "./components/Footer"; // Updated import path to correct location
 
 export const metadata: Metadata = {
   title: "WeDraw Style Guide",
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         {children}
+        <Footer />
       </body>
     </html>
   );
