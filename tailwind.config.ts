@@ -9,8 +9,28 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", "sans-serif"], // Area Variable
+        sans: ["var(--font-sans)", "sans-serif"], // Area Normal
         mono: ["var(--font-mono)", "monospace"],   // Degular Mono
+      },
+      fontWeight: {
+        // Area Normal weights
+        'area-thin': '100',          // Area Normal Thin
+        'area-extrablack': '200',    // Area Normal Extrablack
+        'area-normal': '400',        // Area Normal Regular
+        'area-medium': '500',        // Area Normal Medium
+        'area-semibold': '600',      // Area Normal Semibold
+        'area-bold': '700',          // Area Normal Bold
+        'area-extrabold': '800',     // Area Normal Extrabold
+        'area-black': '900',         // Area Normal Black
+
+        // Degular Mono weights
+        'mono-thin': '200',          // Degular Mono Thin
+        'mono-light': '300',         // Degular Mono Light
+        'mono-normal': '400',        // Degular Mono Regular
+        'mono-medium': '500',        // Degular Mono Medium
+        'mono-semibold': '600',      // Degular Mono Semibold
+        'mono-bold': '700',          // Degular Mono Bold
+        'mono-black': '800',         // Degular Mono Black
       },
       colors: {
         blueprint: "#2242FF", // Bright Blueprint – brand primary

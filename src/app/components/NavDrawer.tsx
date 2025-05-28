@@ -1,54 +1,166 @@
 'use client';
 
 import Link from "next/link";
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { useState } from "react";
 
-export default function NavDrawer({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+interface NavDrawerProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
+  const [hoveredSection, setHoveredSection] = useState<string | null>(null);
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.aside
+        <motion.div
           initial={{ x: "-100%" }}
           animate={{ x: 0 }}
           exit={{ x: "-100%" }}
-          transition={{ type: "spring", stiffness: 500, damping: 30 }}
-          className="fixed top-0 left-0 w-screen h-screen bg-blueprint z-50 text-white px-12 py-16"
+          transition={{
+            type: "spring",
+            stiffness: 150,
+            damping: 20,
+            mass: 1,
+            restDelta: 0.001,
+            exit: {
+              type: "spring",
+              stiffness: 150,
+              damping: 20,
+              mass: 1
+            }
+          }}
+          className={`fixed top-0 right-0 bottom-0 left-[68px] z-10 overflow-y-auto transition-colors duration-300 ${
+            hoveredSection === 'Work' ? 'bg-marker' : 
+            hoveredSection === 'Studio' ? 'bg-meadow' :
+            hoveredSection === 'Journal' ? 'bg-sunny' :
+            hoveredSection === 'Contact' ? 'bg-blueprint' :
+            'bg-white'
+          }`}
         >
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute top-8 right-8 text-white hover:opacity-70 transition"
-            aria-label="Close menu"
-          >
-            <X size={32} />
-          </button>
+          <div className="pl-24 pr-[32rem] py-24 max-w-[1440px] relative">
+            <ul className="space-y-12">
+              {/* Section Block */}
+              {[
+                {
+                  title: "Work",
+                  color: "marker",
+                  href: "/work",
+                  links: [
+                    { label: "LIVERPOOL RIVER OF LIGHT", href: "/work/liverpool-river-of-light" },
+                    { label: "BRISTOL INTERNATIONAL BALLOON FIESTA", href: "/work/bristol-balloon-fiesta" },
+                    { label: "THE GAME SHOW", href: "/work/the-game-show" }
+                  ]
+                },
+                {
+                  title: "Studio",
+                  color: "meadow",
+                  href: "/studio",
+                  links: [
+                    { label: "EXPERTISE", href: "/studio/expertise" },
+                    { label: "VALUES", href: "/studio/values" },
+                    { label: "ABOUT US", href: "/studio/about-us" }
+                  ]
+                },
+                {
+                  title: "Journal",
+                  color: "sunny",
+                  href: "/journal",
+                  links: [
+                    { label: "NEWS", href: "/journal/news" },
+                    { label: "MEDIA", href: "/journal/media" },
+                    { label: "EXPLORATIONS", href: "/journal/explorations" }
+                  ]
+                },
+                {
+                  title: "Contact",
+                  color: "blueprint",
+                  href: "/contact",
+                  links: [
+                    { label: "PROJECT ENQUIRY", href: "/contact/project-enquiry" },
+                    { label: "GENERAL CONTACT", href: "/contact/general" },
+                    { label: "CAREERS", href: "/contact/careers" }
+                  ]
+                }
+              ].map(({ title, href, color, links }) => (
+                <li
+                  key={title}
+                  className={`border-b-2 border-${color} pb-12 group transition-all duration-300 ${
+                    hoveredSection ? 
+                      title === hoveredSection ? 'border-white' : 'border-white border-opacity-50'
+                      : ''
+                  }`}
+                  onMouseEnter={() => setHoveredSection(title)}
+                  onMouseLeave={() => setHoveredSection(null)}
+                >
+                  <div className="flex justify-between items-end">
+                    <h2
+                      className={`text-${color} text-[72px] md:text-[100px] lg:text-[120px] leading-none font-bold transition-all duration-300 ${
+                        hoveredSection ? 
+                          title === hoveredSection ? 'text-white' : 'text-white opacity-50' 
+                          : ''
+                      }`}
+                    >
+                      <Link href={href} onClick={onClose} className="block">
+                        {title}
+                      </Link>
+                    </h2>
 
-          {/* Main Navigation */}
-          <nav className="mt-12 space-y-8 font-mono uppercase text-3xl">
-            <Link href="/work" onClick={onClose} className="block hover:opacity-80 transition">Work</Link>
-            <Link href="/studio" onClick={onClose} className="block hover:opacity-80 transition">Studio</Link>
-            <Link href="/journal" onClick={onClose} className="block hover:opacity-80 transition">Journal</Link>
-            <Link href="/contact" onClick={onClose} className="block hover:opacity-80 transition">Contact</Link>
-          </nav>
+                    <div className="text-right font-mono text-[16px] flex flex-col justify-end">
+                      {links.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={onClose}
+                          className={`block text-${color} transition-all duration-300 ${
+                            hoveredSection ? 
+                              title === hoveredSection ? 'text-white' : 'text-white opacity-50'
+                              : ''
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
 
-          {/* Sub-navigation (example layout) */}
-          <div className="mt-12 space-y-2 text-sm font-mono uppercase opacity-80">
-            <p>Work:</p>
-            <Link href="/work/project-1" onClick={onClose} className="block hover:opacity-100">Selected Project</Link>
-            <p className="mt-4">Studio:</p>
-            <Link href="/studio#expertise" onClick={onClose} className="block hover:opacity-100">Expertise</Link>
-            <p className="mt-4">Journal:</p>
-            <Link href="/journal?category=news" onClick={onClose} className="block hover:opacity-100">News</Link>
-            <Link href="/journal?category=media" onClick={onClose} className="block hover:opacity-100">Media</Link>
-            <Link href="/journal?category=explorations" onClick={onClose} className="block hover:opacity-100">Explorations</Link>
-            <p className="mt-4">Contact:</p>
-            <Link href="/contact?type=project" onClick={onClose} className="block hover:opacity-100">Project Enquiry</Link>
-            <Link href="/contact?type=general" onClick={onClose} className="block hover:opacity-100">General</Link>
-            <Link href="/contact?type=careers" onClick={onClose} className="block hover:opacity-100">Careers</Link>
+            {/* Contact Info */}
+            <div className={`absolute bottom-24 right-0 font-mono text-[16px] space-y-12 transition-all duration-300 ${
+              hoveredSection ? 'text-white opacity-50' : ''
+            }`}>
+              <div>
+                <h3 className={`mb-2 text-blueprint transition-all duration-300 ${
+                  hoveredSection ? 'text-white opacity-50' : ''
+                }`}>OFFICE</h3>
+                <p className={`font-sans text-[18px] leading-[140%] font-semibold text-black transition-all duration-300 ${
+                  hoveredSection ? 'text-white opacity-50' : ''
+                }`}>
+                  59 Prince Street<br />
+                  Bristol<br />
+                  BS1 4QH
+                </p>
+              </div>
+              <div>
+                <h3 className={`mb-2 text-blueprint transition-all duration-300 ${
+                  hoveredSection ? 'text-white opacity-50' : ''
+                }`}>EMAIL ADDRESS</h3>
+                <a
+                  href="mailto:info@we-draw.co.uk"
+                  className={`font-sans text-[18px] leading-[140%] font-semibold text-black transition-all duration-300 ${
+                    hoveredSection ? 'text-white opacity-50' : ''
+                  }`}
+                >
+                  info@we-draw.co.uk
+                </a>
+              </div>
+            </div>
           </div>
-        </motion.aside>
+        </motion.div>
       )}
     </AnimatePresence>
   );

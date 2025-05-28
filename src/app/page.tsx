@@ -113,6 +113,63 @@ export default function Home() {
               
               <div className="space-y-8 bg-white p-8 rounded-lg border">
                 <div className="space-y-4">
+                  <h3 className="text-sm font-medium text-black/70 mb-4">Area Normal Font Weights</h3>
+                  <div className="grid gap-y-4">
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'area-normal', fontWeight: 100 }} className="text-[32px]">Area Normal Thin (100)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'area-normal', fontWeight: 200 }} className="text-[32px]">Area Normal Extrablack (200)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'area-normal', fontWeight: 400 }} className="text-[32px]">Area Normal Regular (400)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'area-normal', fontWeight: 500 }} className="text-[32px]">Area Normal Medium (500)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'area-normal', fontWeight: 600 }} className="text-[32px]">Area Normal Semibold (600)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'area-normal', fontWeight: 700 }} className="text-[32px]">Area Normal Bold (700)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'area-normal', fontWeight: 800 }} className="text-[32px]">Area Normal Extrabold (800)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'area-normal', fontWeight: 900 }} className="text-[32px]">Area Normal Black (900)</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4 pt-8 border-t">
+                  <h3 className="text-sm font-medium text-black/70 mb-4">Degular Mono Font Weights</h3>
+                  <div className="grid gap-y-4">
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'degular-mono', fontWeight: 200 }} className="text-[32px]">Degular Mono Thin (200)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'degular-mono', fontWeight: 300 }} className="text-[32px]">Degular Mono Light (300)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'degular-mono', fontWeight: 400 }} className="text-[32px]">Degular Mono Regular (400)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'degular-mono', fontWeight: 500 }} className="text-[32px]">Degular Mono Medium (500)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'degular-mono', fontWeight: 600 }} className="text-[32px]">Degular Mono Semibold (600)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'degular-mono', fontWeight: 700 }} className="text-[32px]">Degular Mono Bold (700)</p>
+                    </div>
+                    <div className="col-span-full">
+                      <p style={{ fontFamily: 'degular-mono', fontWeight: 800 }} className="text-[32px]">Degular Mono Black (800)</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4 pt-8 border-t">
                   <h3 className="text-sm font-medium text-black/70 mb-4">Headers</h3>
                   <div className="grid gap-y-8">
                     <div className="col-span-full">

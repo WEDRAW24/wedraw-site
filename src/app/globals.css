@@ -2,13 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://use.typekit.net/bbt5cpp.css");
-
 :root {
   --background: #ffffff;
   --foreground: #000014;
-  --font-sans: 'area-variable', sans-serif;
-  --font-mono: 'degular mono', monospace;
+  --font-sans: area-normal, sans-serif;
+  --font-mono: degular-mono, monospace;
   --color-blueprint: #2242FF;
   --color-marker: #E44E37;
   --color-meadow: #04A573;

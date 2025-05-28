@@ -14,6 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/bbt5cpp.css" />
+      </head>
       <body className="antialiased">
         {children}
         <Footer />
