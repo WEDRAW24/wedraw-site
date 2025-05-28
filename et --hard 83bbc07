@@ -1,0 +1,35 @@
+[33mcommit 83bbc07ca05f5d17600ff47cb39f64a04053629f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Theo <theo@hatchastudios.co.uk>
+Date:   Wed May 28 12:33:45 2025 +0100
+
+    Checkpoint: NavDrawer Complete
+
+[33mcommit a2f10740abcb078295acbf63eda1c5781abea628[m
+Author: Theo <theo@hatchastudios.co.uk>
+Date:   Tue May 27 16:59:11 2025 +0100
+
+    NavBar Complete: Implemented sidebar navigation with WEDRAW logo, burger menu, and social icons
+
+[33mcommit f5ca913c4a751ef41426129e736dd7d44e787836[m
+Author: Theo <theo@hatchastudios.co.uk>
+Date:   Tue May 27 15:28:37 2025 +0100
+
+    refactor: convert custom grid to Tailwind native grid system
+
+[33mcommit c016c308c302ce908032b1b603b13f5fe972e4e6[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Theo <theo@hatchastudios.co.uk>
+Date:   Fri May 23 14:10:34 2025 +0100
+
+    Checkpoint: tailwind config complete, colour + typography verifited
+
+[33mcommit 2d666a50356d4855d56a68cc7ca70c2c4902f769[m
+Author: Theo <theo@hatchastudios.co.uk>
+Date:   Thu May 22 17:37:57 2025 +0100
+
+    Reconnect GitHub from new location
+
+[33mcommit 3baeebd22fd31dfbe24ef911dc93982501c4d006[m
+Author: Theo <theo@hatchastudios.co.uk>
+Date:   Thu May 22 14:21:18 2025 +0100
+
+    Initial commit

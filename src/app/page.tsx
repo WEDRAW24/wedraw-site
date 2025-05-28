@@ -1,7 +1,9 @@
-import Image from "next/image";
 import Button from "./components/Button";
 import UnderlineLink from "./components/UnderlineLink";
 import SidebarNav from "./components/SidebarNav";
+import { MagnetLines } from "./components/Magnet-lines";
+import { MagnetDots } from "./components/Magnet-dots";
+import { MagnetCross } from "./components/Magnet-cross";
 
 export default function Home() {
   return (
@@ -247,6 +249,55 @@ export default function Home() {
                 <UnderlineLink href="#" className="text-black">Black Link</UnderlineLink>
               </div>
             </section>
+
+            {/* Magnet Lines Example */}
+            <section className="col-span-full space-y-6">
+              <h2 className="text-2xl font-bold mb-4">Magnet Lines Animation</h2>
+              <div className="w-full" style={{ aspectRatio: '1440/800' }}>
+                <MagnetLines
+                  rows={10}
+                  columns={18}
+                  containerSize="100%"
+                  lineColor="var(--color-blueprint)"
+                  lineWidth="5px"
+                  lineHeight="40px"
+                  baseAngle={-10}
+                />
+              </div>
+            </section>
+
+            {/* Magnet Dots Example */}
+            <section className="col-span-full space-y-6">
+              <h2 className="text-2xl font-bold mb-4">Magnet Dots Animation</h2>
+              <div className="w-full" style={{ aspectRatio: '1440/800' }}>
+                <MagnetDots
+                  rows={11}
+                  columns={20}
+                  containerSize="100%"
+                  dotColor="var(--color-blueprint)"
+                  minDotSize="0.4vmin"
+                  maxDotSize="2.5vmin"
+                  maxDistance={300}
+                />
+              </div>
+            </section>
+
+            {/* Magnet Cross Example */}
+            <section className="col-span-full space-y-6">
+              <h2 className="text-2xl font-bold mb-4">Magnet Cross Animation</h2>
+              <div className="w-full" style={{ aspectRatio: '1440/800' }}>
+                <MagnetCross
+                  rows={11}
+                  columns={20}
+                  containerSize="100%"
+                  lineColor="var(--color-blueprint)"
+                  lineWidth="0.4vmin"
+                  lineHeight="2.5vmin"
+                  baseAngle={-10}
+                />
+              </div>
+            </section>
+
           </div>
         </div>
       </div>

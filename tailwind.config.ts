@@ -1,76 +1,125 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
+    darkMode: ["class"],
+    content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ["var(--font-sans)", "sans-serif"], // Area Normal
-        mono: ["var(--font-mono)", "monospace"],   // Degular Mono
-      },
-      fontWeight: {
-        // Area Normal weights
-        'area-thin': '100',          // Area Normal Thin
-        'area-extrablack': '200',    // Area Normal Extrablack
-        'area-normal': '400',        // Area Normal Regular
-        'area-medium': '500',        // Area Normal Medium
-        'area-semibold': '600',      // Area Normal Semibold
-        'area-bold': '700',          // Area Normal Bold
-        'area-extrabold': '800',     // Area Normal Extrabold
-        'area-black': '900',         // Area Normal Black
-
-        // Degular Mono weights
-        'mono-thin': '200',          // Degular Mono Thin
-        'mono-light': '300',         // Degular Mono Light
-        'mono-normal': '400',        // Degular Mono Regular
-        'mono-medium': '500',        // Degular Mono Medium
-        'mono-semibold': '600',      // Degular Mono Semibold
-        'mono-bold': '700',          // Degular Mono Bold
-        'mono-black': '800',         // Degular Mono Black
-      },
-      colors: {
-        blueprint: "#2242FF", // Bright Blueprint – brand primary
-        marker: "#E44E37",    // Marker Red – Work theme
-        meadow: "#04A573",    // Meadow Green – Studio theme
-        sunny: "#FFB300",     // Sunny Orange – Journal theme
-        black: "#000014",     // Deep black background
-        white: "#FFFFFF",     // Default white
-      },
-      spacing: {
-        "2xs": "0.25rem",  // 4px
-        xs: "0.5rem",      // 8px
-        sm: "0.75rem",     // 12px
-        md: "1rem",        // 16px
-        lg: "1.5rem",      // 24px
-        xl: "2rem",        // 32px
-        "2xl": "3rem",     // 48px
-        "3xl": "4rem",     // 64px
-        section: "6rem",   // 96px – standard vertical layout rhythm
-      },
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: "1rem",
-          sm: "2rem",
-          lg: "4rem",
-          xl: "6rem",       // Standard
-          "2xl": "7.75rem", // 124px – matches Figma grid
-        },
-        screens: {
-          sm: "640px",
-          md: "768px",
-          lg: "1024px",
-          xl: "1280px",
-          "2xl": "1440px", // Max design width
-        },
-      },
-    },
+  	extend: {
+  		fontFamily: {
+  			sans: [
+  				'var(--font-sans)',
+  				'sans-serif'
+  			],
+  			mono: [
+  				'var(--font-mono)',
+  				'monospace'
+  			]
+  		},
+  		fontWeight: {
+  			'area-thin': '100',
+  			'area-extrablack': '200',
+  			'area-normal': '400',
+  			'area-medium': '500',
+  			'area-semibold': '600',
+  			'area-bold': '700',
+  			'area-extrabold': '800',
+  			'area-black': '900',
+  			'mono-thin': '200',
+  			'mono-light': '300',
+  			'mono-normal': '400',
+  			'mono-medium': '500',
+  			'mono-semibold': '600',
+  			'mono-bold': '700',
+  			'mono-black': '800'
+  		},
+  		colors: {
+  			blueprint: '#2242FF',
+  			marker: '#E44E37',
+  			meadow: '#04A573',
+  			sunny: '#FFB300',
+  			black: '#000014',
+  			white: '#FFFFFF',
+  			background: 'hsl(var(--background))',
+  			foreground: 'hsl(var(--foreground))',
+  			card: {
+  				DEFAULT: 'hsl(var(--card))',
+  				foreground: 'hsl(var(--card-foreground))'
+  			},
+  			popover: {
+  				DEFAULT: 'hsl(var(--popover))',
+  				foreground: 'hsl(var(--popover-foreground))'
+  			},
+  			primary: {
+  				DEFAULT: 'hsl(var(--primary))',
+  				foreground: 'hsl(var(--primary-foreground))'
+  			},
+  			secondary: {
+  				DEFAULT: 'hsl(var(--secondary))',
+  				foreground: 'hsl(var(--secondary-foreground))'
+  			},
+  			muted: {
+  				DEFAULT: 'hsl(var(--muted))',
+  				foreground: 'hsl(var(--muted-foreground))'
+  			},
+  			accent: {
+  				DEFAULT: 'hsl(var(--accent))',
+  				foreground: 'hsl(var(--accent-foreground))'
+  			},
+  			destructive: {
+  				DEFAULT: 'hsl(var(--destructive))',
+  				foreground: 'hsl(var(--destructive-foreground))'
+  			},
+  			border: 'hsl(var(--border))',
+  			input: 'hsl(var(--input))',
+  			ring: 'hsl(var(--ring))',
+  			chart: {
+  				'1': 'hsl(var(--chart-1))',
+  				'2': 'hsl(var(--chart-2))',
+  				'3': 'hsl(var(--chart-3))',
+  				'4': 'hsl(var(--chart-4))',
+  				'5': 'hsl(var(--chart-5))'
+  			}
+  		},
+  		spacing: {
+  			'2xs': '0.25rem',
+  			xs: '0.5rem',
+  			sm: '0.75rem',
+  			md: '1rem',
+  			lg: '1.5rem',
+  			xl: '2rem',
+  			'2xl': '3rem',
+  			'3xl': '4rem',
+  			section: '6rem'
+  		},
+  		container: {
+  			center: true,
+  			padding: {
+  				DEFAULT: '1rem',
+  				sm: '2rem',
+  				lg: '4rem',
+  				xl: '6rem',
+  				'2xl': '7.75rem'
+  			},
+  			screens: {
+  				sm: '640px',
+  				md: '768px',
+  				lg: '1024px',
+  				xl: '1280px',
+  				'2xl': '1440px'
+  			}
+  		},
+  		borderRadius: {
+  			lg: 'var(--radius)',
+  			md: 'calc(var(--radius) - 2px)',
+  			sm: 'calc(var(--radius) - 4px)'
+  		}
+  	}
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
 
 export default config;
