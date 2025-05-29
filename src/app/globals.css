@@ -18,7 +18,66 @@ body {
   font-family: var(--font-sans);
 }
 
+@keyframes spin-twice {
+  0% {
+    transform: rotate(var(--rotate));
+  }
+  100% {
+    transform: rotate(calc(var(--rotate) + 720deg));
+  }
+}
 
+.animate-spin-twice {
+  animation: spin-twice 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pulse-twice {
+  0%, 100% {
+    transform: scale(var(--scale));
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+.animate-pulse-twice {
+  animation: pulse-twice 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes cross-spin {
+  0% {
+    transform: rotate(var(--rotate));
+  }
+  25% {
+    transform: rotate(calc(var(--rotate) + 90deg));
+  }
+  50% {
+    transform: rotate(calc(var(--rotate) + 180deg));
+  }
+  75% {
+    transform: rotate(calc(var(--rotate) + 270deg));
+  }
+  100% {
+    transform: rotate(calc(var(--rotate) + 360deg));
+  }
+}
+
+.animate-cross-spin {
+  animation: cross-spin 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes grid-fill {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-grid-fill {
+  animation: grid-fill 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
 
 @layer base {
   :root {
@@ -75,8 +134,6 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
-
-
 
 @layer base {
   * {

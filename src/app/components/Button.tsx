@@ -9,9 +9,9 @@ type ButtonProps = {
   };
   
   const sizeClasses = {
-    sm: 'text-xs px-4 py-2',
-    md: 'text-sm px-6 py-3',
-    lg: 'text-base px-8 py-4',
+    sm: 'text-sm px-6 py-1.5',
+    md: 'text-[16px] px-8 py-2',
+    lg: 'text-lg px-12 py-3',
   };
   
   const variantClasses = {
@@ -37,8 +37,8 @@ type ButtonProps = {
         onClick={onClick}
         disabled={disabled}
         className={`
-          font-mono uppercase border-2 transition-colors duration-200
-          bg-white hover:text-white
+          font-mono font-mono-medium uppercase border-2 transition-colors duration-200
+          bg-white hover:text-white tracking-wider
           ${variantClasses[variant]}
           ${sizeClasses[size]}
           ${disabled ? 'opacity-50 cursor-not-allowed' : ''}

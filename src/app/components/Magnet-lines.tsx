@@ -12,6 +12,11 @@ interface MagnetLinesProps {
   baseAngle?: number;
   className?: string;
   style?: React.CSSProperties;
+  centerGap?: {
+    width: number;
+    height: number;
+  };
+  isAnimating?: boolean;
 }
 
 function MagnetLines({
@@ -23,17 +28,32 @@ function MagnetLines({
   lineHeight = "6vmin",
   baseAngle = -10,
   className = "",
-  style = {}
+  style = {},
+  centerGap,
+  isAnimating = false
 }: MagnetLinesProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const isVisible = useRef<boolean>(false);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
+    // Setup intersection observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        isVisible.current = entries[0].isIntersecting;
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(container);
+
     const items = container.querySelectorAll<HTMLSpanElement>("span");
 
     const onPointerMove = (pointer: { x: number; y: number }) => {
+      if (isAnimating || !isVisible.current) return; // Don't respond if animating or not visible
+
       items.forEach((item) => {
         const rect = item.getBoundingClientRect();
         const centerX = rect.x + rect.width / 2;
@@ -53,7 +73,7 @@ function MagnetLines({
       onPointerMove({ x: e.clientX, y: e.clientY });
     });
 
-    if (items.length) {
+    if (items.length && isVisible.current) {
       const middleIndex = Math.floor(items.length / 2);
       const rect = items[middleIndex].getBoundingClientRect();
       onPointerMove({ x: rect.x, y: rect.y });
@@ -61,29 +81,52 @@ function MagnetLines({
 
     return () => {
       window.removeEventListener("pointermove", onPointerMove);
+      observer.disconnect();
     };
-  }, []);
+  }, [isAnimating]);
 
-  const total = rows * columns;
-  const spans = Array.from({ length: total }, (_, i) => (
-    <span
-      key={i}
-      className="block origin-center"
-      style={{
-        backgroundColor: lineColor,
-        width: lineWidth,
-        height: lineHeight,
-        transform: "rotate(var(--rotate))",
-        willChange: "transform"
-      }}
-    />
-  ));
+  const shouldRenderLine = (row: number, col: number) => {
+    if (!centerGap) return true;
+    
+    const centerColStart = Math.floor((columns - centerGap.width) / 2);
+    const centerColEnd = centerColStart + centerGap.width;
+    const centerRowStart = Math.floor((rows - centerGap.height) / 2);
+    const centerRowEnd = centerRowStart + centerGap.height;
+
+    return !(row >= centerRowStart && row < centerRowEnd && 
+             col >= centerColStart && col < centerColEnd);
+  };
+
+  const lines = Array.from({ length: rows * columns }).map((_, i) => {
+    const row = Math.floor(i / columns);
+    const col = i % columns;
+
+    if (!shouldRenderLine(row, col)) {
+      return <div key={i} style={{ gridArea: `${row + 1} / ${col + 1}` }} />;
+    }
+
+    return (
+      <span
+        key={i}
+        className={`block origin-center transition-transform ${isAnimating ? 'animate-spin-twice' : ''}`}
+        style={{
+          backgroundColor: lineColor,
+          width: lineWidth,
+          height: lineHeight,
+          transform: "rotate(var(--rotate))",
+          willChange: "transform",
+          gridArea: `${row + 1} / ${col + 1}`,
+        }}
+      />
+    );
+  });
 
   return (
     <div
       ref={containerRef}
       className={`grid place-items-center ${className}`}
       style={{
+        display: 'grid',
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
         gridTemplateRows: `repeat(${rows}, 1fr)`,
         width: containerSize,
@@ -91,7 +134,7 @@ function MagnetLines({
         ...style
       }}
     >
-      {spans}
+      {lines}
     </div>
   );
 }

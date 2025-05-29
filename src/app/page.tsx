@@ -4,6 +4,8 @@ import SidebarNav from "./components/SidebarNav";
 import { MagnetLines } from "./components/Magnet-lines";
 import { MagnetDots } from "./components/Magnet-dots";
 import { MagnetCross } from "./components/Magnet-cross";
+import { MagnetGrid } from "./components/Magnet-grid";
+import CTA from "./components/CTA";
 
 export default function Home() {
   return (
@@ -294,6 +296,73 @@ export default function Home() {
                   lineWidth="0.4vmin"
                   lineHeight="2.5vmin"
                   baseAngle={-10}
+                />
+              </div>
+            </section>
+
+            {/* Magnet Grid Example */}
+            <section className="col-span-full space-y-6">
+              <h2 className="text-2xl font-bold mb-4">Magnet Grid Animation</h2>
+              <div className="w-full" style={{ aspectRatio: '1440/800' }}>
+                <MagnetGrid
+                  rows={11}
+                  columns={20}
+                  containerSize="100%"
+                  gridColor="var(--color-blueprint)"
+                  squareSize="2.5vmin"
+                />
+              </div>
+            </section>
+
+            {/* CTA Examples */}
+            <section className="col-span-full space-y-12">
+              <h2 className="text-2xl font-bold mb-4">CTA Component Examples</h2>
+              
+              {/* Dots CTA */}
+              <div>
+                <h3 className="text-lg font-medium text-black/70 mb-4">With Magnet Dots - Blueprint</h3>
+                <CTA 
+                  magnetType="dots"
+                  magnetColor="var(--color-blueprint)"
+                  title="Let's get started"
+                  buttonText="CONTACT US"
+                  buttonHref="#contact"
+                />
+              </div>
+
+              {/* Lines CTA */}
+              <div>
+                <h3 className="text-lg font-medium text-black/70 mb-4">With Magnet Lines - Marker</h3>
+                <CTA 
+                  magnetType="lines"
+                  magnetColor="var(--color-marker)"
+                  title="Let's get started"
+                  buttonText="CONTACT US"
+                  buttonHref="#contact"
+                />
+              </div>
+
+              {/* Cross CTA */}
+              <div>
+                <h3 className="text-lg font-medium text-black/70 mb-4">With Magnet Cross - Meadow</h3>
+                <CTA 
+                  magnetType="cross"
+                  magnetColor="var(--color-meadow)"
+                  title="Let's get started"
+                  buttonText="CONTACT US"
+                  buttonHref="#contact"
+                />
+              </div>
+
+              {/* Grid CTA */}
+              <div>
+                <h3 className="text-lg font-medium text-black/70 mb-4">With Magnet Grid - Sunny</h3>
+                <CTA 
+                  magnetType="grid"
+                  magnetColor="var(--color-sunny)"
+                  title="Let's get started"
+                  buttonText="CONTACT US"
+                  buttonHref="#contact"
                 />
               </div>
             </section>

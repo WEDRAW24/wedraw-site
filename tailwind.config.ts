@@ -116,6 +116,16 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		animation: {
+  			'pulse-ripple': 'pulseRipple 1s ease-in-out',
+  		},
+  		keyframes: {
+  			pulseRipple: {
+  				'0%': { transform: 'scale(var(--scale))' },
+  				'50%': { transform: 'scale(1)' },
+  				'100%': { transform: 'scale(var(--scale))' }
+  			},
   		}
   	}
   },
