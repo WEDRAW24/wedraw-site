@@ -33,10 +33,8 @@ function MagnetCross({
   isAnimating = false
 }: MagnetCrossProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const previousAngles = useRef<Map<HTMLDivElement, number>>(new Map());
-  const rafRef = useRef<number>();
-  const lastUpdateTime = useRef<number>(0);
   const isVisible = useRef<boolean>(false);
+  const previousAngles = useRef<Map<HTMLDivElement, number>>(new Map());
 
   useEffect(() => {
     const container = containerRef.current;
@@ -52,14 +50,7 @@ function MagnetCross({
 
     observer.observe(container);
 
-    const lineContainers = container.querySelectorAll<HTMLDivElement>(".line-container");
-    const FRAME_RATE = 1000 / 60; // Target 60fps
-
-    // Set initial rotation based on baseAngle
-    lineContainers.forEach((item) => {
-      item.style.setProperty("--rotate", `${baseAngle}deg`);
-      previousAngles.current.set(item, baseAngle);
-    });
+    const items = container.querySelectorAll<HTMLDivElement>(".cross-container");
 
     const normalizeAngle = (angle: number): number => {
       angle = angle % 360;
@@ -73,27 +64,18 @@ function MagnetCross({
       return currentAngle + diff;
     };
 
-    const updateRotations = (pointer: { x: number; y: number }, timestamp: number) => {
+    const onPointerMove = (pointer: { x: number; y: number }) => {
       if (isAnimating || !isVisible.current) return; // Don't respond if animating or not visible
 
-      // Throttle updates to target frame rate
-      if (timestamp - lastUpdateTime.current < FRAME_RATE) {
-        rafRef.current = requestAnimationFrame((newTimestamp) => 
-          updateRotations(pointer, newTimestamp)
-        );
-        return;
-      }
-
-      lastUpdateTime.current = timestamp;
-
-      lineContainers.forEach((item) => {
+      items.forEach((item) => {
         const rect = item.getBoundingClientRect();
         const centerX = rect.x + rect.width / 2;
         const centerY = rect.y + rect.height / 2;
 
-        const dx = pointer.x - centerX;
-        const dy = pointer.y - centerY;
-        const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+        const b = pointer.x - centerX;
+        const a = pointer.y - centerY;
+        const c = Math.sqrt(a * a + b * b) || 1;
+        const angle = ((Math.acos(b / c) * 180) / Math.PI) * (pointer.y > centerY ? 1 : -1);
         
         const prevAngle = previousAngles.current.get(item) ?? angle;
         const newAngle = calculateShortestRotation(prevAngle, angle);
@@ -103,41 +85,23 @@ function MagnetCross({
       });
     };
 
-    let isPointerMoving = false;
-    let lastPointerEvent: { x: number; y: number } | null = null;
-
-    const handlePointerMove = (e: PointerEvent) => {
-      lastPointerEvent = { x: e.clientX, y: e.clientY };
-      
-      if (!isPointerMoving && isVisible.current) {
-        isPointerMoving = true;
-        rafRef.current = requestAnimationFrame((timestamp) => {
-          if (lastPointerEvent) {
-            updateRotations(lastPointerEvent, timestamp);
-          }
-          isPointerMoving = false;
-        });
-      }
-    };
-
-    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    window.addEventListener("pointermove", (e: PointerEvent) => {
+      onPointerMove({ x: e.clientX, y: e.clientY });
+    });
 
     // Initial position
-    if (lineContainers.length && isVisible.current) {
-      const middleIndex = Math.floor(lineContainers.length / 2);
-      const rect = lineContainers[middleIndex].getBoundingClientRect();
-      updateRotations({ x: rect.x, y: rect.y }, performance.now());
+    if (items.length && isVisible.current) {
+      const middleIndex = Math.floor(items.length / 2);
+      const rect = items[middleIndex].getBoundingClientRect();
+      onPointerMove({ x: rect.x, y: rect.y });
     }
 
     return () => {
-      window.removeEventListener("pointermove", handlePointerMove);
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
+      window.removeEventListener("pointermove", onPointerMove);
       previousAngles.current.clear();
       observer.disconnect();
     };
-  }, [baseAngle, isAnimating]);
+  }, [isAnimating]);
 
   const shouldRenderCross = (row: number, col: number) => {
     if (!centerGap) return true;
@@ -162,13 +126,14 @@ function MagnetCross({
     return (
       <div
         key={i}
-        className={`line-container block origin-center will-change-transform ${isAnimating ? 'animate-cross-spin' : ''}`}
+        className={`cross-container block origin-center transition-transform ${isAnimating ? 'animate-spin-twice' : ''}`}
         style={{
           transform: "rotate(var(--rotate))",
           position: "relative",
           width: lineHeight,
           height: lineHeight,
           gridArea: `${row + 1} / ${col + 1}`,
+          willChange: "transform"
         }}
       >
         {/* Horizontal line */}

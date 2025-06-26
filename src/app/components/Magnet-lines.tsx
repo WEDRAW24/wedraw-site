@@ -34,6 +34,7 @@ function MagnetLines({
 }: MagnetLinesProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isVisible = useRef<boolean>(false);
+  const previousAngles = useRef<Map<HTMLSpanElement, number>>(new Map());
 
   useEffect(() => {
     const container = containerRef.current;
@@ -51,6 +52,18 @@ function MagnetLines({
 
     const items = container.querySelectorAll<HTMLSpanElement>("span");
 
+    const normalizeAngle = (angle: number): number => {
+      angle = angle % 360;
+      if (angle > 180) angle -= 360;
+      if (angle < -180) angle += 360;
+      return angle;
+    };
+
+    const calculateShortestRotation = (currentAngle: number, targetAngle: number): number => {
+      const diff = normalizeAngle(targetAngle - currentAngle);
+      return currentAngle + diff;
+    };
+
     const onPointerMove = (pointer: { x: number; y: number }) => {
       if (isAnimating || !isVisible.current) return; // Don't respond if animating or not visible
 
@@ -62,10 +75,13 @@ function MagnetLines({
         const b = pointer.x - centerX;
         const a = pointer.y - centerY;
         const c = Math.sqrt(a * a + b * b) || 1;
-        const r =
-          ((Math.acos(b / c) * 180) / Math.PI) * (pointer.y > centerY ? 1 : -1);
-
-        item.style.setProperty("--rotate", `${r}deg`);
+        const angle = ((Math.acos(b / c) * 180) / Math.PI) * (pointer.y > centerY ? 1 : -1);
+        
+        const prevAngle = previousAngles.current.get(item) ?? angle;
+        const newAngle = calculateShortestRotation(prevAngle, angle);
+        
+        previousAngles.current.set(item, newAngle);
+        item.style.setProperty("--rotate", `${newAngle}deg`);
       });
     };
 
@@ -73,6 +89,7 @@ function MagnetLines({
       onPointerMove({ x: e.clientX, y: e.clientY });
     });
 
+    // Initial position
     if (items.length && isVisible.current) {
       const middleIndex = Math.floor(items.length / 2);
       const rect = items[middleIndex].getBoundingClientRect();
@@ -81,6 +98,7 @@ function MagnetLines({
 
     return () => {
       window.removeEventListener("pointermove", onPointerMove);
+      previousAngles.current.clear();
       observer.disconnect();
     };
   }, [isAnimating]);

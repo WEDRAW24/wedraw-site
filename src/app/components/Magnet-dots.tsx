@@ -128,7 +128,7 @@ function MagnetDots({
           backgroundColor: dotColor,
           width: maxDotSize,
           height: maxDotSize,
-          transform: "scale(var(--scale))",
+          transform: "scale(var(--scale, 0.1))",
           willChange: "transform",
           gridArea: `${row + 1} / ${col + 1}`,
           animationDelay: isAnimating ? `${normalizedDelay}s` : '0s',

@@ -1,26 +1,34 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Footer from "./components/Footer"; // Updated import path to correct location
+import Footer from "./components/Footer";
+import SidebarNavWithColor from "./components/SidebarNavWithColor";
+import { ReactNode } from "react";
+import ConditionalLayout from "./components/ConditionalLayout";
 
 export const metadata: Metadata = {
   title: "WeDraw Style Guide",
   description: "Style guide and component library",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+function Providers({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/bbt5cpp.css" />
       </head>
       <body className="antialiased">
-        {children}
-        <Footer />
+        <ConditionalLayout>
+          {children}
+        </ConditionalLayout>
       </body>
     </html>
   );
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: ReactNode;
+}>) {
+  return <Providers>{children}</Providers>;
 }

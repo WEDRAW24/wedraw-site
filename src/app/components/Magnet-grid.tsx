@@ -26,20 +26,24 @@ function MagnetGrid({
   centerGap,
   isAnimating = false
 }: MagnetGridProps) {
-  const [filledCells, setFilledCells] = useState<Set<string>>(new Set());
+  // Store both filled state and opacity level
+  const [cellStates, setCellStates] = useState<Map<string, number>>(new Map());
 
   const toggleCell = (row: number, col: number) => {
     if (isAnimating) return; // Don't allow toggling while animating
     
     const cellKey = `${row}-${col}`;
-    setFilledCells((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(cellKey)) {
-        newSet.delete(cellKey);
+    setCellStates((prev) => {
+      const newMap = new Map(prev);
+      if (newMap.has(cellKey)) {
+        newMap.delete(cellKey);
       } else {
-        newSet.add(cellKey);
+        // When manually clicking, randomly choose one of the opacity levels
+        const opacities = [0.25, 0.5, 0.75, 1];
+        const randomOpacity = opacities[Math.floor(Math.random() * opacities.length)];
+        newMap.set(cellKey, randomOpacity);
       }
-      return newSet;
+      return newMap;
     });
   };
 
@@ -47,7 +51,7 @@ function MagnetGrid({
   useEffect(() => {
     if (isAnimating) {
       // First clear all cells
-      setFilledCells(new Set());
+      setCellStates(new Map());
       
       // Set a small delay before filling random cells
       setTimeout(() => {
@@ -61,19 +65,86 @@ function MagnetGrid({
           }
         }
 
-        // Calculate how many cells to fill (30% of available cells)
-        const cellsToFill = Math.floor(availableCells.length * 0.3);
+        // Calculate target number of filled cells (20% of available cells)
+        const targetFilledCells = Math.floor(availableCells.length * 0.2);
         
-        // Randomly select cells to fill
-        const selectedCells = new Set<string>();
-        while (selectedCells.size < cellsToFill) {
+        // Initial fill with target number
+        const selectedCells = new Map<string, number>();
+        const opacities = [0.25, 0.5, 0.75, 1];
+        
+        while (selectedCells.size < targetFilledCells) {
           const randomIndex = Math.floor(Math.random() * availableCells.length);
           const cellKey = availableCells[randomIndex];
-          selectedCells.add(cellKey);
+          const randomOpacity = opacities[Math.floor(Math.random() * opacities.length)];
+          selectedCells.set(cellKey, randomOpacity);
         }
 
-        setFilledCells(selectedCells);
-      }, 50); // Small delay to ensure clear animation is visible
+        setCellStates(selectedCells);
+
+        // Start the sparkling effect
+        const sparkleInterval = setInterval(() => {
+          setCellStates(prev => {
+            const newMap = new Map(prev);
+            const currentSize = newMap.size;
+            
+            // If we have too many cells, remove some
+            if (currentSize > targetFilledCells) {
+              const cellsToRemove = currentSize - targetFilledCells;
+              const keys = Array.from(newMap.keys());
+              for (let i = 0; i < cellsToRemove; i++) {
+                const randomKey = keys[Math.floor(Math.random() * keys.length)];
+                newMap.delete(randomKey);
+              }
+            }
+            
+            // If we have too few cells, add some
+            if (currentSize < targetFilledCells) {
+              const cellsToAdd = targetFilledCells - currentSize;
+              const availableKeys = availableCells.filter(key => !newMap.has(key));
+              for (let i = 0; i < cellsToAdd; i++) {
+                const randomIndex = Math.floor(Math.random() * availableKeys.length);
+                const cellKey = availableKeys[randomIndex];
+                const randomOpacity = opacities[Math.floor(Math.random() * opacities.length)];
+                newMap.set(cellKey, randomOpacity);
+                availableKeys.splice(randomIndex, 1); // Remove used key
+              }
+            }
+            
+            // Randomly change opacity of some existing cells (25% chance)
+            newMap.forEach((_, key) => {
+              if (Math.random() < 0.25) {
+                const randomOpacity = opacities[Math.floor(Math.random() * opacities.length)];
+                newMap.set(key, randomOpacity);
+              }
+            });
+            
+            // Move some cells to maintain visual interest
+            const numCellsToMove = Math.floor(Math.random() * 3) + 1; // Move 1-3 cells
+            for (let i = 0; i < numCellsToMove; i++) {
+              const filledKeys = Array.from(newMap.keys());
+              const emptyKeys = availableCells.filter(key => !newMap.has(key));
+              
+              if (filledKeys.length && emptyKeys.length) {
+                // Remove a random filled cell
+                const randomFilledIndex = Math.floor(Math.random() * filledKeys.length);
+                const filledKey = filledKeys[randomFilledIndex];
+                const opacity = newMap.get(filledKey)!;
+                newMap.delete(filledKey);
+                
+                // Add to a random empty cell
+                const randomEmptyIndex = Math.floor(Math.random() * emptyKeys.length);
+                const emptyKey = emptyKeys[randomEmptyIndex];
+                newMap.set(emptyKey, opacity);
+              }
+            }
+            
+            return newMap;
+          });
+        }, 225);
+
+        // Clean up interval when animation ends or component unmounts
+        return () => clearInterval(sparkleInterval);
+      }, 50);
     }
   }, [isAnimating, rows, columns]);
 
@@ -180,6 +251,7 @@ function MagnetGrid({
           const row = Math.floor(index / columns);
           const col = index % columns;
           const cellKey = `${row}-${col}`;
+          const opacity = cellStates.get(cellKey);
 
           if (!shouldRenderCell(row, col)) {
             return <div key={cellKey} style={{ gridArea: `${row + 1} / ${col + 1}` }} />;
@@ -189,11 +261,11 @@ function MagnetGrid({
             <div
               key={cellKey}
               onClick={() => toggleCell(row, col)}
-              className={isAnimating ? 'animate-grid-fill' : ''}
               style={{
-                background: filledCells.has(cellKey) ? gridColor : 'transparent',
+                background: opacity ? gridColor : 'transparent',
+                opacity: opacity || 0,
                 cursor: 'pointer',
-                transition: 'background-color 0.2s',
+                transition: 'background-color 0.3s ease-in-out, opacity 0.3s ease-in-out',
                 gridArea: `${row + 1} / ${col + 1}`,
                 width: '100%',
                 height: '100%'
