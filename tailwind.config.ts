@@ -43,6 +43,7 @@ const config: Config = {
   			sunny: '#FFB300',
   			black: '#000014',
   			white: '#FFFFFF',
+  			'dark-grey': '#232838',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

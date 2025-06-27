@@ -17,11 +17,19 @@ export default function ConditionalLayout({ children }: ConditionalLayoutProps) 
     setIsSanityStudio(pathname?.startsWith('/sanity') ?? false)
   }, [pathname])
 
+  if (isSanityStudio) {
+    return <>{children}</>
+  }
+
   return (
     <>
-      {!isSanityStudio && <SidebarNavWithColor />}
-      {children}
-      {!isSanityStudio && <Footer />}
+      <SidebarNavWithColor />
+      <div className="min-h-screen ml-[68px]">
+        <main>
+          {children}
+        </main>
+        <Footer />
+      </div>
     </>
   )
 } 

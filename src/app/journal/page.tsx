@@ -1,10 +1,19 @@
 // src/app/journal/page.tsx
 
+import type { Metadata } from "next"
 import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
 import { getAllJournalPostsQuery, debugQuery, testQuery } from '@/sanity/lib/queries'
 import Image from 'next/image'
 import Link from 'next/link'
+import CategoryLabel from '../components/CategoryLabel'
+import UnderlineLink from '../components/UnderlineLink'
+import CTA from '../components/CTA'
+
+// Force dynamic rendering and disable cache
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+export const fetchCache = 'force-no-store'
 
 // Define the type for our journal post
 type JournalPost = {
@@ -33,10 +42,6 @@ type JournalPost = {
   moreArticlesTag?: string
 }
 
-// Force dynamic to prevent caching
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
-
 export default async function JournalPage() {
   try {
     // Log environment variables (without sensitive data)
@@ -54,11 +59,12 @@ export default async function JournalPage() {
     // Fetch all posts
     console.log('Fetching posts with query:', getAllJournalPostsQuery)
     const posts = await client.fetch<JournalPost[]>(getAllJournalPostsQuery)
-    console.log('Fetched posts:', posts)
-
-    // Additional debug query
-    const debugResults = await client.fetch(debugQuery)
-    console.log('Debug results:', debugResults)
+    
+    // Debug log for all post categories
+    console.log('All post categories:', posts.map(post => ({
+      title: post.title,
+      category: post.category
+    })))
 
     if (!posts || posts.length === 0) {
       return (
@@ -103,57 +109,84 @@ export default async function JournalPage() {
 
     // If we have posts, display them
     return (
-      <main className="min-h-screen px-6 py-12 max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Journal</h1>
+      <main className="min-h-screen px-6 py-12 max-w-7xl mx-auto relative z-0">
+        <h1 className="text-[85px] font-bold leading-[120%] mb-16 text-sunny">Journal</h1>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <Link 
-              href={`/journal/${post.slug.current}`} 
+              href={`/journal/${post.slug.current}`}
               key={post._id}
-              className="group"
+              className="block group cursor-pointer"
             >
-              <article className="border rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg">
-                {post.mainImage && (
-                  <div className="aspect-[16/9] relative overflow-hidden">
+              <article className="relative">
+                {/* Category Label - Absolute positioned on top of image */}
+                <div className="absolute top-4 left-4 z-10">
+                  <CategoryLabel 
+                    category={post.category.toLowerCase() as 'news' | 'media' | 'explorations'} 
+                    variant="white"
+                  />
+                </div>
+
+                {/* Main Image */}
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  {post.mainImage && (
                     <Image
-                      src={urlFor(post.mainImage).width(800).height(450).url()}
+                      src={urlFor(post.mainImage).width(800).height(600).url()}
                       alt={post.mainImage.alt || post.title}
                       fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                     />
-                  </div>
-                )}
-                <div className="p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-sm text-gray-600">
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-300" />
-                    <span className="text-sm font-medium text-gray-600">
-                      {post.category}
-                    </span>
-                  </div>
-                  <h2 className="text-xl font-bold mb-2 group-hover:text-blue-600">
+                  )}
+                </div>
+
+                {/* Content Section */}
+                <div className="mt-6 space-y-4">
+                  {/* Date */}
+                  <p className="font-mono text-sunny text-sm">
+                    {new Date(post.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    }).toUpperCase()}
+                  </p>
+
+                  {/* Title */}
+                  <h2 className="text-2xl font-bold">
                     {post.title}
                   </h2>
+
+                  {/* Blurb */}
                   {post.blurb && (
-                    <p className="text-gray-600 line-clamp-2">{post.blurb}</p>
+                    <p className="text-gray-600 line-clamp-3">{post.blurb}</p>
                   )}
+
+                  {/* Read More Link */}
+                  <div className="pt-2">
+                    <UnderlineLink href={`/journal/${post.slug.current}`} variant="sunny">
+                      READ MORE
+                    </UnderlineLink>
+                  </div>
                 </div>
               </article>
             </Link>
           ))}
+        </div>
+
+        <div className="mt-32">
+          <CTA
+            magnetType="grid"
+            magnetColor="var(--color-sunny)"
+            title="Let's get started"
+            buttonText="GET IN TOUCH"
+            buttonHref="/contact"
+          />
         </div>
       </main>
     )
   } catch (error) {
     console.error('Error fetching posts:', error)
     return (
-      <main className="min-h-screen px-6 py-12 max-w-7xl mx-auto">
+      <main className="min-h-screen px-6 py-12 max-w-7xl mx-auto relative z-0">
         <h1 className="text-4xl font-bold mb-8">Journal</h1>
         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
           <p className="text-red-600">Error loading posts. Debug information below:</p>

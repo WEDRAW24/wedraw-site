@@ -97,7 +97,14 @@ export const getPostBySlugQuery = groq`
     },
     alt
   },
+  mainSubHeading,
   mainBody,
+  subHeading1,
+  body1,
+  subHeading2,
+  body2,
+  subHeading3,
+  body3,
   featured,
   moreArticlesTag
 }
@@ -126,4 +133,17 @@ export const getRelatedPostsQuery = groq`
   featured,
   moreArticlesTag
 }
-` 
+`
+
+// Debug query to check specific post
+export const debugIntroPostQuery = groq`
+*[_type == "journalPost" && title == "Introducing WEDRAW"][0] {
+  _id,
+  _type,
+  _createdAt,
+  _updatedAt,
+  title,
+  category,
+  "documentRevisions": count(*[_type == "journalPost" && title == "Introducing WEDRAW"])
+}
+`

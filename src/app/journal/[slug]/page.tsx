@@ -1,9 +1,15 @@
 import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
-import { getPostBySlugQuery } from '@/sanity/lib/queries'
+import { getPostBySlugQuery, debugIntroPostQuery } from '@/sanity/lib/queries'
 import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 import { notFound } from 'next/navigation'
+import CategoryLabel from '@/app/components/CategoryLabel'
+
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+export const fetchCache = 'force-no-store'
 
 type Props = {
   params: {
@@ -18,6 +24,15 @@ export default async function JournalPostPage({ params }: Props) {
     notFound()
   }
 
+  // Debug log for category
+  console.log('Post category from Sanity:', post.category)
+  
+  // Additional debug for Introducing WEDRAW post
+  if (post.title === "Introducing WEDRAW") {
+    const debugData = await client.fetch(debugIntroPostQuery)
+    console.log('Debug data for Introducing WEDRAW:', debugData)
+  }
+
   // Custom components for PortableText
   const components = {
     block: {
@@ -28,23 +43,23 @@ export default async function JournalPostPage({ params }: Props) {
         <h2 className="text-[58px] font-bold leading-[120%] text-dark-grey">{children}</h2>
       ),
       h3: ({children}: any) => (
-        <h3 className="text-[44px] font-bold leading-[120%] text-dark-grey">{children}</h3>
+        <h3 className="text-[24px] font-area-extrabold leading-[130%] text-dark-grey mb-6">{children}</h3>
       ),
       h4: ({children}: any) => (
-        <h4 className="text-[36px] font-bold leading-[130%] text-dark-grey">{children}</h4>
+        <h4 className="text-[24px] font-area-extrabold leading-[130%] text-dark-grey mb-6">{children}</h4>
       ),
       normal: ({children}: any) => (
-        <p className="text-[16px] leading-[140%] mb-6 font-area-normal font-normal text-dark-grey">{children}</p>
+        <p className="text-[18px] leading-[180%] mb-3 font-area-normal text-dark-grey">{children}</p>
       ),
     },
   }
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen relative z-0">
       {/* Full-width hero image, no rounded corners, wider */}
       {post.mainImage && (
-        <div className="w-full flex justify-center">
-          <div className="w-full max-w-screen-2xl p-0">
+        <div className="w-full flex justify-end max-w-screen-2xl mx-auto pl-[100px] pr-8">
+          <div className="w-full">
             <div className="relative aspect-[1316/738] overflow-hidden">
               <Image
                 src={urlFor(post.mainImage).width(1920).height(900).url()}
@@ -60,33 +75,36 @@ export default async function JournalPostPage({ params }: Props) {
       )}
 
       {/* Article content */}
-      <main className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-0 justify-center">
-        <article className="w-full bg-white px-8 py-16 mt-12 flex flex-col col-span-1 lg:col-span-5
-         lg:col-start-6">
-          {/* Vertical label */}
-          <div className="absolute left-0 top-24 hidden md:flex flex-col items-center">
-            <span className="bg-white border border-sunny text-sunny font-mono text-xs font-semibold px-2 py-1 rounded-md rotate-[-90deg] tracking-widest shadow-sm">
-              REFLECTIONS
-            </span>
-          </div>
-
-          {/* Header */}
-          <header className="mb-12">
-            <div className="flex items-center gap-2 mb-4 text-sm text-gray-600">
+      <main className="relative flex justify-end max-w-screen-2xl mx-auto pl-[230px] pr-8">
+        <article className="w-[800px] bg-white py-16 mt-12 flex flex-col relative">
+          {/* Header group - similar to Figma grouping */}
+          <div className="relative">
+            {/* Category label */}
+            <div className="absolute -left-32 top-[40px] hidden lg:block">
+              <CategoryLabel 
+                category={post.category} 
+                className="rotate-[-90deg] origin-top-right translate-x-[-100%]"
+              />
             </div>
-            <h1 className="text-[72px] leading-[120%] font-extrabold font-sans mb-12">{post.title}</h1>
-            <time dateTime={post.date} className="block text-[30px] leading-[130%] font-extrabold font-sans mb-12 text-dark-grey">
-              {new Date(post.date).toLocaleDateString('en-GB', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
-            </time>
-          </header>
+
+            {/* Header content */}
+            <header className="mb-12">
+              <div className="flex items-center gap-2 mb-4 text-sm text-dark-grey">
+              </div>
+              <h1 className="text-[72px] leading-[120%] font-extrabold font-sans mb-12 text-dark-grey">{post.title}</h1>
+              <time dateTime={post.date} className="block text-[30px] leading-[130%] font-extrabold font-sans mb-12 text-dark-grey">
+                {new Date(post.date).toLocaleDateString('en-GB', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+            </header>
+          </div>
 
           {/* Main Sub Heading */}
           {post.mainSubHeading && (
-            <h2 className="text-[58px] font-bold leading-[120%] text-dark-grey mb-6">{post.mainSubHeading}</h2>
+            <h2 className="text-[24px] font-area-extrabold leading-[130%] text-dark-grey mb-8">{post.mainSubHeading}</h2>
           )}
           {/* Main Body */}
           {post.mainBody && (
@@ -94,7 +112,7 @@ export default async function JournalPostPage({ params }: Props) {
           )}
           {/* Sub Heading 1 */}
           {post.subHeading1 && (
-            <h3 className="text-[44px] font-bold leading-[120%] text-dark-grey mb-4">{post.subHeading1}</h3>
+            <h3 className="text-[24px] font-area-extrabold leading-[130%] text-dark-grey mb-8 mt-12">{post.subHeading1}</h3>
           )}
           {/* Body 1 */}
           {post.body1 && (
@@ -102,7 +120,7 @@ export default async function JournalPostPage({ params }: Props) {
           )}
           {/* Sub Heading 2 */}
           {post.subHeading2 && (
-            <h3 className="text-[44px] font-bold leading-[120%] text-dark-grey mb-4">{post.subHeading2}</h3>
+            <h3 className="text-[24px] font-area-extrabold leading-[130%] text-dark-grey mb-8 mt-12">{post.subHeading2}</h3>
           )}
           {/* Body 2 */}
           {post.body2 && (
@@ -110,7 +128,7 @@ export default async function JournalPostPage({ params }: Props) {
           )}
           {/* Sub Heading 3 */}
           {post.subHeading3 && (
-            <h3 className="text-[44px] font-bold leading-[120%] text-dark-grey mb-4">{post.subHeading3}</h3>
+            <h3 className="text-[24px] font-area-extrabold leading-[130%] text-dark-grey mb-8 mt-12">{post.subHeading3}</h3>
           )}
           {/* Body 3 */}
           {post.body3 && (

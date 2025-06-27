@@ -32,7 +32,7 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
               mass: 1
             }
           }}
-          className={`fixed top-0 right-0 bottom-0 left-[68px] z-10 overflow-y-auto transition-colors duration-300 ${
+          className={`fixed top-0 right-0 bottom-0 left-[68px] -ml-6 z-10 overflow-y-auto transition-colors duration-300 ${
             hoveredSection === 'Work' ? 'bg-marker' : 
             hoveredSection === 'Studio' ? 'bg-meadow' :
             hoveredSection === 'Journal' ? 'bg-sunny' :

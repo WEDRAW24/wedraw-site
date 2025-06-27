@@ -1,10 +1,13 @@
 import { createClient } from 'next-sanity'
-
 import { apiVersion, dataset, projectId } from '../config/env'
 
 export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true, // Set to false if statically generating pages, using ISR or tag-based revalidation
+  useCdn: false, // Set to false to prevent caching issues
+  perspective: 'published',
+  stega: false,
+  cache: 'no-store',
+  next: { revalidate: 0, tags: ['sanity'] }
 })
