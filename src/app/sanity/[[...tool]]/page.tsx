@@ -8,7 +8,7 @@
  */
 
 import { NextStudio } from 'next-sanity/studio'
-import config from '@/sanity/config/sanity.config'
+import config from '../../../../sanity/config/sanity.config'
 
 export const dynamic = 'force-static'
 

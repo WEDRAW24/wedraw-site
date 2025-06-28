@@ -309,7 +309,6 @@ export default function Home() {
                   columns={20}
                   containerSize="100%"
                   gridColor="var(--color-blueprint)"
-                  squareSize="2.5vmin"
                 />
               </div>
             </section>
