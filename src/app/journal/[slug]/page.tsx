@@ -1,10 +1,12 @@
 import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
-import { getPostBySlugQuery, debugIntroPostQuery } from '@/sanity/lib/queries'
+import { getPostBySlugQuery, debugIntroPostQuery, getAllJournalPostsQuery } from '@/sanity/lib/queries'
 import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 import { notFound } from 'next/navigation'
 import CategoryLabel from '@/app/components/CategoryLabel'
+import MoreFromJournal from '@/app/components/MoreFromJournal'
+import CTA from '@/app/components/CTA'
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic'
@@ -33,6 +35,9 @@ export default async function JournalPostPage({ params }: Props) {
     console.log('Debug data for Introducing WEDRAW:', debugData)
   }
 
+  // Fetch all posts for the "More from Journal" section
+  const allPosts = await client.fetch(getAllJournalPostsQuery)
+
   // Custom components for PortableText
   const components = {
     block: {
@@ -58,7 +63,7 @@ export default async function JournalPostPage({ params }: Props) {
     <div className="bg-white min-h-screen relative z-0">
       {/* Full-width hero image, no rounded corners, wider */}
       {post.mainImage && (
-        <div className="w-full flex justify-end max-w-screen-2xl mx-auto pl-[100px] pr-8">
+        <div className="w-full flex justify-end max-w-[90vw] mx-auto px-12">
           <div className="w-full">
             <div className="relative aspect-[1316/738] overflow-hidden">
               <Image
@@ -75,8 +80,8 @@ export default async function JournalPostPage({ params }: Props) {
       )}
 
       {/* Article content */}
-      <main className="relative flex justify-end max-w-screen-2xl mx-auto pl-[230px] pr-8">
-        <article className="w-[800px] bg-white py-16 mt-12 flex flex-col relative">
+      <main className="relative max-w-[90vw] mx-auto px-12">
+        <article className="max-w-[800px] bg-white py-16 mt-12 flex flex-col relative ml-[120px]">
           {/* Header group - similar to Figma grouping */}
           <div className="relative">
             {/* Category label */}
@@ -136,6 +141,21 @@ export default async function JournalPostPage({ params }: Props) {
           )}
         </article>
       </main>
+
+      <MoreFromJournal 
+        currentPostId={post._id} 
+        posts={allPosts}
+      />
+
+      <div className="max-w-[90vw] mx-auto px-12 mt-16 pb-48">
+        <CTA
+          magnetType="grid"
+          magnetColor="var(--color-sunny)"
+          title="Let's get started"
+          buttonText="GET IN TOUCH"
+          buttonHref="/contact"
+        />
+      </div>
     </div>
   )
 } 

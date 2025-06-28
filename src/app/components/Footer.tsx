@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         {/* Top Navigation Bar */}
         <div className="mb-24">
-          <nav className="w-full max-w-[960px] mx-auto">
+          <nav className="w-full max-w-[1200px] mx-auto">
             <ul className="flex justify-between items-center font-mono uppercase text-sm tracking-wider">
               <li><Link href="/work" className="hover:underline">WORK</Link></li>
               <li><Link href="/studio" className="hover:underline">STUDIO</Link></li>
@@ -60,9 +60,9 @@ export default function Footer() {
           <Image
             src={LogoSvg}
             alt="WEDRAW Logo"
-            width={960}
-            height={240}
-            className="w-full max-w-[960px] mx-auto h-auto"
+            width={1200}
+            height={300}
+            className="w-full max-w-[1200px] mx-auto h-auto"
             priority
           />
         </div>

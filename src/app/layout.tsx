@@ -18,7 +18,7 @@ function Providers({ children }: { children: ReactNode }) {
       </head>
       <body className="antialiased">
         <ConditionalLayout>
-          {children}
+        {children}
         </ConditionalLayout>
       </body>
     </html>
