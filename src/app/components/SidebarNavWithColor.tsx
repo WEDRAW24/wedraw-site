@@ -7,7 +7,7 @@ export default function SidebarNavWithColor() {
   const isJournal = pathname.startsWith("/journal");
   const isWork = pathname.startsWith("/work");
 
-  let color = "blueprint";
+  let color: "blueprint" | "sunny" | "marker" = "blueprint";
   if (isJournal) color = "sunny";
   if (isWork) color = "marker";
 
