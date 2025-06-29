@@ -7,22 +7,23 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import WedrawLogoBlue from "../assets/logos/WEDRAW Logo Primary Blue.svg";
 import WedrawLogoSunny from "../assets/logos/WEDRAW Logo Primary Yellow.svg";
+import WedrawLogoMarker from "../assets/logos/WEDRAW Logo Primary Red.svg";
 import NavDrawer from "./NavDrawer";
 
-export default function SidebarNav({ color = "blueprint" }: { color?: "blueprint" | "sunny" }) {
+export default function SidebarNav({ color = "blueprint" }: { color?: "blueprint" | "sunny" | "marker" }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Dynamic color classes
-  const borderColor = color === "sunny" ? "border-r-sunny" : "border-r-blueprint";
-  const textColor = color === "sunny" ? "text-sunny" : "text-blueprint";
-  const bgBarColor = color === "sunny" ? "bg-sunny" : "bg-blueprint";
+  const borderColor = color === "sunny" ? "border-r-sunny" : color === "marker" ? "border-r-marker" : "border-r-blueprint";
+  const textColor = color === "sunny" ? "text-sunny" : color === "marker" ? "text-marker" : "text-blueprint";
+  const bgBarColor = color === "sunny" ? "bg-sunny" : color === "marker" ? "bg-marker" : "bg-blueprint";
   // Swap logo based on color
-  const logo = color === "sunny" ? WedrawLogoSunny : WedrawLogoBlue;
-  const iconColorClass = color === "sunny" ? "text-sunny" : "text-blueprint";
+  const logo = color === "sunny" ? WedrawLogoSunny : color === "marker" ? WedrawLogoMarker : WedrawLogoBlue;
+  const iconColorClass = color === "sunny" ? "text-sunny" : color === "marker" ? "text-marker" : "text-blueprint";
 
   return (
     <>
-      <aside className={`fixed top-0 left-0 w-[68px] h-[100vh] bg-white border-r-2 ${borderColor} z-50`}>
+      <aside className={`fixed top-0 left-0 w-[68px] h-screen bg-white border-r-2 ${borderColor} z-50 overflow-hidden`}>
         {/* Top: Burger Menu */}
         <div className={`p-4 flex justify-center ${textColor}`}>
           <button 

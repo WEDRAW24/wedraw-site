@@ -32,7 +32,7 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
               mass: 1
             }
           }}
-          className={`fixed top-0 right-0 bottom-0 left-[68px] -ml-6 z-10 overflow-y-auto transition-colors duration-300 ${
+          className={`fixed top-0 right-0 bottom-0 left-[68px] -ml-6 z-10 overflow-hidden transition-colors duration-300 ${
             hoveredSection === 'Work' ? 'bg-marker' : 
             hoveredSection === 'Studio' ? 'bg-meadow' :
             hoveredSection === 'Journal' ? 'bg-sunny' :
@@ -40,8 +40,8 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
             'bg-white'
           }`}
         >
-          <div className="pl-24 pr-[32rem] py-24 max-w-[1440px] relative">
-            <ul className="space-y-12">
+          <div className="pl-24 pr-[32rem] h-screen max-w-[1440px] relative flex flex-col">
+            <ul className="space-y-12 flex-1 pt-12">
               {/* Section Block */}
               {[
                 {
@@ -130,7 +130,7 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
             </ul>
 
             {/* Contact Info */}
-            <div className={`absolute bottom-24 right-0 font-mono text-[16px] space-y-12 transition-all duration-300 ${
+            <div className={`absolute bottom-[40px] right-0 font-mono text-[16px] space-y-12 transition-all duration-300 ${
               hoveredSection ? 'text-white opacity-50' : ''
             }`}>
               <div>

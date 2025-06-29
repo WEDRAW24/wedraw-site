@@ -5,5 +5,11 @@ import { usePathname } from "next/navigation";
 export default function SidebarNavWithColor() {
   const pathname = usePathname();
   const isJournal = pathname.startsWith("/journal");
-  return <SidebarNav color={isJournal ? "sunny" : "blueprint"} />;
+  const isWork = pathname.startsWith("/work");
+
+  let color = "blueprint";
+  if (isJournal) color = "sunny";
+  if (isWork) color = "marker";
+
+  return <SidebarNav color={color} />;
 } 
