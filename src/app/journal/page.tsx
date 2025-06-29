@@ -39,6 +39,6 @@ type JournalPost = {
 export default async function JournalPage() {
   // Fetch posts on the server
   const posts = await client.fetch<JournalPost[]>(getAllJournalPostsQuery);
-  
+
   return <JournalContent initialPosts={posts} />;
 }
