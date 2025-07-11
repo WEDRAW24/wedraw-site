@@ -5,13 +5,27 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import WedrawLogoBlue from "../assets/logos/WEDRAW Logo Primary Blue.svg";
 import WedrawLogoSunny from "../assets/logos/WEDRAW Logo Primary Yellow.svg";
 import WedrawLogoMarker from "../assets/logos/WEDRAW Logo Primary Red.svg";
 import NavDrawer from "./NavDrawer";
 
-export default function SidebarNav({ color = "blueprint" }: { color?: "blueprint" | "sunny" | "marker" }) {
+interface SidebarNavProps {
+  color?: "blueprint" | "sunny" | "marker";
+}
+
+export default function SidebarNav({ color: colorProp }: SidebarNavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Determine color based on path, unless overridden by prop
+  let color = colorProp;
+  if (!color) {
+    if (pathname.startsWith("/journal")) color = "sunny";
+    else if (pathname.startsWith("/work")) color = "marker";
+    else color = "blueprint";
+  }
 
   // Dynamic color classes
   const borderColor = color === "sunny" ? "border-r-sunny" : color === "marker" ? "border-r-marker" : "border-r-blueprint";
@@ -23,12 +37,14 @@ export default function SidebarNav({ color = "blueprint" }: { color?: "blueprint
 
   return (
     <>
-      <aside className={`fixed top-0 left-0 w-[68px] h-screen bg-white border-r-2 ${borderColor} z-50 overflow-hidden`}>
-        {/* Top: Burger Menu */}
-        <div className={`p-4 flex justify-center ${textColor}`}>
+      <aside className={`fixed bg-white z-50 
+        md:w-[68px] md:h-screen md:left-0 md:top-0 md:border-r-2 ${borderColor}
+        w-full h-[56px] top-0 left-0 border-b-2 ${borderColor}`}>
+        {/* Menu Button */}
+        <div className={`p-4 flex md:justify-center justify-end ${textColor}`}>
           <button 
             onClick={() => setMenuOpen(!menuOpen)} 
-            className={`${textColor} hover:opacity-80 transition w-[26px] h-[26px] relative`}
+            className={`${textColor} w-[26px] h-[26px] relative`}
           >
             <motion.div 
               className="flex flex-col justify-center h-full"
@@ -62,12 +78,13 @@ export default function SidebarNav({ color = "blueprint" }: { color?: "blueprint
           </button>
         </div>
 
-        {/* Middle: WEDRAW Logo */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-90deg] w-[181px]">
+        {/* WEDRAW Logo */}
+        <div className="absolute 
+          md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:rotate-[-90deg] md:w-[181px]
+          top-[55%] left-4 -translate-y-1/2 w-[160px]">
           <Link 
             href="/"
             onClick={() => setMenuOpen(false)}
-            className="hover:opacity-80 transition"
           >
             <Image
               src={logo}
@@ -80,13 +97,15 @@ export default function SidebarNav({ color = "blueprint" }: { color?: "blueprint
           </Link>
         </div>
 
-        {/* Bottom: Social Icons */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col gap-4">
+        {/* Social Icons - Hidden on mobile */}
+        <div className="absolute 
+          md:bottom-4 md:left-1/2 md:-translate-x-1/2 md:flex-col md:flex
+          hidden
+          gap-2">
           <Link 
             href="https://instagram.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="hover:opacity-80 transition"
           >
             <span className={iconColorClass} style={{ display: 'inline-block', lineHeight: 0 }}>
               {/* Instagram SVG */}
@@ -101,7 +120,6 @@ export default function SidebarNav({ color = "blueprint" }: { color?: "blueprint
             href="https://linkedin.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="hover:opacity-80 transition"
           >
             <span className={iconColorClass} style={{ display: 'inline-block', lineHeight: 0 }}>
               {/* LinkedIn SVG */}

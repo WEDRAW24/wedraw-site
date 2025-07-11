@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "./components/Footer";
-import SidebarNavWithColor from "./components/SidebarNavWithColor";
+import SidebarNav from "./components/SidebarNav";
 import { ReactNode } from "react";
 import ConditionalLayout from "./components/ConditionalLayout";
 
@@ -16,7 +16,7 @@ function Providers({ children }: { children: ReactNode }) {
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/bbt5cpp.css" />
       </head>
-      <body className="antialiased">
+      <body className="antialiased overflow-x-hidden">
         <ConditionalLayout>
         {children}
         </ConditionalLayout>

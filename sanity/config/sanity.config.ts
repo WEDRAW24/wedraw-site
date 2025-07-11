@@ -6,24 +6,24 @@
 
 import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
+import {deskTool} from 'sanity/desk'
 import '../studio/studio.css'
-
-// Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import {apiVersion, dataset, projectId} from './env'
-import {schema} from '../schemas'
-import {structure} from '../studio/structure'
+import {schemaTypes} from '../schemas'
 
 export default defineConfig({
+  name: 'default',
+  title: 'WEDRAW Site',
   basePath: '/sanity',
-  projectId,
-  dataset,
-  // Add and edit the content schema in the './sanity/schemaTypes' folder
-  schema,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+
   plugins: [
-    structureTool({structure}),
+    deskTool(),
     // Vision is for querying with GROQ from inside the Studio
-    // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({defaultApiVersion: apiVersion}),
+    visionTool()
   ],
+
+  schema: {
+    types: schemaTypes,
+  },
 })

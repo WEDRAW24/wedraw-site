@@ -1,30 +1,25 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { ReactNode, useEffect, useState } from 'react'
-import SidebarNavWithColor from './SidebarNavWithColor'
+import SidebarNav from './SidebarNav'
 import Footer from './Footer'
 
 interface ConditionalLayoutProps {
-  children: ReactNode
+  children: React.ReactNode
 }
 
 export default function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const pathname = usePathname()
-  const [isSanityStudio, setIsSanityStudio] = useState(false)
-
-  useEffect(() => {
-    setIsSanityStudio(pathname?.startsWith('/sanity') ?? false)
-  }, [pathname])
-
-  if (isSanityStudio) {
+  
+  // Return early for Sanity Studio routes
+  if (pathname?.startsWith('/sanity')) {
     return <>{children}</>
   }
 
   return (
     <>
-      <SidebarNavWithColor />
-      <div className="min-h-screen ml-[68px]">
+      <SidebarNav />
+      <div className="min-h-screen md:ml-[68px] relative" style={{ zIndex: 1 }}>
         <main>
           {children}
         </main>

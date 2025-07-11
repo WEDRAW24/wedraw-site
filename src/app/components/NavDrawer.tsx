@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface NavDrawerProps {
   isOpen: boolean;
@@ -11,38 +11,59 @@ interface NavDrawerProps {
 
 export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const variants = {
+    initial: {
+      x: isMobile ? 0 : "-100%",
+      y: isMobile ? "-100%" : 0,
+    },
+    animate: {
+      x: 0,
+      y: 0,
+    },
+    exit: {
+      x: isMobile ? 0 : "-100%",
+      y: isMobile ? "-100%" : 0,
+    }
+  };
 
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ x: "-100%" }}
-          animate={{ x: 0 }}
-          exit={{ x: "-100%" }}
+          variants={variants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
           transition={{
             type: "spring",
             stiffness: 150,
             damping: 20,
             mass: 1,
-            restDelta: 0.001,
-            exit: {
-              type: "spring",
-              stiffness: 150,
-              damping: 20,
-              mass: 1
-            }
+            restDelta: 0.001
           }}
-          className={`fixed top-0 right-0 bottom-0 left-[68px] -ml-6 z-10 overflow-hidden transition-colors duration-300 ${
-            hoveredSection === 'Work' ? 'bg-marker' : 
-            hoveredSection === 'Studio' ? 'bg-meadow' :
-            hoveredSection === 'Journal' ? 'bg-sunny' :
-            hoveredSection === 'Contact' ? 'bg-blueprint' :
-            'bg-white'
-          }`}
+          className={`fixed md:left-[68px] md:right-0 md:bottom-0 md:top-0 md:-ml-6
+                     left-0 right-0 bottom-0 top-[56px] md:mt-0 -mt-12
+                     z-10 overflow-hidden transition-colors duration-300 
+                     ${hoveredSection === 'Work' ? 'bg-marker' : 
+                       hoveredSection === 'Studio' ? 'bg-meadow' :
+                       hoveredSection === 'Journal' ? 'bg-sunny' :
+                       hoveredSection === 'Contact' ? 'bg-blueprint' :
+                       'bg-white'}`}
         >
-          <div className="pl-24 pr-[32rem] h-screen max-w-[1440px] relative flex flex-col">
-            <ul className="space-y-12 flex-1 pt-12">
-              {/* Section Block */}
+          <div className="pl-6 md:pl-24 pr-[32rem] h-screen max-w-[1440px] relative flex flex-col">
+            <ul className="space-y-4 md:space-y-12 flex-1 pt-12">
               {[
                 {
                   title: "Work",
@@ -87,7 +108,7 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
               ].map(({ title, href, color, links }) => (
                 <li
                   key={title}
-                  className={`border-b-2 border-${color} pb-12 group transition-all duration-300 ${
+                  className={`border-b-2 border-${color} pb-6 md:pb-12 group transition-all duration-300 ${
                     hoveredSection ? 
                       title === hoveredSection ? 'border-white' : 'border-white border-opacity-50'
                       : ''
@@ -108,7 +129,7 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
                       </Link>
                     </h2>
 
-                    <div className="text-right font-mono text-[16px] flex flex-col justify-end">
+                    <div className="text-right font-mono text-[16px] flex flex-col justify-end md:block hidden">
                       {links.map((link) => (
                         <Link
                           key={link.href}
