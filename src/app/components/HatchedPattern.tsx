@@ -53,7 +53,7 @@ export default function HatchedPattern({
           fill={`url(#${patternId})`}
           stroke={color}
           strokeWidth={borderWidth * 2}
-          strokeInset="inside"
+          style={{ paintOrder: 'stroke' }}
         />
       </svg>
     </div>
