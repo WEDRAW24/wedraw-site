@@ -124,7 +124,7 @@ const CTA: React.FC<CTAProps> = ({
   };
 
   return (
-    <div className={`relative w-full ${className}`} style={{ aspectRatio: '1440/800' }}>
+    <div className={`relative w-full max-w-[1440px] mx-auto ${className}`} style={{ aspectRatio: '1440/800' }}>
       {/* Background Magnet Component */}
       <div className="absolute inset-0" style={{ pointerEvents: magnetType === 'grid' ? 'auto' : 'none' }}>
         {renderMagnetComponent()}
@@ -132,7 +132,7 @@ const CTA: React.FC<CTAProps> = ({
 
       {/* Content */}
       <div className="absolute inset-0 flex items-center justify-center z-[5] pointer-events-none">
-        <div className="space-y-8 -mt-2">
+        <div className="space-y-8">
           <h2 className="text-[58px] font-bold leading-[1]">{title}</h2>
           <div className="text-center relative">
             <Button 

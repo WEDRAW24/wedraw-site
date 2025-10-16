@@ -1,6 +1,6 @@
 type ButtonProps = {
     children: React.ReactNode;
-    variant?: 'blueprint' | 'marker' | 'meadow' | 'sunny' | 'black';
+    variant?: 'blueprint' | 'marker' | 'meadow' | 'sunny' | 'black' | 'white-meadow';
     size?: 'sm' | 'md' | 'lg';
     type?: 'button' | 'submit' | 'reset';
     onClick?: () => void;
@@ -20,6 +20,7 @@ type ButtonProps = {
     meadow: 'border-meadow text-meadow hover:bg-meadow',
     sunny: 'border-sunny text-sunny hover:bg-sunny',
     black: 'border-black text-black hover:bg-black',
+    'white-meadow': 'border-white text-white hover:bg-white hover:text-meadow',
   };
   
   export default function Button({
@@ -38,7 +39,7 @@ type ButtonProps = {
         disabled={disabled}
         className={`
           font-mono font-mono-medium uppercase border-2 transition-colors duration-200
-          bg-white hover:text-white tracking-wider
+          ${variant.startsWith('white-') ? '' : 'bg-white'} hover:text-white tracking-wider
           ${variantClasses[variant]}
           ${sizeClasses[size]}
           ${disabled ? 'opacity-50 cursor-not-allowed' : ''}

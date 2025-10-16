@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 143.36 141.45">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Plus_Y_S3);
+        stroke: #f7bc00;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #f7bc00;
+      }
+    </style>
+    <pattern id="Plus_Y_S3" data-name="Plus Y S3" x="0" y="0" width="37.87" height="37.87" patternTransform="translate(3636.18 3167)" patternUnits="userSpaceOnUse" viewBox="0 0 37.87 37.87">
+      <g>
+        <rect class="cls-2" x="0" width="37.87" height="37.87"/>
+        <g>
+          <polygon class="cls-3" points="23.94 38.96 23.94 36.79 32.87 36.79 32.87 38.96 23.94 38.96"/>
+          <polygon class="cls-3" points="27.32 33.41 29.49 33.41 29.49 42.34 27.32 42.34 27.32 33.41"/>
+        </g>
+        <g>
+          <polygon class="cls-3" points="5 38.96 5 36.79 13.94 36.79 13.94 38.96 5 38.96"/>
+          <polygon class="cls-3" points="8.38 33.41 10.55 33.41 10.55 42.34 8.38 42.34 8.38 33.41"/>
+        </g>
+        <g>
+          <polygon class="cls-3" points="33.41 20.02 33.41 17.85 42.34 17.85 42.34 20.02 33.41 20.02"/>
+          <polygon class="cls-3" points="36.79 14.47 38.96 14.47 38.96 23.41 36.79 23.41 36.79 14.47"/>
+        </g>
+        <g>
+          <polygon class="cls-3" points="14.47 20.02 14.47 17.85 23.41 17.85 23.41 20.02 14.47 20.02"/>
+          <polygon class="cls-3" points="17.85 14.47 20.02 14.47 20.02 23.41 17.85 23.41 17.85 14.47"/>
+        </g>
+        <g>
+          <polygon class="cls-3" points="-4.47 20.02 -4.47 17.85 4.47 17.85 4.47 20.02 -4.47 20.02"/>
+          <polygon class="cls-3" points="-1.09 14.47 1.09 14.47 1.09 23.41 -1.09 23.41 -1.09 14.47"/>
+        </g>
+        <g>
+          <polygon class="cls-3" points="23.94 1.09 23.94 -1.09 32.87 -1.09 32.87 1.09 23.94 1.09"/>
+          <polygon class="cls-3" points="27.32 -4.47 29.49 -4.47 29.49 4.47 27.32 4.47 27.32 -4.47"/>
+        </g>
+        <g>
+          <polygon class="cls-3" points="5 1.09 5 -1.09 13.94 -1.09 13.94 1.09 5 1.09"/>
+          <polygon class="cls-3" points="8.38 -4.47 10.55 -4.47 10.55 4.47 8.38 4.47 8.38 -4.47"/>
+        </g>
+      </g>
+    </pattern>
+  </defs>
+  <polygon class="cls-1" points="61.68 36.11 21.72 36.11 1.73 70.73 21.72 105.34 61.68 105.34 81.67 70.73 61.68 36.11"/>
+  <polygon class="cls-1" points="121.65 1.5 81.68 1.5 61.69 36.11 81.68 70.73 121.65 70.73 141.63 36.11 121.65 1.5"/>
+  <polygon class="cls-1" points="121.65 70.73 81.68 70.73 61.69 105.34 81.68 139.95 121.65 139.95 141.63 105.34 121.65 70.73"/>
+</svg>

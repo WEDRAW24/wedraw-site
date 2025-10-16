@@ -20,21 +20,16 @@ export default function WorkPage() {
         </div>
       </div>
 
-      {/* CTA Section - 12 column grid container with full-width background */}
-      <section className="bg-white py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
-          <div className="grid grid-cols-12 gap-4">
-            <div className="col-span-12">
-              <CTA 
-                magnetType="lines"
-                magnetColor="var(--color-marker)"
-                title="Let's get Started"
-                buttonText="GET IN TOUCH"
-                buttonHref="/contact"
-              />
-            </div>
-          </div>
-        </div>
+      {/* CTA Section */}
+      <section className="bg-white">
+        <CTA 
+          magnetType="lines"
+          magnetColor="var(--color-marker)"
+          title="Let's get Started"
+          buttonText="GET IN TOUCH"
+          buttonHref="/contact"
+          className="py-20"
+        />
       </section>
     </div>
   )

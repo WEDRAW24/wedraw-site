@@ -9,10 +9,11 @@ import { usePathname } from "next/navigation";
 import WedrawLogoBlue from "../assets/logos/WEDRAW Logo Primary Blue.svg";
 import WedrawLogoSunny from "../assets/logos/WEDRAW Logo Primary Yellow.svg";
 import WedrawLogoMarker from "../assets/logos/WEDRAW Logo Primary Red.svg";
+import WedrawLogoMeadow from "../assets/logos/WEDRAW Logo Primary Green.svg";
 import NavDrawer from "./NavDrawer";
 
 interface SidebarNavProps {
-  color?: "blueprint" | "sunny" | "marker";
+  color?: "blueprint" | "sunny" | "marker" | "meadow";
 }
 
 export default function SidebarNav({ color: colorProp }: SidebarNavProps) {
@@ -24,16 +25,32 @@ export default function SidebarNav({ color: colorProp }: SidebarNavProps) {
   if (!color) {
     if (pathname.startsWith("/journal")) color = "sunny";
     else if (pathname.startsWith("/work")) color = "marker";
+    else if (pathname.startsWith("/studio")) color = "meadow";
     else color = "blueprint";
   }
 
   // Dynamic color classes
-  const borderColor = color === "sunny" ? "border-r-sunny" : color === "marker" ? "border-r-marker" : "border-r-blueprint";
-  const textColor = color === "sunny" ? "text-sunny" : color === "marker" ? "text-marker" : "text-blueprint";
-  const bgBarColor = color === "sunny" ? "bg-sunny" : color === "marker" ? "bg-marker" : "bg-blueprint";
+  const borderColor = color === "sunny" ? "border-r-sunny" : 
+                    color === "marker" ? "border-r-marker" : 
+                    color === "meadow" ? "border-r-meadow" : 
+                    "border-r-blueprint";
+  const textColor = color === "sunny" ? "text-sunny" : 
+                   color === "marker" ? "text-marker" : 
+                   color === "meadow" ? "text-meadow" : 
+                   "text-blueprint";
+  const bgBarColor = color === "sunny" ? "bg-sunny" : 
+                    color === "marker" ? "bg-marker" : 
+                    color === "meadow" ? "bg-meadow" : 
+                    "bg-blueprint";
   // Swap logo based on color
-  const logo = color === "sunny" ? WedrawLogoSunny : color === "marker" ? WedrawLogoMarker : WedrawLogoBlue;
-  const iconColorClass = color === "sunny" ? "text-sunny" : color === "marker" ? "text-marker" : "text-blueprint";
+  const logo = color === "sunny" ? WedrawLogoSunny : 
+             color === "marker" ? WedrawLogoMarker : 
+             color === "meadow" ? WedrawLogoMeadow : 
+             WedrawLogoBlue;
+  const iconColorClass = color === "sunny" ? "text-sunny" : 
+                        color === "marker" ? "text-marker" : 
+                        color === "meadow" ? "text-meadow" : 
+                        "text-blueprint";
 
   return (
     <>

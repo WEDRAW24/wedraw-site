@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 153.71 135.13">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: url(#Dots_G_S3);
+      }
+
+      .cls-3 {
+        fill: #33af7b;
+      }
+    </style>
+    <pattern id="Dots_G_S3" data-name="Dots G S3" x="0" y="0" width="13" height="13" patternTransform="translate(4281.98 3202.53)" patternUnits="userSpaceOnUse" viewBox="0 0 13 13">
+      <g>
+        <rect class="cls-1" width="13" height="13"/>
+        <circle class="cls-3" cx="6.5" cy="6.5" r="2.37"/>
+      </g>
+    </pattern>
+  </defs>
+  <g>
+    <polygon class="cls-2" points="34.89 27.32 101.37 2.34 88.28 72.14 34.89 27.32"/>
+    <path class="cls-3" d="M99.4,4.68l-12.13,64.66L37.82,27.83,99.4,4.68M103.33,0L31.96,26.82l57.32,48.12L103.33,0h0Z"/>
+  </g>
+  <g>
+    <polygon class="cls-2" points="1.89 111.1 18.6 58.92 70.78 75.64 54.06 127.81 1.89 111.1"/>
+    <path class="cls-3" d="M19.57,60.81l49.32,15.8-15.8,49.32L3.77,110.13l15.8-49.32M17.63,57.04L0,112.07l55.03,17.63,17.63-55.03-55.03-17.63h0Z"/>
+  </g>
+  <g>
+    <path class="cls-2" d="M121.66,133.63c-16.84,0-30.55-13.7-30.55-30.55s13.7-30.55,30.55-30.55,30.55,13.7,30.55,30.55-13.7,30.55-30.55,30.55Z"/>
+    <path class="cls-3" d="M121.66,74.04c16.02,0,29.05,13.03,29.05,29.05s-13.03,29.05-29.05,29.05-29.05-13.03-29.05-29.05,13.03-29.05,29.05-29.05M121.66,71.04c-17.7,0-32.05,14.35-32.05,32.05s14.35,32.05,32.05,32.05,32.05-14.35,32.05-32.05-14.35-32.05-32.05-32.05h0Z"/>
+  </g>
+</svg>

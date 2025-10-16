@@ -66,15 +66,17 @@ export default function JournalContent({ initialPosts }: JournalContentProps) {
         ))}
       </div>
 
-      <div className="mt-32">
+      {/* CTA Section */}
+      <section className="bg-white mt-32">
         <CTA
           magnetType="grid"
           magnetColor="var(--color-sunny)"
           title="Let's get started"
           buttonText="GET IN TOUCH"
           buttonHref="/contact"
+          className="py-20"
         />
-      </div>
+      </section>
     </main>
   );
 } 
