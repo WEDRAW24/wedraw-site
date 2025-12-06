@@ -1,5 +1,5 @@
 type CategoryLabelProps = {
-  category?: 'news' | 'media' | 'explorations';
+  category?: 'news' | 'media' | 'explorations' | 'festivals' | 'exhibitions' | 'sports' | 'cultural';
   className?: string;
   variant?: 'default' | 'white' | 'marker';
   location?: string;
@@ -11,18 +11,29 @@ const variantClasses = {
   default: {
     news: 'border-sunny text-sunny bg-white',
     media: 'border-sunny text-sunny bg-white',
-    explorations: 'border-sunny text-sunny bg-white'
+    explorations: 'border-sunny text-sunny bg-white',
+    festivals: 'border-marker text-marker bg-white',
+    exhibitions: 'border-marker text-marker bg-white',
+    sports: 'border-marker text-marker bg-white',
+    cultural: 'border-marker text-marker bg-white'
   },
   white: {
     news: 'border-white text-white bg-transparent',
     media: 'border-white text-white bg-transparent',
-    explorations: 'border-white text-white bg-transparent'
+    explorations: 'border-white text-white bg-transparent',
+    festivals: 'border-white text-white bg-transparent',
+    exhibitions: 'border-white text-white bg-transparent',
+    sports: 'border-white text-white bg-transparent',
+    cultural: 'border-white text-white bg-transparent'
   },
   marker: {
     news: 'border-marker text-marker bg-transparent',
     media: 'border-marker text-marker bg-transparent',
     explorations: 'border-marker text-marker bg-transparent',
-    project: 'border-marker text-marker bg-transparent'
+    festivals: 'border-marker text-marker bg-transparent',
+    exhibitions: 'border-marker text-marker bg-transparent',
+    sports: 'border-marker text-marker bg-transparent',
+    cultural: 'border-marker text-marker bg-transparent'
   }
 };
 
@@ -36,15 +47,18 @@ export default function CategoryLabel({
 }: CategoryLabelProps) {
   if (location && date) {
     return (
-      <div className={`
-        inline-block
-        font-area-normal uppercase border
-        text-[14px] px-4 py-8
-        tracking-[0.2em]
-        ${variant === 'marker' ? 'border-marker text-marker' : variantClasses[variant].news}
-        ${orientation === 'vertical' ? 'writing-vertical' : ''}
-        ${className}
-      `}>
+      <div 
+        className={`
+          inline-block
+          font-area-normal uppercase border
+          px-4 py-8
+          tracking-[0.2em]
+          ${variant === 'marker' ? 'border-marker text-marker' : variantClasses[variant].news}
+          ${orientation === 'vertical' ? 'writing-vertical' : ''}
+          ${className}
+        `}
+        style={{ fontSize: 'clamp(11px, 1.8vw, 14px)' }}
+      >
         <div className="flex flex-col items-center gap-4">
           <span className={orientation === 'vertical' ? 'writing-mode-vertical' : ''}>{location}</span>
           <span>|</span>
@@ -59,13 +73,19 @@ export default function CategoryLabel({
   return (
     <span
       className={`
-        inline-block
-        font-mono font-mono-medium uppercase border-2 
-        text-[16px] px-4 py-1 min-w-[90px] text-center
+        block
+        font-mono font-mono-light uppercase border 
+        text-center
         tracking-wider
         ${variantClasses[variant][normalizedCategory]}
         ${className}
       `}
+      style={{ 
+        fontSize: 'clamp(11px, 1.8vw, 14px)',
+        lineHeight: '1',
+        padding: 'clamp(4px, 0.5vw, 4px) clamp(12px, 2vw, 16px)',
+        minWidth: 'clamp(65px, 12vw, 90px)'
+      }}
     >
       {normalizedCategory.toUpperCase()}
     </span>

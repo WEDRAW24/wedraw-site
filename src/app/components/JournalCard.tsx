@@ -2,88 +2,62 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { urlFor } from '@/sanity/lib/image'
 import CategoryLabel from './CategoryLabel'
-import UnderlineLink from './UnderlineLink'
-
-type JournalPost = {
-  _id: string
-  title: string
-  slug: {
-    current: string
-  }
-  date: string
-  category: string
-  blurb: string | null
-  mainImage: {
-    _type: 'image'
-    asset: {
-      _ref: string
-      _type: 'reference'
-    }
-    alt: string
-  }
-}
+import { ArticleMetadata } from '@/app/journal/articles/types'
 
 type JournalCardProps = {
-  post: JournalPost;
+  article: ArticleMetadata;
   showReadMoreLink?: boolean;
 }
 
-export default function JournalCard({ post, showReadMoreLink = false }: JournalCardProps) {
+export default function JournalCard({ article, showReadMoreLink = false }: JournalCardProps) {
   return (
     <Link 
-      href={`/journal/${post.slug.current}`}
+      href={`/journal/articles/${article.slug}`}
       className="block group cursor-pointer"
     >
       <article className="relative">
         {/* Category Label */}
-        <div className="absolute top-4 left-4 z-10">
+        <div className="absolute z-10" style={{ top: 'clamp(12px, 2vw, 16px)', left: 'clamp(12px, 2vw, 16px)' }}>
           <CategoryLabel 
-            category={post.category.toLowerCase() as 'news' | 'media' | 'explorations'} 
+            category={article.category as 'news' | 'media' | 'explorations'} 
             variant="white"
           />
         </div>
 
         {/* Main Image */}
         <div className="aspect-[4/3] relative overflow-hidden">
-          {post.mainImage && (
-            <Image
-              src={urlFor(post.mainImage).width(800).height(600).url()}
-              alt={post.mainImage.alt || post.title}
-              fill
-              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-            />
-          )}
+          <Image
+            src={article.coverImage}
+            alt={article.title}
+            fill
+            className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+          />
         </div>
 
         {/* Content Section */}
-        <div className="mt-6 space-y-4">
+        <div className="mt-fluid-sm space-y-4">
           {/* Date */}
-          <p className="font-mono text-sunny text-[16px] font-semibold leading-[100%] tracking-[0%] uppercase">
-            {new Date(post.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}
+          <p className="font-mono text-sunny font-semibold leading-[100%] tracking-[0%] uppercase" style={{ fontSize: 'clamp(12px, 1.8vw, 16px)' }}>
+            {article.date}
           </p>
 
           {/* Title */}
-          <h3 className="text-[30px] font-extrabold leading-[130%] tracking-[0%]">
-            {post.title}
+          <h3 className="heading-3 font-extrabold leading-[130%] tracking-[0%]">
+            {article.title}
           </h3>
 
           {/* Blurb */}
-          {post.blurb && (
-            <p className="text-[18px] text-gray-600 line-clamp-3">{post.blurb}</p>
+          {article.blurb && (
+            <p className="body-md text-gray-600 line-clamp-3">{article.blurb}</p>
           )}
 
-          {/* Read More Link - Only shown if showReadMoreLink is true */}
+          {/* Read More Text - Only shown if showReadMoreLink is true */}
           {showReadMoreLink && (
             <div className="pt-2">
-              <UnderlineLink href={`/journal/${post.slug.current}`} variant="default" className="text-sunny hover:text-sunny">
+              <span className="text-sunny font-mono font-medium tracking-wider uppercase underline underline-offset-4 decoration-2" style={{ fontSize: 'clamp(11px, 1.5vw, 14px)' }}>
                 READ MORE
-              </UnderlineLink>
+              </span>
             </div>
           )}
         </div>

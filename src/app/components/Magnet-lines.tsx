@@ -35,6 +35,8 @@ function MagnetLines({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isVisible = useRef<boolean>(false);
   const previousAngles = useRef<Map<HTMLSpanElement, number>>(new Map());
+  const rafId = useRef<number>();
+  const pendingUpdate = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -52,6 +54,13 @@ function MagnetLines({
 
     const items = container.querySelectorAll<HTMLSpanElement>("span");
 
+    // CRITICAL: Initialize ALL elements with baseAngle immediately
+    items.forEach((item) => {
+      item.style.setProperty('--rotate', `${baseAngle}deg`);
+      item.style.transform = `rotate(${baseAngle}deg)`;
+      previousAngles.current.set(item, baseAngle);
+    });
+
     const normalizeAngle = (angle: number): number => {
       angle = angle % 360;
       if (angle > 180) angle -= 360;
@@ -64,8 +73,15 @@ function MagnetLines({
       return currentAngle + diff;
     };
 
-    const onPointerMove = (pointer: { x: number; y: number }) => {
-      if (isAnimating || !isVisible.current) return; // Don't respond if animating or not visible
+    // Use requestAnimationFrame for smooth, performant updates
+    const updateRotations = () => {
+      if (!pendingUpdate.current || isAnimating) {
+        rafId.current = undefined;
+        return;
+      }
+
+      const pointer = pendingUpdate.current;
+      pendingUpdate.current = null;
 
       items.forEach((item) => {
         const rect = item.getBoundingClientRect();
@@ -77,31 +93,63 @@ function MagnetLines({
         const c = Math.sqrt(a * a + b * b) || 1;
         const angle = ((Math.acos(b / c) * 180) / Math.PI) * (pointer.y > centerY ? 1 : -1);
         
-        const prevAngle = previousAngles.current.get(item) ?? angle;
+        const prevAngle = previousAngles.current.get(item) ?? baseAngle;
         const newAngle = calculateShortestRotation(prevAngle, angle);
         
         previousAngles.current.set(item, newAngle);
-        item.style.setProperty("--rotate", `${newAngle}deg`);
+        // Set BOTH: CSS variable (for animation) AND direct transform (for performance)
+        item.style.setProperty('--rotate', `${newAngle}deg`);
+        item.style.transform = `rotate(${newAngle}deg)`;
       });
+
+      rafId.current = undefined;
     };
 
-    window.addEventListener("pointermove", (e: PointerEvent) => {
-      onPointerMove({ x: e.clientX, y: e.clientY });
-    });
+    const onPointerMove = (pointer: { x: number; y: number }) => {
+      if (isAnimating) return;
 
-    // Initial position
-    if (items.length && isVisible.current) {
-      const middleIndex = Math.floor(items.length / 2);
-      const rect = items[middleIndex].getBoundingClientRect();
-      onPointerMove({ x: rect.x, y: rect.y });
-    }
+      // Store the latest position
+      pendingUpdate.current = pointer;
+
+      // Schedule update if not already scheduled
+      if (!rafId.current) {
+        rafId.current = requestAnimationFrame(updateRotations);
+      }
+    };
+
+    // Create handler functions with proper signatures for cleanup
+    const handlePointerMove = (e: PointerEvent) => {
+      onPointerMove({ x: e.clientX, y: e.clientY });
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      onPointerMove({ x: e.clientX, y: e.clientY });
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        onPointerMove({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+      }
+    };
+
+    // Add ALL event listeners (pointer, mouse, AND touch for maximum compatibility)
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
 
     return () => {
-      window.removeEventListener("pointermove", onPointerMove);
+      // Cancel any pending animation frame
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
       previousAngles.current.clear();
+      pendingUpdate.current = null;
       observer.disconnect();
     };
-  }, [isAnimating]);
+  }, [isAnimating, baseAngle, rows, columns]); // CRITICAL: Reinitialize when grid dimensions change
 
   const shouldRenderLine = (row: number, col: number) => {
     if (!centerGap) return true;
@@ -126,14 +174,16 @@ function MagnetLines({
     return (
       <span
         key={i}
-        className={`block origin-center transition-transform ${isAnimating ? 'animate-spin-twice' : ''}`}
+        className={`block origin-center ${isAnimating ? 'animate-spin-twice transition-transform' : ''}`}
         style={{
           backgroundColor: lineColor,
           width: lineWidth,
           height: lineHeight,
-          transform: "rotate(var(--rotate))",
+          // Transform will be set directly via JavaScript for better mobile performance
           willChange: "transform",
           gridArea: `${row + 1} / ${col + 1}`,
+          // No transition during interaction for instant response
+          transition: isAnimating ? undefined : 'none',
         }}
       />
     );

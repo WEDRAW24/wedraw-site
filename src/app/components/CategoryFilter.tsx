@@ -56,23 +56,25 @@ export default function CategoryFilter({
   };
 
   return (
-    <div className={`flex ${className}`}>
+    <div className={`flex w-full min-[431px]:w-auto ${className}`}>
       {categories.map((category, index) => (
         <button
           key={category}
           onClick={() => handleCategoryClick(category)}
           className={`
-            inline-block
-            font-mono uppercase border-2 border-sunny
-            text-[16px] px-4 py-1 min-w-[90px] text-center
+            inline-block flex-1 min-[431px]:flex-none
+            font-mono font-mono-light uppercase border border-sunny
+            px-2 min-[431px]:px-4 py-1 min-[431px]:min-w-[90px] text-center
             tracking-wider
             transition-colors duration-200
-            ${index > 0 ? '-ml-[2px]' : ''}
+            whitespace-nowrap
+            ${index > 0 ? '-ml-[1px]' : ''}
             ${isSelected(category)
               ? 'bg-sunny text-white relative z-10' 
               : 'bg-white text-sunny hover:bg-sunny/10'
             }
           `}
+          style={{ fontSize: 'clamp(11px, 2vw, 16px)' }}
         >
           {category.toUpperCase()}
         </button>

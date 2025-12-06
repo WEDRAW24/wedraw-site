@@ -6,5 +6,10 @@ export const metadata: ProjectMetadata = {
   title: 'The Scottish Game Fair',
   year: 2024,
   location: 'Scone Palace',
-  coverImage: images.hero
+  category: 'exhibitions',
+  coverImage: images.hero,
+  gridColumn: 8,
+  gridRow: 20,
+  gridWidth: 5,
+  gridHeight: 7
 } 

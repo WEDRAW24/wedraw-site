@@ -19,10 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/sanity/*": ["./sanity/*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "sanity/**/*.ts", "sanity/**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

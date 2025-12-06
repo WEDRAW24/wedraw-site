@@ -1,38 +1,78 @@
 'use client'
 
-export default function BackgroundGrid() {
-  return (
-    <div className="fixed inset-0 pointer-events-none" style={{ zIndex: -1 }}>
-      <div className="container mx-auto px-6 md:ml-[68px] relative w-full max-w-[1440px] left-1/2 -translate-x-1/2">
-        <div className="relative">
-          {/* Grid container */}
-          <div className="absolute" style={{ top: '30px' }}>
-            {/* Vertical lines - 13 lines to create 12 columns */}
-            {Array.from({ length: 13 }).map((_, i) => (
-              <div
-                key={`v-${i}`}
-                className="absolute border-l border-marker/30"
-                style={{
-                  left: `${i * 118}px`,
-                  height: '1180px'
-                }}
-              />
-            ))}
+import { useEffect, useState } from 'react'
 
-            {/* Horizontal lines - 11 lines to create 10 rows */}
-            {Array.from({ length: 11 }).map((_, i) => (
-              <div
-                key={`h-${i}`}
-                className="absolute border-t border-marker/30"
-                style={{
-                  top: `${i * 118}px`,
-                  width: '1416px'
-                }}
-              />
-            ))}
-          </div>
+interface BackgroundGridProps {
+  maxRows?: number // Optional prop to set dynamic row count
+  offsetRows?: number // Optional prop to offset grid start position
+}
+
+export default function BackgroundGrid({ maxRows = 37, offsetRows = 0 }: BackgroundGridProps) {
+  const [cellSize, setCellSize] = useState(0)
+  const COLUMNS = 12
+  const ROWS = maxRows
+
+  useEffect(() => {
+    const updateGrid = () => {
+      const container = document.querySelector('.work-grid-container')
+      if (!container) return
+      
+      // Get actual container width (accounting for padding)
+      const containerWidth = container.clientWidth
+      
+      // Calculate cell size based on 12 columns to create squares
+      const calculatedCellSize = containerWidth / COLUMNS
+      
+      setCellSize(calculatedCellSize)
+    }
+
+    updateGrid()
+    window.addEventListener('resize', updateGrid)
+    return () => window.removeEventListener('resize', updateGrid)
+  }, [])
+
+  // Calculate container height based on cell size to maintain perfect squares
+  const containerHeight = cellSize * ROWS
+
+  return (
+    <>
+      {cellSize > 0 && (
+        <div 
+          className="absolute left-0 pointer-events-none"
+          style={{ 
+            top: `${offsetRows * cellSize}px`,
+            width: '100%', 
+            height: `${containerHeight}px`, 
+            zIndex: 0 
+          }}
+        >
+          {/* Vertical lines - 13 lines to create 12 columns */}
+          {Array.from({ length: COLUMNS + 1 }, (_, i) => (
+            <div
+              key={`v-${i}`}
+              className="absolute top-0 bg-marker/30"
+              style={{
+                width: '0.5px',
+                height: `${containerHeight}px`,
+                left: `${i * cellSize}px`
+              }}
+            />
+          ))}
+
+          {/* Horizontal lines - 8 lines to create 7 rows */}
+          {Array.from({ length: ROWS + 1 }, (_, i) => (
+            <div
+              key={`h-${i}`}
+              className="absolute left-0 bg-marker/30"
+              style={{
+                height: '0.5px',
+                width: '100%',
+                top: `${i * cellSize}px`
+              }}
+            />
+          ))}
         </div>
-      </div>
-    </div>
+      )}
+    </>
   )
 } 

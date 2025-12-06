@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Button from './Button'
-import WorkProjectCard from './WorkProjectCard'
+import SimpleProjectCard from './SimpleProjectCard'
 import { ProjectMetadata } from '@/app/work/projects/types'
 
 type MoreProjectsProps = {
@@ -32,7 +32,7 @@ export default function MoreProjects({ currentProjectSlug, projects }: MoreProje
         <div className="grid grid-cols-3 gap-8">
           {otherProjects.map((project) => (
             <div key={project.slug} className="w-full">
-              <WorkProjectCard 
+              <SimpleProjectCard 
                 project={project}
                 size="small"
               />

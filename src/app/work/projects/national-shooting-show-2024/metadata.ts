@@ -6,5 +6,10 @@ export const metadata: ProjectMetadata = {
   title: 'National Shooting Show',
   year: 2024,
   location: 'Yorkshire Event Centre',
-  coverImage: images.hero
+  category: 'exhibitions',
+  coverImage: images.hero,
+  gridColumn: 1,
+  gridRow: 22,
+  gridWidth: 5,
+  gridHeight: 3
 } 

@@ -6,5 +6,10 @@ export const metadata: ProjectMetadata = {
   title: 'The Game Fair',
   year: 2024,
   location: 'Blenheim Palace',
-  coverImage: images.hero
+  category: 'exhibitions',
+  coverImage: images.hero,
+  gridColumn: 1,
+  gridRow: 7,
+  gridWidth: 5,
+  gridHeight: 5
 } 

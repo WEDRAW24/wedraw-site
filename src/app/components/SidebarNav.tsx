@@ -54,11 +54,10 @@ export default function SidebarNav({ color: colorProp }: SidebarNavProps) {
 
   return (
     <>
-      <aside className={`fixed bg-white z-50 
-        md:w-[68px] md:h-screen md:left-0 md:top-0 md:border-r-2 ${borderColor}
-        w-full h-[56px] top-0 left-0 border-b-2 ${borderColor}`}>
+      {/* ==================== DESKTOP NAV BAR ==================== */}
+      <aside className={`hidden md:block fixed bg-white z-50 w-[68px] h-screen left-0 top-0 border-r-2 ${borderColor}`}>
         {/* Menu Button */}
-        <div className={`p-4 flex md:justify-center justify-end ${textColor}`}>
+        <div className={`p-4 flex justify-center ${textColor}`}>
           <button 
             onClick={() => setMenuOpen(!menuOpen)} 
             className={`${textColor} w-[26px] h-[26px] relative`}
@@ -96,9 +95,7 @@ export default function SidebarNav({ color: colorProp }: SidebarNavProps) {
         </div>
 
         {/* WEDRAW Logo */}
-        <div className="absolute 
-          md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:rotate-[-90deg] md:w-[181px]
-          top-[55%] left-4 -translate-y-1/2 w-[160px]">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-90deg] w-[181px]">
           <Link 
             href="/"
             onClick={() => setMenuOpen(false)}
@@ -114,11 +111,8 @@ export default function SidebarNav({ color: colorProp }: SidebarNavProps) {
           </Link>
         </div>
 
-        {/* Social Icons - Hidden on mobile */}
-        <div className="absolute 
-          md:bottom-4 md:left-1/2 md:-translate-x-1/2 md:flex-col md:flex
-          hidden
-          gap-2">
+        {/* Social Icons */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex-col flex gap-2">
           <Link 
             href="https://instagram.com" 
             target="_blank" 
@@ -146,6 +140,62 @@ export default function SidebarNav({ color: colorProp }: SidebarNavProps) {
             </span>
           </Link>
         </div>
+      </aside>
+
+      {/* ==================== MOBILE NAV BAR ==================== */}
+      <aside className={`md:hidden fixed bg-white z-50 w-screen h-[56px] top-0 left-0 right-0 border-b-2 ${borderColor} flex items-center justify-between px-4`}>
+        {/* WEDRAW Logo */}
+        <div className="w-[160px] flex-shrink-0">
+          <Link 
+            href="/"
+            onClick={() => setMenuOpen(false)}
+          >
+            <Image
+              src={logo}
+              alt="WEDRAW"
+              width={181}
+              height={26}
+              className="w-full h-auto"
+              priority
+            />
+          </Link>
+        </div>
+
+        {/* Menu Button */}
+        <button 
+          onClick={() => setMenuOpen(!menuOpen)} 
+          className={`w-[26px] h-[26px] relative flex-shrink-0 ${textColor}`}
+        >
+          <motion.div 
+            className="flex flex-col justify-center h-full"
+            animate={menuOpen ? "open" : "closed"}
+          >
+            <motion.div 
+              className={`w-[26px] h-[3px] ${bgBarColor} absolute`}
+              variants={{
+                closed: { rotate: 0, y: -8 },
+                open: { rotate: 45, y: 0 }
+              }}
+              transition={{ duration: 0.4 }}
+            />
+            <motion.div 
+              className={`w-[26px] h-[3px] ${bgBarColor} absolute`}
+              variants={{
+                closed: { opacity: 1 },
+                open: { opacity: 0 }
+              }}
+              transition={{ duration: 0.1 }}
+            />
+            <motion.div 
+              className={`w-[26px] h-[3px] ${bgBarColor} absolute`}
+              variants={{
+                closed: { rotate: 0, y: 8 },
+                open: { rotate: -45, y: 0 }
+              }}
+              transition={{ duration: 0.4 }}
+            />
+          </motion.div>
+        </button>
       </aside>
 
       <NavDrawer isOpen={menuOpen} onClose={() => setMenuOpen(false)} />

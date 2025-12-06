@@ -36,6 +36,7 @@ function MagnetDots({
   const rafRef = useRef<number>();
   const lastUpdateTime = useRef<number>(0);
   const isVisible = useRef<boolean>(false);
+  const pendingUpdate = useRef<{ x: number; y: number } | null>(null);
 
   const calculateDistanceFromCenter = (row: number, col: number): number => {
     const centerRow = Math.floor(rows / 2);
@@ -59,8 +60,21 @@ function MagnetDots({
 
     const items = container.querySelectorAll<HTMLSpanElement>("span");
 
-    const onPointerMove = (pointer: { x: number; y: number }) => {
-      if (isAnimating || !isVisible.current) return; // Don't respond if animating or not visible
+    // CRITICAL: Initialize ALL elements with base scale immediately
+    items.forEach((item) => {
+      item.style.setProperty('--scale', '0.1');
+      item.style.transform = "scale(0.1)";
+    });
+
+    // Use requestAnimationFrame for smooth, performant updates
+    const updateScales = () => {
+      if (!pendingUpdate.current || isAnimating) {
+        rafRef.current = undefined;
+        return;
+      }
+
+      const pointer = pendingUpdate.current;
+      pendingUpdate.current = null;
 
       items.forEach((item) => {
         const rect = item.getBoundingClientRect();
@@ -76,25 +90,58 @@ function MagnetDots({
           1 - Math.min(distance, maxDistance) / maxDistance
         );
 
-        item.style.setProperty("--scale", scale.toString());
+        // Set BOTH: CSS variable (for animation) AND direct transform (for performance)
+        item.style.setProperty('--scale', `${scale}`);
+        item.style.transform = `scale(${scale})`;
       });
+
+      rafRef.current = undefined;
     };
 
-    window.addEventListener("pointermove", (e: PointerEvent) => {
-      onPointerMove({ x: e.clientX, y: e.clientY });
-    });
+    const onPointerMove = (pointer: { x: number; y: number }) => {
+      if (isAnimating) return;
 
-    if (items.length && isVisible.current) {
-      const middleIndex = Math.floor(items.length / 2);
-      const rect = items[middleIndex].getBoundingClientRect();
-      onPointerMove({ x: rect.x, y: rect.y });
-    }
+      // Store the latest position
+      pendingUpdate.current = pointer;
+
+      // Schedule update if not already scheduled
+      if (!rafRef.current) {
+        rafRef.current = requestAnimationFrame(updateScales);
+      }
+    };
+
+    // Create handler functions with proper signatures for cleanup
+    const handlePointerMove = (e: PointerEvent) => {
+      onPointerMove({ x: e.clientX, y: e.clientY });
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      onPointerMove({ x: e.clientX, y: e.clientY });
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        onPointerMove({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+      }
+    };
+
+    // Add ALL event listeners (pointer, mouse, AND touch for maximum compatibility)
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
 
     return () => {
-      window.removeEventListener("pointermove", onPointerMove);
+      // Cancel any pending animation frame
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      pendingUpdate.current = null;
       observer.disconnect();
     };
-  }, [maxDistance, isAnimating]);
+  }, [maxDistance, isAnimating, rows, columns]); // CRITICAL: Reinitialize when grid dimensions change
 
   const shouldRenderDot = (row: number, col: number) => {
     if (!centerGap) return true;

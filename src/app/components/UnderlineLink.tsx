@@ -25,14 +25,13 @@ export default function UnderlineLink({
     <Link
       href={href}
       className={`
-        font-mono text-sm uppercase 
-        border-b-2
-        hover:font-semibold 
+        font-mono font-mono-normal tracking-wider
+        hover:font-semibold active:font-semibold
         transition-all duration-200 
-        inline-block w-fit px-[2px]
-        ${variantClasses[variant]}
+        inline-block w-fit
         ${className}
       `}
+      style={{ fontSize: 'clamp(13px, 1.5vw, 14px)' }}
     >
       {children}
     </Link>

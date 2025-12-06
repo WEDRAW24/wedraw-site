@@ -144,3 +144,87 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* ============================================
+   WEDRAW TYPOGRAPHY SYSTEM
+   Semantic classes for consistent text styling
+   ============================================ */
+
+@layer components {
+  /* DISPLAY HEADINGS - For hero sections and major page titles */
+  .display-xl {
+    @apply font-sans font-area-extrabold text-display-xl;
+  }
+  
+  .display-lg {
+    @apply font-sans font-area-extrabold text-display-lg;
+  }
+  
+  .display-md {
+    @apply font-sans font-area-extrabold text-display-md;
+  }
+  
+  .display-sm {
+    @apply font-sans font-area-extrabold text-display-sm;
+  }
+
+  /* HEADINGS - For section titles and content hierarchy */
+  .heading-1 {
+    @apply font-sans font-area-extrabold text-heading-1;
+  }
+  
+  .heading-2 {
+    @apply font-sans font-area-bold text-heading-2;
+  }
+  
+  .heading-3 {
+    @apply font-sans font-area-bold text-heading-3;
+  }
+  
+  .heading-4 {
+    @apply font-sans font-area-semibold text-heading-4;
+  }
+
+  /* BODY TEXT - For paragraphs and main content */
+  .body-xl {
+    @apply font-sans font-area-bold text-body-xl text-dark-grey;
+  }
+  
+  .body-lg {
+    @apply font-sans font-area-normal text-body-lg text-dark-grey;
+  }
+  
+  .body-md {
+    @apply font-sans font-area-normal text-body-md text-dark-grey;
+  }
+  
+  .body-sm {
+    @apply font-sans font-area-normal text-body-sm text-dark-grey;
+  }
+  
+  .body-xs {
+    @apply font-sans font-area-normal text-body-xs text-dark-grey;
+  }
+
+  /* LABELS - For buttons, tags, metadata (monospace, uppercase) */
+  .label-lg {
+    @apply font-mono font-mono-medium text-label-lg uppercase tracking-wider;
+  }
+  
+  .label-md {
+    @apply font-mono font-mono-medium text-label-md uppercase tracking-wider;
+  }
+  
+  .label-sm {
+    @apply font-mono font-mono-normal text-label-sm uppercase tracking-wider;
+  }
+
+  /* UTILITY VARIANTS - Modify existing classes */
+  .body-xl-light,
+  .body-lg-light,
+  .body-md-light,
+  .body-sm-light,
+  .body-xs-light {
+    @apply font-area-normal;
+  }
+}
