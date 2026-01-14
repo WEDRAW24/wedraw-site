@@ -108,22 +108,23 @@ export default function WorkPage() {
   return (
     <div className={`min-h-screen ${DEBUG ? 'border-8 border-purple-500' : ''}`}>
       <div className={`container mx-auto px-fluid-md max-w-[1440px] ${DEBUG ? 'border-8 border-blue-500' : ''}`}>
-        <div className={`pt-fluid-xl mb-fluid-lg md:mb-fluid-2xl lg:mb-fluid-xl lg:pt-[60px] lg:pl-5 ${DEBUG ? 'border-4 border-cyan-500' : ''}`}>
-          <h1 className="display-xl font-area-extrabold text-marker">
-            What we've<br />
-            been up to...
-          </h1>
+        {/* Hero Section */}
+        <div className="pt-fluid-xl mb-fluid-xl">
+          <h1 className="display-xxl text-marker mb-fluid-sm">Work</h1>
+          <p className="heading-3 text-marker">// projects, case studies, and client collaborations</p>
+        </div>
+
+        {/* Category Filter - Mobile & Tablet */}
+        <div className="mb-fluid-xl lg:hidden">
+          <WorkCategoryFilter
+            selectedCategories={selectedCategories}
+            onCategoryChange={setSelectedCategories}
+            isTablet={isTablet}
+          />
         </div>
         
         {/* Mobile Layout - Simple Stack (< 768px) */}
         <div className={`md:hidden flex flex-col gap-fluid-2xl mb-fluid-2xl ${DEBUG ? 'border-4 border-green-500' : ''}`}>
-          {/* Category Filter - Mobile */}
-          <div className="mb-fluid-xl">
-            <WorkCategoryFilter
-              selectedCategories={selectedCategories}
-              onCategoryChange={setSelectedCategories}
-            />
-          </div>
           
           {filteredProjects.map((project) => (
             <WorkProjectCard 
@@ -138,15 +139,6 @@ export default function WorkPage() {
         
         {/* Tablet Layout - Single Column (768px - 1024px) */}
         <div className={`hidden md:block lg:hidden mb-fluid-2xl ${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
-          {/* Category Filter - Tablet */}
-          <div className="mb-fluid-2xl">
-            <WorkCategoryFilter
-              selectedCategories={selectedCategories}
-              onCategoryChange={setSelectedCategories}
-              isTablet={true}
-            />
-          </div>
-          
           <div className="flex flex-col gap-fluid-2xl">
             {filteredProjects.map((project) => (
               <WorkProjectCard 

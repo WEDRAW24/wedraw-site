@@ -38,6 +38,7 @@ const config: Config = {
   		},
   		fontSize: {
   			// Display sizes (for hero headings)
+  			'display-xxl': ['clamp(72px, 12vw, 128px)', { lineHeight: '120%', letterSpacing: '0%' }],
   			'display-xl': ['clamp(48px, 8vw, 85px)', { lineHeight: '120%', letterSpacing: '0%' }],
   			'display-lg': ['clamp(40px, 7vw, 72px)', { lineHeight: '120%', letterSpacing: '0%' }],
   			'display-md': ['clamp(36px, 6vw, 58px)', { lineHeight: '120%', letterSpacing: '0%' }],
@@ -48,6 +49,11 @@ const config: Config = {
   			'heading-2': ['clamp(24px, 4vw, 32px)', { lineHeight: '130%', letterSpacing: '0%' }],
   			'heading-3': ['clamp(20px, 3.5vw, 30px)', { lineHeight: '130%', letterSpacing: '0%' }],
   			'heading-4': ['clamp(18px, 3vw, 24px)', { lineHeight: '140%', letterSpacing: '0%' }],
+  			
+  			// Mono Heading sizes (for big bold mono text, NOT uppercase)
+  			'mono-heading-lg': ['clamp(24px, 4vw, 32px)', { lineHeight: '130%', letterSpacing: '0%' }],
+  			'mono-heading-md': ['clamp(20px, 3.5vw, 30px)', { lineHeight: '130%', letterSpacing: '0%' }],
+  			'mono-heading-sm': ['clamp(18px, 3vw, 24px)', { lineHeight: '140%', letterSpacing: '0%' }],
   			
   			// Body text sizes
   			'body-xl': ['clamp(18px, 2.2vw, 24px)', { lineHeight: '160%', letterSpacing: '0%' }],

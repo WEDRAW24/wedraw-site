@@ -17,10 +17,8 @@ export default function JournalContent() {
     <main className="min-h-screen">
       <div className="container mx-auto px-fluid-md max-w-[1680px]">
         <div className="pt-fluid-xl mb-fluid-xl">
-          <div className="flex flex-col sm:flex-row sm:items-end gap-fluid-sm">
-            <h1 className="display-xl text-sunny">Journal</h1>
-            <p className="heading-3 text-sunny mb-0 sm:mb-1">Studio updates, insights and explorations</p>
-          </div>
+          <h1 className="display-xxl text-sunny mb-fluid-sm">Journal</h1>
+          <p className="heading-3 text-sunny">// studio updates, insights and explorations</p>
         </div>
 
         <div className="mb-fluid-xl">

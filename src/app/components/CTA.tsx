@@ -273,13 +273,13 @@ const CTA: React.FC<CTAProps> = ({
           // No aspect ratio - grid calculation will determine optimal rows/columns
         }}
       >
-        {/* Background Magnet Component */}
-        <div className="absolute inset-0" style={{ pointerEvents: magnetType === 'grid' ? 'auto' : 'none' }}>
-          {renderMagnetComponent()}
-        </div>
+      {/* Background Magnet Component */}
+      <div className="absolute inset-0" style={{ pointerEvents: magnetType === 'grid' ? 'auto' : 'none' }}>
+        {renderMagnetComponent()}
+      </div>
 
         {/* Content Container - Centered with fluid sizing */}
-        <div className="absolute inset-0 flex items-center justify-center z-[5] pointer-events-none">
+      <div className="absolute inset-0 flex items-center justify-center z-[5] pointer-events-none">
           <div 
             className={`flex flex-col items-center justify-center ${debug ? 'border-4 border-green-500' : ''}`}
             style={{ 
@@ -313,15 +313,15 @@ const CTA: React.FC<CTAProps> = ({
             >
               {title}
             </h2>
-            <div className="text-center relative">
-              <Button 
-                variant={getButtonVariant()}
-                className="inline-block relative z-[5] pointer-events-auto"
-                onClick={handleClick}
+          <div className="text-center relative">
+            <Button 
+              variant={getButtonVariant()}
+              className="inline-block relative z-[5] pointer-events-auto"
+              onClick={handleClick}
                 size="md"
-              >
-                {buttonText}
-              </Button>
+            >
+              {buttonText}
+            </Button>
             </div>
           </div>
         </div>

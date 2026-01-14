@@ -111,65 +111,65 @@ export default function StudioContent() {
 
         {/* Tablet/Desktop Layout (Side by side) */}
         <div className="hidden md:block h-screen">
-          {/* Left Hero Image */}
-          <div className="absolute left-0 top-0 w-1/2 h-screen">
-            <Image 
-              src={images.heroLeft}
-              alt="WEDRAW Studio showcase"
-              fill
-              className="object-cover object-center"
-              priority
-              unoptimized={true}
+        {/* Left Hero Image */}
+        <div className="absolute left-0 top-0 w-1/2 h-screen">
+          <Image 
+            src={images.heroLeft}
+            alt="WEDRAW Studio showcase"
+            fill
+            className="object-cover object-center"
+            priority
+            unoptimized={true}
               sizes="50vw"
-            />
-          </div>
-          
+          />
+        </div>
+        
           {/* Green Background Block */}
           <div className="absolute right-0 top-0 h-[calc(100vh-300px)] bg-meadow w-1/2" />
-          
-          {/* Hatched Pattern Section */}
-          <div className="absolute right-0 bottom-0 w-1/2 h-[300px]">
-            <HatchedPattern 
-              color="var(--color-meadow)"
-              strokeWidth={10} 
-              gap={28}
-              borderWidth={5}
-            />
-          </div>
-          
-          {/* Content Overlay */}
-          <div className="absolute inset-0 flex flex-col justify-center">
-            <div className="container mx-auto px-6">
-              <div className="grid grid-cols-12 gap-4">
-                <div className="col-start-7 col-span-6 pl-16">
-                  <Button 
-                    variant="white-meadow"
+        
+        {/* Hatched Pattern Section */}
+        <div className="absolute right-0 bottom-0 w-1/2 h-[300px]">
+          <HatchedPattern 
+            color="var(--color-meadow)"
+            strokeWidth={10} 
+            gap={28}
+            borderWidth={5}
+          />
+        </div>
+        
+        {/* Content Overlay */}
+        <div className="absolute inset-0 flex flex-col justify-center">
+          <div className="container mx-auto px-6">
+            <div className="grid grid-cols-12 gap-4">
+              <div className="col-start-7 col-span-6 pl-16">
+                <Button 
+                  variant="white-meadow"
                     size="md"
-                    className="mb-6"
-                    href="/work/projects/bristol-international-balloon-fiesta-2024"
-                  >
-                    BRISTOL BALLOON FIESTA
-                  </Button>
+                  className="mb-6"
+                  href="/work/projects/bristol-international-balloon-fiesta-2024"
+                >
+                  BRISTOL BALLOON FIESTA
+                </Button>
                   <div style={{ fontSize: 'clamp(40px, 4.5vw, 85px)' }}>
                     <h1 className="text-white font-area-black leading-[120%] text-[1em]">
-                      <div className="flex items-center">
+                  <div className="flex items-center">
                         <div className="relative flex-shrink-0" style={{ marginBottom: '-0.153em' }}>
-                          <Image
-                            src={images.WE_SVG}
-                            alt="WE"
-                            width={160}
-                            height={85}
+                      <Image
+                        src={images.WE_SVG}
+                        alt="WE"
+                        width={160}
+                        height={85}
                             style={{ 
                               height: '0.98em',
                               width: '1.845em',
                               marginRight: '0.188em'
                             }}
-                          />
-                        </div>
+                      />
+                    </div>
                         <span className="flex-shrink-0">ELEVATE</span>
-                      </div>
-                      EVENTS
-                    </h1>
+                  </div>
+                  EVENTS
+                </h1>
                   </div>
                 </div>
               </div>
@@ -302,14 +302,14 @@ export default function StudioContent() {
                 <div className="md:col-span-5">
                   <div className="space-y-fluid-sm">
                     {expertiseItems.map((item, index) => (
-                      <AnimatedExpertiseBox 
+                    <AnimatedExpertiseBox 
                         key={index}
                         title={item.title}
                         isInitiallyActive={index === 0}
                         index={index}
                         totalBoxes={expertiseItems.length}
                         onActiveChange={(idx, isActive) => isActive && setActiveIndex(idx)}
-                      />
+                    />
                     ))}
                   </div>
                 </div>
@@ -321,11 +321,11 @@ export default function StudioContent() {
                       <div key={index} className={`absolute inset-0 transition-opacity duration-700 ${activeIndex === index ? 'opacity-100' : 'opacity-0'}`}>
                         <h4 className="heading-4 mb-fluid-md">
                           {item.heading}
-                        </h4>
+                      </h4>
                         <p className="body-lg">
                           {item.description}
-                        </p>
-                      </div>
+                      </p>
+                    </div>
                     ))}
                   </div>
                 </div>
@@ -412,8 +412,8 @@ export default function StudioContent() {
                   </div>
                   <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
                     <p className="body-sm">
-                      We transform complex ideas into precise, easy-to-understand visual plans. Every design choice enhances comprehension and usability.
-                    </p>
+                    We transform complex ideas into precise, easy-to-understand visual plans. Every design choice enhances comprehension and usability.
+                  </p>
                   </div>
                 </div>
 
@@ -432,8 +432,8 @@ export default function StudioContent() {
                   </div>
                   <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
                     <p className="body-sm">
-                      We are driven by the joy of shaping novel and inspiring event experiences. We take ambitious ideas and ground them in careful, calculated design, ensuring every plan is both visionary and flawlessly executed in the real world.
-                    </p>
+                    We are driven by the joy of shaping novel and inspiring event experiences. We take ambitious ideas and ground them in careful, calculated design, ensuring every plan is both visionary and flawlessly executed in the real world.
+                  </p>
                   </div>
                 </div>
 
@@ -452,8 +452,8 @@ export default function StudioContent() {
                   </div>
                   <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
                     <p className="body-sm">
-                      We push creative boundaries while ensuring that every plan is grounded in careful, real-world execution. Our site plans are rigorously detailed, leveraging the latest technology to enhance ease-of-use and accuracy.
-                    </p>
+                    We push creative boundaries while ensuring that every plan is grounded in careful, real-world execution. Our site plans are rigorously detailed, leveraging the latest technology to enhance ease-of-use and accuracy.
+                  </p>
                   </div>
                 </div>
 
@@ -472,8 +472,8 @@ export default function StudioContent() {
                   </div>
                   <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
                     <p className="body-sm">
-                      We thrive in the ever-changing landscape of event planning, acting as a calming presence that quickly adapts to new challenges and evolving needs without compromising clarity or execution.
-                    </p>
+                    We thrive in the ever-changing landscape of event planning, acting as a calming presence that quickly adapts to new challenges and evolving needs without compromising clarity or execution.
+                  </p>
                   </div>
                 </div>
 
@@ -492,8 +492,8 @@ export default function StudioContent() {
                   </div>
                   <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
                     <p className="body-sm">
-                      As a central point of connection in event planning, we are the main touchpoint to various stakeholder teams, offering insights that inspire and refine creative visions.
-                    </p>
+                    As a central point of connection in event planning, we are the main touchpoint to various stakeholder teams, offering insights that inspire and refine creative visions.
+                  </p>
                   </div>
                 </div>
 
@@ -512,8 +512,8 @@ export default function StudioContent() {
                   </div>
                   <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
                     <p className="body-sm">
-                      We're at the forefront of industry trends, continuously refining our methodologies and embracing new technologies to set higher standards in event design.
-                    </p>
+                    We're at the forefront of industry trends, continuously refining our methodologies and embracing new technologies to set higher standards in event design.
+                  </p>
                   </div>
                 </div>
               </div>

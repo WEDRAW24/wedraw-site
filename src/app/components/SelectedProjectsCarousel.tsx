@@ -15,10 +15,35 @@ export default function SelectedProjectsCarousel({ projects, debug = false }: Se
   const [isTransitioning, setIsTransitioning] = useState(true)
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1920)
 
   const totalProjects = projects.length
-  const cardWidth = 1050 // Fixed card width
-  const gap = 150 // Gap between cards showing as "peek"
+  
+  // Responsive card width and gap based on viewport
+  const getResponsiveValues = () => {
+    if (windowWidth >= 1800) {
+      return { cardWidth: 1050, gap: 150, containerMaxWidth: 1200 }
+    } else if (windowWidth >= 1440) {
+      return { cardWidth: 900, gap: 120, containerMaxWidth: 1020 }
+    } else if (windowWidth >= 1200) {
+      return { cardWidth: 750, gap: 100, containerMaxWidth: 850 }
+    } else if (windowWidth >= 768) {
+      return { cardWidth: 650, gap: 80, containerMaxWidth: 730 }
+    } else {
+      // Mobile: Card takes 85% of viewport to allow peek, gap is small
+      const mobileCardWidth = Math.floor(windowWidth * 0.85)
+      return { cardWidth: mobileCardWidth, gap: 20, containerMaxWidth: windowWidth }
+    }
+  }
+
+  const { cardWidth, gap, containerMaxWidth } = getResponsiveValues()
+
+  // Update windowWidth on resize
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   // Create extended array with TWO clones on each end for smooth infinite loop
   const extendedProjects = [
@@ -119,8 +144,14 @@ export default function SelectedProjectsCarousel({ projects, debug = false }: Se
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [currentIndex, isAnimating])
 
-  // Calculate track offset
+  // Calculate track offset with responsive centering
+  const centerOffset = windowWidth >= 1800 ? 75 : windowWidth >= 1440 ? 60 : windowWidth >= 1200 ? 50 : windowWidth >= 768 ? 40 : 20
   const trackOffset = -(currentIndex * (cardWidth + gap))
+  
+  // Calculate arrow position: halfway between main card edge and side card start
+  // Main card edge is at cardWidth/2 from center, gap is between cards
+  // Halfway point = cardWidth/2 + gap/2
+  const arrowPositionFromCenter = (cardWidth / 2) + (gap / 2)
 
   return (
     <div className="relative w-full">
@@ -130,16 +161,16 @@ export default function SelectedProjectsCarousel({ projects, debug = false }: Se
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        style={{ minHeight: '800px' }}
+        style={{ minHeight: windowWidth < 768 ? 'auto' : '800px' }}
       >
         {/* Inner container - centered, no clipping so cards can peek */}
-        <div className="relative w-full max-w-[1200px] mx-auto overflow-visible">
+        <div className="relative w-full mx-auto overflow-visible" style={{ maxWidth: `${containerMaxWidth}px` }}>
           
-                {/* Carousel Track - All cards in a row, with 75px left offset to center the first card */}
+                {/* Carousel Track - All cards in a row, with responsive offset to center the first card */}
                 <div
                   className="flex ease-in-out items-center"
                   style={{
-                    transform: `translateX(${trackOffset + 75}px)`, // Add 75px to center first card
+                    transform: `translateX(${trackOffset + centerOffset}px)`,
                     gap: `${gap}px`,
                     transition: isTransitioning ? 'transform 700ms' : 'none'
                   }}
@@ -165,16 +196,16 @@ export default function SelectedProjectsCarousel({ projects, debug = false }: Se
           </div>
         </div>
 
-        {/* Navigation Arrows - Hidden during animation */}
+        {/* Navigation Arrows - Positioned halfway between main and side cards */}
         {!isAnimating && (
           <>
             <button
               onClick={handlePrevious}
               className="hidden lg:flex absolute z-40 w-12 h-12 items-center justify-center rounded-full border-2 border-marker text-marker hover:bg-marker hover:text-white transition-colors duration-300"
               style={{
-                left: '150px',
-                top: '300px',
-                transform: 'translateY(-50%)' // Center the arrow itself vertically
+                left: `calc(50% - ${arrowPositionFromCenter}px)`,
+                top: '38%',
+                transform: 'translate(-50%, -50%)' // Center the arrow button itself
               }}
               aria-label="Previous project"
             >
@@ -187,9 +218,9 @@ export default function SelectedProjectsCarousel({ projects, debug = false }: Se
               onClick={handleNext}
               className="hidden lg:flex absolute z-40 w-12 h-12 items-center justify-center rounded-full border-2 border-marker text-marker hover:bg-marker hover:text-white transition-colors duration-300"
               style={{
-                right: '150px',
-                top: '300px',
-                transform: 'translateY(-50%)' // Center the arrow itself vertically
+                left: `calc(50% + ${arrowPositionFromCenter}px)`,
+                top: '38%',
+                transform: 'translate(-50%, -50%)' // Center the arrow button itself
               }}
               aria-label="Next project"
             >

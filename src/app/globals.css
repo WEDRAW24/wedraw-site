@@ -152,6 +152,10 @@ body {
 
 @layer components {
   /* DISPLAY HEADINGS - For hero sections and major page titles */
+  .display-xxl {
+    @apply font-sans font-area-extrabold text-display-xxl;
+  }
+  
   .display-xl {
     @apply font-sans font-area-extrabold text-display-xl;
   }
@@ -204,6 +208,19 @@ body {
   
   .body-xs {
     @apply font-sans font-area-normal text-body-xs text-dark-grey;
+  }
+
+  /* MONO HEADINGS - Big bold mono text (NOT uppercase) */
+  .mono-heading-lg {
+    @apply font-mono font-mono-semibold text-mono-heading-lg tracking-wide;
+  }
+  
+  .mono-heading-md {
+    @apply font-mono font-mono-semibold text-mono-heading-md tracking-wide;
+  }
+  
+  .mono-heading-sm {
+    @apply font-mono font-mono-semibold text-mono-heading-sm tracking-wide;
   }
 
   /* LABELS - For buttons, tags, metadata (monospace, uppercase) */
