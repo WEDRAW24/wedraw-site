@@ -1,0 +1,6 @@
+export { default as HeroSection } from './HeroSection'
+export { default as OurExpertiseSection } from './OurExpertiseSection'
+export { default as SelectedProjectsSection } from './SelectedProjectsSection'
+export { default as ProvenInTheFieldSection } from './ProvenInTheFieldSection'
+export { default as JournalHighlightsSection } from './JournalHighlightsSection'
+export { default as TestimonialsSection } from './TestimonialsSection'
