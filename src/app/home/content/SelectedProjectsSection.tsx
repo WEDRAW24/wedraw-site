@@ -1,6 +1,7 @@
 'use client'
 
 import Button from '../../components/Button'
+import SectionHeader from '../../components/SectionHeader'
 import SelectedProjectsCarousel from '../../components/SelectedProjectsCarousel'
 import MobileProjectsCarousel from '../../components/MobileProjectsCarousel'
 
@@ -19,25 +20,13 @@ export default function SelectedProjectsSection() {
     <div className={`relative pb-[100px] pt-[30px] ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
       <div className={`max-w-[1680px] mx-auto px-fluid-md md:px-4 sm:px-6 lg:px-[60px] ${DEBUG ? 'border-4 border-blue-500' : ''}`}>
         {/* Section Header */}
-        <div className={`${DEBUG ? 'border-2 border-green-500' : ''}`}>
-          <div className="flex justify-between items-center mb-fluid-md md:mb-3">
-            {/* Title */}
-            <h2 className="text-display-xl md:text-[clamp(36px,4vw,58px)] font-sans font-black md:font-extrabold text-marker leading-[1.15] md:leading-normal uppercase md:normal-case">
-              <span className="block md:inline">Selected</span>
-              <span className="block md:inline md:ml-2">Projects</span>
-            </h2>
-            
-            {/* Button - Hidden on mobile */}
-            <div className="hidden md:block">
-              <Button variant="marker" size="md" href="/work">
-                ALL PROJECTS
-              </Button>
-            </div>
-          </div>
-          
-          {/* Marker Red Divider Line */}
-          <div className={`h-[2px] bg-marker mb-fluid-lg md:mb-24 ${DEBUG ? 'border-2 border-cyan-500' : ''}`}></div>
-        </div>
+        <SectionHeader
+          title="Selected Projects"
+          color="marker"
+          buttonText="ALL PROJECTS"
+          buttonHref="/work"
+          className={DEBUG ? 'border-2 border-green-500' : ''}
+        />
 
         {/* MOBILE: Simple swipe carousel */}
         <div className={`md:hidden ${DEBUG ? 'border-2 border-orange-500' : ''}`}>
@@ -45,7 +34,7 @@ export default function SelectedProjectsSection() {
           
           {/* All Projects Button - Below carousel on mobile */}
           <div className="flex justify-center mt-fluid-xl">
-            <Button variant="marker" size="md" href="/work">
+            <Button variant="marker" href="/work">
               ALL PROJECTS
             </Button>
           </div>

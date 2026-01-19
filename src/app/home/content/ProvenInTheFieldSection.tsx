@@ -49,10 +49,10 @@ export default function ProvenInTheFieldSection() {
       <div className={`relative w-full max-w-[1680px] mx-auto px-fluid-lg md:px-6 lg:px-[60px] py-fluid-2xl lg:py-0 flex flex-col lg:flex-row gap-fluid-xl md:gap-12 items-center ${DEBUG ? 'border-4 border-blue-500' : ''}`}>
         {/* Left Side - Text Content */}
         <div className={`lg:w-1/2 text-white ${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
-          <h2 className="font-sans font-extrabold mb-6 whitespace-nowrap" style={{ fontSize: 'clamp(28px, 4vw, 58px)' }}>
+          <h2 className="section-heading mb-6 whitespace-nowrap text-white">
             Proven in the field
           </h2>
-          <p className="font-sans leading-relaxed" style={{ fontSize: 'clamp(16px, 1.5vw, 20px)' }}>
+          <p className="body-lg text-white">
             We collaborate with the teams behind major festivals, cultural events and large-scale activations, delivering clarity where it matters most.
           </p>
         </div>

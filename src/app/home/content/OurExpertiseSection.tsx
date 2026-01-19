@@ -6,6 +6,7 @@ import Button from '../../components/Button'
 import UnderlineLink from '../../components/UnderlineLink'
 import VerticalExpertiseCarousel from '../../components/VerticalExpertiseCarousel'
 import ExpertiseImage from '../../components/ExpertiseImage'
+import SectionHeader from '../../components/SectionHeader'
 import WESVGMeadow from '../../assets/svg/WE_SVG_meadow.svg'
 
 export default function OurExpertiseSection() {
@@ -17,26 +18,13 @@ export default function OurExpertiseSection() {
     <div className={`relative py-fluid-xl md:pb-[100px] md:pt-[30px] min-h-screen md:min-h-0 ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
       <div className={`max-w-[1680px] mx-auto px-fluid-md md:px-4 sm:px-6 lg:px-[60px] ${DEBUG ? 'border-4 border-blue-500' : ''}`}>
         {/* Section Header */}
-        <div className={`${DEBUG ? 'border-2 border-green-500' : ''}`}>
-          {/* Mobile: Title only, Desktop: Title + Button */}
-          <div className="flex justify-between items-center mb-fluid-md md:mb-3">
-            {/* Title */}
-            <h2 className="text-display-xl md:text-[clamp(36px,4vw,58px)] font-sans font-black md:font-extrabold text-meadow leading-[1.15] md:leading-normal uppercase md:normal-case">
-              <span className="block md:inline">Our</span>
-              <span className="block md:inline md:ml-2">expertise</span>
-            </h2>
-            
-            {/* Button - Hidden on mobile */}
-            <div className="hidden md:block">
-              <Button variant="meadow" size="md" href="/studio">
-                READ ABOUT OUR STUDIO
-              </Button>
-            </div>
-          </div>
-          
-          {/* Green Divider Line */}
-          <div className={`h-[2px] bg-meadow mb-fluid-lg md:mb-12 ${DEBUG ? 'border-2 border-cyan-500' : ''}`}></div>
-        </div>
+        <SectionHeader
+          title="Our expertise"
+          color="meadow"
+          buttonText="READ ABOUT OUR STUDIO"
+          buttonHref="/studio"
+          className={DEBUG ? 'border-2 border-green-500' : ''}
+        />
 
         {/* MOBILE LAYOUT - Accordion */}
         <div className="md:hidden min-h-screen">
@@ -48,7 +36,7 @@ export default function OurExpertiseSection() {
                 onClick={() => setCurrentExpertise(currentExpertise === 'DESIGN' ? 'DESIGN' : 'DESIGN')}
                 className="w-full flex items-center justify-between py-fluid-sm text-left cursor-pointer hover:opacity-80 transition-opacity"
               >
-                <span className="text-heading-1 font-sans font-extrabold text-meadow">Design</span>
+                <span className="accordion-heading text-meadow">Design</span>
                 <svg 
                   className={`w-6 h-6 text-meadow transition-transform duration-300 flex-shrink-0 ml-4 ${currentExpertise === 'DESIGN' ? 'rotate-90' : ''}`}
                   fill="none" 
@@ -69,7 +57,7 @@ export default function OurExpertiseSection() {
                     <ExpertiseImage currentExpertise="DESIGN" debug={DEBUG} />
                   </div>
                   {/* Description */}
-                  <p className="text-body-lg font-sans font-normal text-dark-grey">
+                  <p className="body-lg">
                     We work closely with clients to shape event layouts that are both visionary and buildable, blending creativity with real-world logistics from day one.
                   </p>
                 </div>
@@ -83,7 +71,7 @@ export default function OurExpertiseSection() {
                 onClick={() => setCurrentExpertise(currentExpertise === 'MARKOUT' ? '' : 'MARKOUT')}
                 className="w-full flex items-center justify-between py-fluid-sm text-left cursor-pointer hover:opacity-80 transition-opacity"
               >
-                <span className="text-heading-1 font-sans font-extrabold text-meadow">Mark out</span>
+                <span className="accordion-heading text-meadow">Mark out</span>
                 <svg 
                   className={`w-6 h-6 text-meadow transition-transform duration-300 flex-shrink-0 ml-4 ${currentExpertise === 'MARKOUT' ? 'rotate-90' : ''}`}
                   fill="none" 
@@ -104,7 +92,7 @@ export default function OurExpertiseSection() {
                     <ExpertiseImage currentExpertise="MARKOUT" debug={DEBUG} />
                   </div>
                   {/* Description */}
-                  <p className="text-body-lg font-sans font-normal text-dark-grey">
+                  <p className="body-lg">
                     Armed with GPS and a sharp eye for detail, we're the first team on site, getting the build off on the right foot, setting the foundations for a successful build.
                   </p>
                 </div>
@@ -118,7 +106,7 @@ export default function OurExpertiseSection() {
                 onClick={() => setCurrentExpertise(currentExpertise === 'SURVEY' ? '' : 'SURVEY')}
                 className="w-full flex items-center justify-between py-fluid-sm text-left cursor-pointer hover:opacity-80 transition-opacity"
               >
-                <span className="text-heading-1 font-sans font-extrabold text-meadow">Survey</span>
+                <span className="accordion-heading text-meadow">Survey</span>
                 <svg 
                   className={`w-6 h-6 text-meadow transition-transform duration-300 flex-shrink-0 ml-4 ${currentExpertise === 'SURVEY' ? 'rotate-90' : ''}`}
                   fill="none" 
@@ -139,7 +127,7 @@ export default function OurExpertiseSection() {
                     <ExpertiseImage currentExpertise="SURVEY" debug={DEBUG} />
                   </div>
                   {/* Description */}
-                  <p className="text-body-lg font-sans font-normal text-dark-grey">
+                  <p className="body-lg">
                     From terrain mapping to utility plans, we map the space so planning can begin with accurate up to date information.
                   </p>
                 </div>
@@ -153,7 +141,7 @@ export default function OurExpertiseSection() {
                 onClick={() => setCurrentExpertise(currentExpertise === 'VALIDATE' ? '' : 'VALIDATE')}
                 className="w-full flex items-center justify-between py-fluid-sm text-left cursor-pointer hover:opacity-80 transition-opacity"
               >
-                <span className="text-heading-1 font-sans font-extrabold text-meadow">Validate</span>
+                <span className="accordion-heading text-meadow">Validate</span>
                 <svg 
                   className={`w-6 h-6 text-meadow transition-transform duration-300 flex-shrink-0 ml-4 ${currentExpertise === 'VALIDATE' ? 'rotate-90' : ''}`}
                   fill="none" 
@@ -174,7 +162,7 @@ export default function OurExpertiseSection() {
                     <ExpertiseImage currentExpertise="VALIDATE" debug={DEBUG} />
                   </div>
                   {/* Description */}
-                  <p className="text-body-lg font-sans font-normal text-dark-grey">
+                  <p className="body-lg">
                     We help future-proof events by capturing vital on-site data on what really happened, so we can learn and improve for next year.
                   </p>
                 </div>
@@ -188,7 +176,7 @@ export default function OurExpertiseSection() {
                 onClick={() => setCurrentExpertise(currentExpertise === 'SUPPORT' ? '' : 'SUPPORT')}
                 className="w-full flex items-center justify-between py-fluid-sm text-left cursor-pointer hover:opacity-80 transition-opacity"
               >
-                <span className="text-heading-1 font-sans font-extrabold text-meadow">Support</span>
+                <span className="accordion-heading text-meadow">Support</span>
                 <svg 
                   className={`w-6 h-6 text-meadow transition-transform duration-300 flex-shrink-0 ml-4 ${currentExpertise === 'SUPPORT' ? 'rotate-90' : ''}`}
                   fill="none" 
@@ -209,7 +197,7 @@ export default function OurExpertiseSection() {
                     <ExpertiseImage currentExpertise="SUPPORT" debug={DEBUG} />
                   </div>
                   {/* Description */}
-                  <p className="text-body-lg font-sans font-normal text-dark-grey">
+                  <p className="body-lg">
                     Whether it's full CAD drawing setups, troubleshooting tech headaches or more general advice, we provide reliable, responsive support to help your team deliver with confidence.
                   </p>
                 </div>
@@ -259,7 +247,7 @@ export default function OurExpertiseSection() {
                 
                 {/* Dynamic Description Text */}
                 <div key={currentExpertise} className="animate-fadeIn">
-                  <p className="font-sans font-normal leading-[160%] text-dark-grey mb-6" style={{ fontSize: 'clamp(14px, 1.2vw, 18px)' }}>
+                  <p className="body-md mb-6">
                     {currentExpertise === 'VALIDATE' && "We help future-proof events by capturing vital on-site data on what really happened, so we can learn and improve for next year"}
                     {currentExpertise === 'SUPPORT' && "Whether it's full CAD drawing setups, troubleshooting tech headaches or more general advice, we provide reliable, responsive support to help your tema deliver with confidence."}
                     {currentExpertise === 'DESIGN' && "We work closely with clients to shape event layouts that are both visionary and buildable, blending creativity with real-world logistics from day one."}
@@ -267,7 +255,7 @@ export default function OurExpertiseSection() {
                     {currentExpertise === 'SURVEY' && "From terrain mapping to utility plans, we map the space so planning can begin with accurate up to date information"}
                   </p>
                   
-                  <UnderlineLink href="/studio" className="text-meadow uppercase font-mono text-[14px]">
+                  <UnderlineLink href="/studio" className="text-meadow uppercase">
                     READ MORE
                   </UnderlineLink>
                 </div>

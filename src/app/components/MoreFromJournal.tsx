@@ -22,7 +22,7 @@ export default function MoreFromJournal({ currentArticleSlug }: MoreFromJournalP
         <div className="flex justify-between items-end mb-16 pb-8 border-b-2 border-sunny">
           <h2 className="text-[72px] font-area-extrabold leading-[120%] text-sunny">More from the journal</h2>
           <Link href="/journal">
-            <Button variant="sunny" size="md">
+            <Button variant="sunny">
               MORE JOURNAL ARTICLES
             </Button>
           </Link>

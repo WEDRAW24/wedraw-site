@@ -79,21 +79,21 @@ export default function MobileProjectsCarousel({ projects }: MobileProjectsCarou
                       />
                     </div>
                     
-                    <div className="font-mono font-mono-normal text-body-sm tracking-wider mb-fluid-xs text-dark-grey">
+                    <div className="link text-dark-grey mb-fluid-xs">
                       {project.location.toLowerCase()} | {project.year}
                     </div>
-                    <h3 className="text-heading-1 font-sans font-extrabold leading-none mb-fluid-sm uppercase transition-colors duration-300 hover:text-marker">
+                    <h3 className="title-card mb-fluid-sm uppercase transition-colors duration-300 hover:text-marker">
                       {project.title}
                     </h3>
                   </Link>
                   
                   {project.description && (
-                    <p className="text-body-md font-sans font-normal text-dark-grey mb-fluid-sm leading-[180%]">
+                    <p className="body-md mb-fluid-sm">
                       {project.description}
                     </p>
                   )}
                   
-                  <UnderlineLink href={projectUrl} className="text-marker text-label-md uppercase">
+                  <UnderlineLink href={projectUrl} className="text-marker uppercase">
                     more about the project
                   </UnderlineLink>
                 </div>

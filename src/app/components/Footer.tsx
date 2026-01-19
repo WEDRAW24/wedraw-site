@@ -49,11 +49,11 @@ export default function Footer() {
           <div className={`flex flex-col ${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
             {/* Navigation Links */}
             <nav className={`mb-8 ${DEBUG ? 'border-4 border-orange-500' : ''}`}>
-              <ul className="flex flex-col gap-4 font-mono uppercase tracking-wider text-sm">
-                <li><Link href="/work" className="hover:opacity-80 transition">Work</Link></li>
-                <li><Link href="/studio" className="hover:opacity-80 transition">Studio</Link></li>
-                <li><Link href="/journal" className="hover:opacity-80 transition">Journal</Link></li>
-                <li><Link href="/contact" className="hover:opacity-80 transition">Contact</Link></li>
+              <ul className="flex flex-col gap-4 uppercase">
+                <li><Link href="/work" className="link">Work</Link></li>
+                <li><Link href="/studio" className="link">Studio</Link></li>
+                <li><Link href="/journal" className="link">Journal</Link></li>
+                <li><Link href="/contact" className="link">Contact</Link></li>
               </ul>
             </nav>
 
@@ -107,7 +107,7 @@ export default function Footer() {
             <div className={`flex flex-col gap-2 font-mono text-xs opacity-60 pb-6 ${DEBUG ? 'border-4 border-lime-500' : ''}`}>
               <div className="flex gap-3">
                 <span>© {new Date().getFullYear()}</span>
-                <Link href="/privacy-policy" className="hover:opacity-80 transition">
+                <Link href="/privacy-policy" className="link">
                   Privacy Policy
                 </Link>
               </div>
@@ -124,11 +124,11 @@ export default function Footer() {
           {/* Top Navigation Bar */}
           <div className={DEBUG ? 'border-4 border-orange-500' : ''} style={{ marginBottom: 'clamp(24px, 8vw, 96px)' }}>
             <nav className={`w-full max-w-[1200px] mx-auto ${DEBUG ? 'border-4 border-red-500' : ''}`}>
-              <ul className={`flex justify-between items-center font-mono uppercase tracking-wider ${DEBUG ? 'border-4 border-yellow-500' : ''}`} style={{ fontSize: 'clamp(10px, 1.8vw, 14px)' }}>
-                <li><Link href="/work" className="hover:underline">WORK</Link></li>
-                <li><Link href="/studio" className="hover:underline">STUDIO</Link></li>
-                <li><Link href="/journal" className="hover:underline">JOURNAL</Link></li>
-                <li><Link href="/contact" className="hover:underline">CONTACT</Link></li>
+              <ul className={`flex justify-between items-center uppercase ${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
+                <li><Link href="/work" className="link">WORK</Link></li>
+                <li><Link href="/studio" className="link">STUDIO</Link></li>
+                <li><Link href="/journal" className="link">JOURNAL</Link></li>
+                <li><Link href="/contact" className="link">CONTACT</Link></li>
                 <li className="flex items-center" style={{ gap: 'clamp(4px, 1vw, 16px)' }}>
                   <span className="hidden min-[600px]:inline">FOLLOW US</span>
                   <div className="flex" style={{ gap: 'clamp(4px, 1vw, 16px)' }}>
@@ -189,9 +189,9 @@ export default function Footer() {
           </div>
 
           {/* Footer Credits */}
-          <div className={`flex justify-center items-center font-mono ${DEBUG ? 'border-4 border-lime-500' : ''}`} style={{ fontSize: 'clamp(9px, 2vw, 14px)', gap: 'clamp(8px, 2vw, 32px)', paddingTop: 'clamp(8px, 2vw, 24px)', paddingBottom: 'clamp(8px, 2vw, 24px)' }}>
-            <span>© {new Date().getFullYear()}</span>
-            <Link href="/privacy-policy" className="hover:opacity-80 transition">
+          <div className={`flex justify-center items-center ${DEBUG ? 'border-4 border-lime-500' : ''}`} style={{ gap: 'clamp(8px, 2vw, 32px)', paddingTop: 'clamp(8px, 2vw, 24px)', paddingBottom: 'clamp(8px, 2vw, 24px)' }}>
+            <span className="link">© {new Date().getFullYear()}</span>
+            <Link href="/privacy-policy" className="link">
               Privacy Policy
             </Link>
             <a href="https://aidanjones.design" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">

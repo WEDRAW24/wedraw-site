@@ -1,4 +1,4 @@
-type CategoryLabelProps = {
+type TagProps = {
   category?: 'news' | 'media' | 'explorations' | 'festivals' | 'exhibitions' | 'sports' | 'cultural';
   className?: string;
   variant?: 'default' | 'white' | 'marker';
@@ -37,14 +37,14 @@ const variantClasses = {
   }
 };
 
-export default function CategoryLabel({
+export default function Tag({
   category,
   className = '',
   variant = 'default',
   location,
   date,
   orientation = 'horizontal'
-}: CategoryLabelProps) {
+}: TagProps) {
   if (location && date) {
     return (
       <div 
@@ -74,15 +74,12 @@ export default function CategoryLabel({
     <span
       className={`
         block
-        font-mono font-mono-light uppercase border 
+        tag border 
         text-center
-        tracking-wider
         ${variantClasses[variant][normalizedCategory]}
         ${className}
       `}
       style={{ 
-        fontSize: 'clamp(11px, 1.8vw, 14px)',
-        lineHeight: '1',
         padding: 'clamp(4px, 0.5vw, 4px) clamp(12px, 2vw, 16px)',
         minWidth: 'clamp(65px, 12vw, 90px)'
       }}
@@ -104,4 +101,4 @@ if (typeof document !== 'undefined') {
   const styleElement = document.createElement('style');
   styleElement.textContent = styles;
   document.head.appendChild(styleElement);
-} 
+}

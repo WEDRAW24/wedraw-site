@@ -23,7 +23,7 @@ export default function MoreProjects({ currentProjectSlug, projects }: MoreProje
         <div className="flex justify-between items-end mb-16 pb-8 border-b-2 border-marker">
           <h2 className="text-[72px] font-area-extrabold leading-[120%] text-marker">More projects</h2>
           <Link href="/work">
-            <Button variant="marker" size="md">
+            <Button variant="marker">
               ALL PROJECTS
             </Button>
           </Link>

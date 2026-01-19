@@ -294,21 +294,20 @@ const CTA: React.FC<CTAProps> = ({
             }}
           >
             <h2 
-              className="font-area-extrabold text-center"
+              className="cta text-center"
               style={{ 
-                // Viewport-specific font sizing
+                // Viewport-specific font sizing (overrides base cta size)
                 fontSize: viewportSize === 'mobile' 
-                  ? 'clamp(28px, 8vw, 48px)'
+                  ? 'clamp(20px, 6.5vw, 48px)'
                   : viewportSize === 'tablet'
                   ? 'clamp(44px, 5.5vw, 58px)' // Tablet size
                   : 'clamp(48px, 3.5vw, 72px)', // Desktop
-                lineHeight: '1.2',
                 // Constrain width to encourage two-line layout more readily
                 maxWidth: 'min(85%, 16em)', // 16em = ~16 characters at current font size
-                textTransform: 'lowercase', // All lowercase
-                // Allow wrapping to two lines if needed
+                // Allow wrapping between words ONLY - never break words mid-word
                 whiteSpace: 'normal',
-                wordWrap: 'break-word',
+                wordBreak: 'keep-all',
+                overflowWrap: 'normal',
               }}
             >
               {title}
@@ -318,7 +317,6 @@ const CTA: React.FC<CTAProps> = ({
               variant={getButtonVariant()}
               className="inline-block relative z-[5] pointer-events-auto"
               onClick={handleClick}
-                size="md"
             >
               {buttonText}
             </Button>

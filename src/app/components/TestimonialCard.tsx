@@ -41,17 +41,17 @@ export default function TestimonialCard({ quote, name, company }: TestimonialCar
           </div>
           
           {/* Quote text */}
-          <p className="text-dark-grey font-sans font-semibold text-[13px] md:text-[15px] mb-3 md:mb-6" style={{ lineHeight: '140%' }}>
+          <p className="body-md mb-3 md:mb-6">
             {quote}
           </p>
           
           {/* Name */}
-          <p className="text-blueprint font-mono font-medium text-[13px] md:text-[16px] uppercase mb-0">
+          <p className="button text-blueprint mb-0">
             {name}
           </p>
           
           {/* Company */}
-          <p className="text-blueprint font-mono font-medium text-[12px] md:text-[14px] uppercase">
+          <p className="link text-blueprint uppercase">
             {company}
           </p>
         </div>

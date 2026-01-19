@@ -36,37 +36,87 @@ const config: Config = {
   			'mono-bold': '700',
   			'mono-black': '800'
   		},
-  		fontSize: {
-  			// Display sizes (for hero headings)
-  			'display-xxl': ['clamp(72px, 12vw, 128px)', { lineHeight: '120%', letterSpacing: '0%' }],
-  			'display-xl': ['clamp(48px, 8vw, 85px)', { lineHeight: '120%', letterSpacing: '0%' }],
-  			'display-lg': ['clamp(40px, 7vw, 72px)', { lineHeight: '120%', letterSpacing: '0%' }],
-  			'display-md': ['clamp(36px, 6vw, 58px)', { lineHeight: '120%', letterSpacing: '0%' }],
-  			'display-sm': ['clamp(32px, 5vw, 48px)', { lineHeight: '120%', letterSpacing: '0%' }],
-  			
-  			// Heading sizes
-  			'heading-1': ['clamp(28px, 4.5vw, 38px)', { lineHeight: '130%', letterSpacing: '0%' }],
-  			'heading-2': ['clamp(24px, 4vw, 32px)', { lineHeight: '130%', letterSpacing: '0%' }],
-  			'heading-3': ['clamp(20px, 3.5vw, 30px)', { lineHeight: '130%', letterSpacing: '0%' }],
-  			'heading-4': ['clamp(18px, 3vw, 24px)', { lineHeight: '140%', letterSpacing: '0%' }],
-  			
-  			// Mono Heading sizes (for big bold mono text, NOT uppercase)
-  			'mono-heading-lg': ['clamp(24px, 4vw, 32px)', { lineHeight: '130%', letterSpacing: '0%' }],
-  			'mono-heading-md': ['clamp(20px, 3.5vw, 30px)', { lineHeight: '130%', letterSpacing: '0%' }],
-  			'mono-heading-sm': ['clamp(18px, 3vw, 24px)', { lineHeight: '140%', letterSpacing: '0%' }],
-  			
-  			// Body text sizes
-  			'body-xl': ['clamp(18px, 2.2vw, 24px)', { lineHeight: '160%', letterSpacing: '0%' }],
-  			'body-lg': ['clamp(16px, 1.8vw, 20px)', { lineHeight: '160%', letterSpacing: '0%' }],
-  			'body-md': ['clamp(14px, 1.5vw, 18px)', { lineHeight: '160%', letterSpacing: '0%' }],
-  			'body-sm': ['clamp(12px, 1.2vw, 15px)', { lineHeight: '160%', letterSpacing: '0%' }],
-  			'body-xs': ['clamp(10px, 1vw, 14px)', { lineHeight: '160%', letterSpacing: '0%' }],
-  			
-  			// Mono/label sizes (for buttons, tags, metadata)
-  			'label-lg': ['clamp(14px, 1.8vw, 16px)', { lineHeight: '100%', letterSpacing: '2%' }],
-  			'label-md': ['clamp(13px, 1.5vw, 14px)', { lineHeight: '100%', letterSpacing: '2%' }],
-  			'label-sm': ['clamp(11px, 1.2vw, 12px)', { lineHeight: '100%', letterSpacing: '2%' }],
-  		},
+		fontSize: {
+			// ============================================
+			// NEW TYPOGRAPHY SYSTEM - Consolidated Styles
+			// ============================================
+			
+			// Hero Headings (for main page heroes - Home, Contact)
+			'display-xl': ['clamp(48px, 8vw, 85px)', { lineHeight: '120%', letterSpacing: '0%' }],
+			
+			// Section Headings (for major section titles - desktop)
+			'section-heading': ['clamp(36px, 4.5vw, 58px)', { lineHeight: '120%', letterSpacing: '0%' }],
+			
+			// Section Headings Mobile (for major section titles - mobile only, tighter leading, uppercase)
+			'section-heading-mobile': ['clamp(36px, 4.5vw, 58px)', { lineHeight: '115%', letterSpacing: '0%' }],
+			
+			// Expertise Carousel (specialized for vertical carousel - scales with WE SVG)
+			'expertise-carousel': ['clamp(32px, 7vw, 84px)', { lineHeight: '85%', letterSpacing: '0.03em' }],
+			
+			// Body text - XL (for featured/intro paragraphs - bold)
+			'body-xl': ['clamp(18px, 2.2vw, 24px)', { lineHeight: '160%', letterSpacing: '0%' }],
+			
+			// Body text - Large (for main paragraphs - normal weight)
+			'body-lg': ['clamp(16px, 1.8vw, 20px)', { lineHeight: '160%', letterSpacing: '0%' }],
+			
+			// Body text - Medium (for standard paragraphs - normal weight)
+			'body-md': ['clamp(14px, 1.5vw, 18px)', { lineHeight: '160%', letterSpacing: '0%' }],
+			
+			// Button text (mono, uppercase, tight line-height)
+			'button': ['clamp(12px, 1.8vw, 16px)', { lineHeight: '100%', letterSpacing: '2%' }],
+			
+			// Link text (mono, clean, bold on hover)
+			'link': ['clamp(12px, 1.5vw, 14px)', { lineHeight: '120%', letterSpacing: '2%' }],
+			
+			// Tag (for tags - mono, light weight)
+			'tag': ['clamp(11px, 1.8vw, 14px)', { lineHeight: '100%', letterSpacing: '2%' }],
+			
+			// Title Card (for project/card titles - bold, large)
+			'title-card': ['clamp(24px, 3.5vw, 36px)', { lineHeight: '120%', letterSpacing: '0%' }],
+			
+			// CTA (for call-to-action titles - specialized for CTA component)
+			// Note: Actual fontSize is handled dynamically in CTA.tsx based on viewport state
+			'cta': ['clamp(48px, 3.5vw, 72px)', { lineHeight: '120%', letterSpacing: '0%' }],
+			
+			// Accordion Heading (for mobile accordion titles - bold, medium-large)
+			'accordion-heading': ['clamp(28px, 4.5vw, 38px)', { lineHeight: '130%', letterSpacing: '0%' }],
+			
+			
+			// ============================================
+			// OLD SYSTEM - To be phased out
+			// ============================================
+			
+			// Display sizes (for hero headings) - OLD
+			'display-xxl': ['clamp(72px, 12vw, 128px)', { lineHeight: '120%', letterSpacing: '0%' }],
+			// 'display-xl' - MOVED TO NEW SYSTEM ABOVE
+			'display-lg': ['clamp(40px, 7vw, 72px)', { lineHeight: '120%', letterSpacing: '0%' }],
+			'display-md': ['clamp(36px, 6vw, 58px)', { lineHeight: '120%', letterSpacing: '0%' }],
+			'display-sm': ['clamp(32px, 5vw, 48px)', { lineHeight: '120%', letterSpacing: '0%' }],
+			
+			// Heading sizes - OLD
+			'heading-1': ['clamp(28px, 4.5vw, 38px)', { lineHeight: '130%', letterSpacing: '0%' }],
+			'heading-2': ['clamp(24px, 4vw, 32px)', { lineHeight: '130%', letterSpacing: '0%' }],
+			'heading-3': ['clamp(20px, 3.5vw, 30px)', { lineHeight: '130%', letterSpacing: '0%' }],
+			'heading-4': ['clamp(18px, 3vw, 24px)', { lineHeight: '140%', letterSpacing: '0%' }],
+			
+			// Mono Heading sizes (for big bold mono text, NOT uppercase) - OLD
+			'mono-heading-lg': ['clamp(24px, 4vw, 32px)', { lineHeight: '130%', letterSpacing: '0%' }],
+			'mono-heading-md': ['clamp(20px, 3.5vw, 30px)', { lineHeight: '130%', letterSpacing: '0%' }],
+			'mono-heading-sm': ['clamp(18px, 3vw, 24px)', { lineHeight: '140%', letterSpacing: '0%' }],
+			
+			// Body text sizes - OLD
+			// 'body-xl' - MOVED TO NEW SYSTEM ABOVE
+			// 'body-lg' - MOVED TO NEW SYSTEM ABOVE
+			// 'body-md' - MOVED TO NEW SYSTEM ABOVE
+			'body-sm': ['clamp(12px, 1.2vw, 15px)', { lineHeight: '160%', letterSpacing: '0%' }],
+			'body-xs': ['clamp(10px, 1vw, 14px)', { lineHeight: '160%', letterSpacing: '0%' }],
+			
+			// Mono/label sizes (for tags, metadata) - OLD
+			'label-lg': ['clamp(14px, 1.8vw, 16px)', { lineHeight: '100%', letterSpacing: '2%' }],
+			'label-md': ['clamp(13px, 1.5vw, 14px)', { lineHeight: '100%', letterSpacing: '2%' }],
+			'label-sm': ['clamp(11px, 1.2vw, 12px)', { lineHeight: '100%', letterSpacing: '2%' }],
+			// 'button' - MOVED TO NEW SYSTEM ABOVE
+		},
   		colors: {
   			blueprint: '#2242FF',
   			marker: '#E44E37',

@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import CategoryLabel from './CategoryLabel'
+import Tag from './Tag'
 import { ArticleMetadata } from '@/app/journal/articles/types'
 
 type JournalCardProps = {
@@ -17,9 +17,9 @@ export default function JournalCard({ article, showReadMoreLink = false }: Journ
       className="block group cursor-pointer"
     >
       <article className="relative">
-        {/* Category Label */}
+        {/* Category Tag */}
         <div className="absolute z-10" style={{ top: 'clamp(12px, 2vw, 16px)', left: 'clamp(12px, 2vw, 16px)' }}>
-          <CategoryLabel 
+          <Tag 
             category={article.category as 'news' | 'media' | 'explorations'} 
             variant="white"
           />
@@ -38,12 +38,12 @@ export default function JournalCard({ article, showReadMoreLink = false }: Journ
         {/* Content Section */}
         <div className="mt-fluid-sm space-y-4">
           {/* Date */}
-          <p className="font-mono text-sunny font-semibold leading-[100%] tracking-[0%] uppercase" style={{ fontSize: 'clamp(12px, 1.8vw, 16px)' }}>
+          <p className="link text-sunny uppercase">
             {article.date}
           </p>
 
           {/* Title */}
-          <h3 className="heading-3 font-extrabold leading-[130%] tracking-[0%]">
+          <h3 className="title-card">
             {article.title}
           </h3>
 
@@ -55,7 +55,7 @@ export default function JournalCard({ article, showReadMoreLink = false }: Journ
           {/* Read More Text - Only shown if showReadMoreLink is true */}
           {showReadMoreLink && (
             <div className="pt-2">
-              <span className="text-sunny font-mono font-medium tracking-wider uppercase underline underline-offset-4 decoration-2" style={{ fontSize: 'clamp(11px, 1.5vw, 14px)' }}>
+              <span className="link text-sunny uppercase">
                 READ MORE
               </span>
             </div>

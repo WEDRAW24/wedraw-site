@@ -43,7 +43,7 @@ export default function HeroSection() {
             <div className={`relative z-10 h-full flex flex-col px-fluid-md pt-fluid-xl ${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
               {/* Heading - Overlaid on image, positioned higher - Blur In Animation */}
               <BlurIn 
-                className="text-display-xl font-sans font-extrabold text-blueprint max-w-[90%]"
+                className="display-xl text-blueprint max-w-[90%]"
                 duration={3.0}
                 delay={0.5}
                 staggerChildren={true}
@@ -66,11 +66,9 @@ export default function HeroSection() {
           >
             <Link 
               href="/work/projects/bristol-international-balloon-fiesta-2024"
-              className="hover:opacity-70 transition-opacity inline-block"
+              className="link text-blueprint uppercase inline-block"
             >
-              <p className="text-label-md font-mono font-mono-medium tracking-wider text-blueprint uppercase">
-                BRISTOL BALLOON FIESTA | 2024
-              </p>
+              BRISTOL BALLOON FIESTA | 2024
             </Link>
           </motion.div>
         </div>
@@ -84,7 +82,7 @@ export default function HeroSection() {
           <div className={`w-full h-[clamp(80px,8vh,100px)] relative flex items-center justify-end ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
             {/* Contact Button - Top Right */}
             <div className={`mr-[30px] lg:mr-[60px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-              <Button variant="blueprint" size="md" href="/contact">
+              <Button variant="blueprint" href="/contact">
                 CONTACT US
               </Button>
             </div>
@@ -113,7 +111,7 @@ export default function HeroSection() {
             {/* Vertical Text - Project Label */}
             <Link 
               href="/work/projects/bristol-international-balloon-fiesta-2024"
-              className={`absolute hover:opacity-70 transition-opacity ${DEBUG ? 'border-2 border-pink-500' : ''}`}
+              className={`link text-blueprint uppercase absolute ${DEBUG ? 'border-2 border-pink-500' : ''}`}
               style={{
                 left: 'calc(20% - 40px)',
                 bottom: '0px',
@@ -121,9 +119,7 @@ export default function HeroSection() {
                 transform: 'rotate(180deg)',
               }}
             >
-              <p className="text-label-md font-mono font-mono-medium tracking-wider text-blueprint uppercase">
-                BRISTOL BALLOON FIESTA | 2024
-              </p>
+              BRISTOL BALLOON FIESTA | 2024
             </Link>
 
             {/* Heading overlapping the image */}
@@ -136,7 +132,7 @@ export default function HeroSection() {
               }}
             >
               <BlurIn 
-                className="text-display-xl font-sans font-extrabold text-blueprint"
+                className="display-xl text-blueprint"
                 duration={3.0}
                 delay={0.5}
                 staggerChildren={true}
@@ -164,22 +160,22 @@ export default function HeroSection() {
                 <div className="md:grid md:grid-cols-1 md:gap-12" style={{ gridTemplateColumns: 'calc(38.2% - 24px) calc(61.8% - 24px)' }}>
                   {/* Left Column - Bold intro */}
                   <div className={`mb-fluid-lg md:mb-0 ${DEBUG ? 'border-2 border-red-500' : ''}`}>
-                    <p className="text-body-lg font-sans font-bold text-dark-grey md:text-[clamp(12px,1.4vw,20px)]">
+                    <p className="body-xl">
                       We are a specialised event design and site planning studio dedicated to transforming spaces into unforgettable experiences.
                     </p>
                   </div>
 
                   {/* Right Column - Body text */}
                   <div className={`space-y-fluid-md md:space-y-8 ${DEBUG ? 'border-2 border-red-500' : ''}`}>
-                    <p className="text-body-sm font-sans font-normal text-dark-grey md:text-[clamp(10px,1.05vw,15px)]">
+                    <p className="body-md">
                       At the core of our process is the belief that the best events are built on clear communication and effective collaboration. Before we begin, we take the time to understand who you are, what drives you and the goals you want to achieve.
                     </p>
 
-                    <p className="text-body-sm font-sans font-normal text-dark-grey md:text-[clamp(10px,1.05vw,15px)]">
+                    <p className="body-md">
                       The primary aim is to enable us to deliver tailored solutions that are specific to your needs and enhance your workflow.
                     </p>
 
-                    <UnderlineLink href="/studio" className="text-blueprint uppercase font-mono text-label-md md:text-[14px] inline-block mt-fluid-sm">
+                    <UnderlineLink href="/studio" className="text-blueprint uppercase inline-block mt-fluid-sm">
                       MORE ABOUT WEDRAW
                     </UnderlineLink>
                   </div>

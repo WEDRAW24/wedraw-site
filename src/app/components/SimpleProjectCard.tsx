@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import UnderlineLink from './UnderlineLink'
-import CategoryLabel from './CategoryLabel'
+import Tag from './Tag'
 import { ProjectMetadata } from '@/app/work/projects/types'
 
 interface SimpleProjectCardProps {
@@ -15,17 +15,6 @@ export default function SimpleProjectCard({ project, size = 'default' }: SimpleP
   const { title, slug, location, year, coverImage, category } = project
   const projectUrl = `/work/projects/${slug}`
 
-  const textSizes = {
-    default: {
-      meta: 'text-sm',
-      title: 'text-[32px]'
-    },
-    small: {
-      meta: 'text-xs',
-      title: 'text-[28px]'
-    }
-  }
-
   return (
     <div className="block">
       <Link href={projectUrl} className="block">
@@ -33,9 +22,9 @@ export default function SimpleProjectCard({ project, size = 'default' }: SimpleP
           className="relative w-full mb-4 overflow-hidden hover:cursor-pointer"
           style={{ paddingBottom: '75%' }} // 4:3 aspect ratio
         >
-          {/* Category Label */}
+          {/* Category Tag */}
           <div className="absolute top-4 left-4 z-10">
-            <CategoryLabel 
+            <Tag 
               category={category}
               variant="white"
             />
@@ -50,14 +39,14 @@ export default function SimpleProjectCard({ project, size = 'default' }: SimpleP
           />
         </div>
         
-        <div className={`font-mono font-mono-normal uppercase tracking-wider mb-2 transition-colors duration-300 hover:text-marker ${textSizes[size].meta}`}>
+        <div className="link uppercase mb-2 transition-colors duration-300 hover:text-marker">
           {location} | {year}
         </div>
-        <h2 className={`font-display font-area-extrabold leading-none mb-4 transition-colors duration-300 hover:text-marker ${textSizes[size].title}`}>
+        <h2 className="title-card mb-4 transition-colors duration-300 hover:text-marker">
           {title}
         </h2>
       </Link>
-      <UnderlineLink href={projectUrl} className="text-marker">
+      <UnderlineLink href={projectUrl} className="text-marker uppercase">
         More about the project
       </UnderlineLink>
     </div>

@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import UnderlineLink from './UnderlineLink'
-import CategoryLabel from './CategoryLabel'
+import Tag from './Tag'
 import { ProjectMetadata } from '@/app/work/projects/types'
 import { useEffect, useState } from 'react'
 
@@ -44,24 +44,13 @@ export default function WorkProjectCard({ project, displayRow, displayColumn, si
     return () => window.removeEventListener('resize', updateGrid)
   }, [isMobile])
 
-  const textSizes = {
-    default: {
-      meta: 'body-sm',
-      title: 'heading-1'
-    },
-    small: {
-      meta: 'body-xs',
-      title: 'heading-2'
-    }
-  }
-
   // Mobile Layout - Simple block
   if (isMobile) {
     return (
       <div className="block w-full">
         <Link href={projectUrl} className="block">
           <div className="relative w-full aspect-[4/3] mb-fluid-sm overflow-hidden hover:cursor-pointer">
-            {/* Category Label */}
+            {/* Category Tag */}
             <div 
               className="absolute z-10"
               style={{ 
@@ -69,7 +58,7 @@ export default function WorkProjectCard({ project, displayRow, displayColumn, si
                 left: 'clamp(12px, 2vw, 16px)' 
               }}
             >
-              <CategoryLabel 
+              <Tag 
                 category={category}
                 variant="white"
               />
@@ -84,11 +73,11 @@ export default function WorkProjectCard({ project, displayRow, displayColumn, si
           />
         </div>
         
-          <div className={`font-mono font-mono-normal tracking-wider mb-fluid-xs transition-all duration-200 hover:font-semibold active:font-semibold ${textSizes[size].meta}`}>{location.toLowerCase()} | {year}</div>
-          <h2 className={`font-display font-area-black leading-none mb-fluid-sm uppercase transition-colors duration-300 hover:text-marker active:text-marker ${textSizes[size].title}`}>{title}</h2>
+          <div className="link mb-fluid-xs">{location.toLowerCase()} | {year}</div>
+          <h2 className="title-card mb-fluid-sm uppercase transition-colors duration-300 hover:text-marker active:text-marker">{title}</h2>
       </Link>
-      <UnderlineLink href={projectUrl} className="text-marker">
-        // more about the project
+      <UnderlineLink href={projectUrl} className="text-marker uppercase">
+        more about the project
       </UnderlineLink>
     </div>
   )
@@ -100,9 +89,9 @@ export default function WorkProjectCard({ project, displayRow, displayColumn, si
       <div className="block w-full">
         <Link href={projectUrl} className="block">
           <div className="relative w-full aspect-[4/3] mb-fluid-sm overflow-hidden hover:cursor-pointer">
-            {/* Category Label */}
+            {/* Category Tag */}
             <div className="absolute top-4 left-4 z-10">
-              <CategoryLabel 
+              <Tag 
                 category={category}
                 variant="white"
               />
@@ -117,11 +106,11 @@ export default function WorkProjectCard({ project, displayRow, displayColumn, si
             />
         </div>
         
-          <div className={`font-mono font-mono-normal tracking-wider mb-fluid-xs transition-all duration-200 hover:font-semibold active:font-semibold ${textSizes[size].meta}`}>{location.toLowerCase()} | {year}</div>
-          <h2 className={`font-display font-area-black leading-none mb-fluid-sm uppercase transition-colors duration-300 hover:text-marker active:text-marker ${textSizes[size].title}`}>{title}</h2>
+          <div className="link mb-fluid-xs">{location.toLowerCase()} | {year}</div>
+          <h2 className="title-card mb-fluid-sm uppercase transition-colors duration-300 hover:text-marker active:text-marker">{title}</h2>
       </Link>
-      <UnderlineLink href={projectUrl} className="text-marker">
-        // more about the project
+      <UnderlineLink href={projectUrl} className="text-marker uppercase">
+        more about the project
       </UnderlineLink>
     </div>
   )
@@ -150,9 +139,9 @@ export default function WorkProjectCard({ project, displayRow, displayColumn, si
           className="relative w-full mb-fluid-sm overflow-hidden hover:cursor-pointer"
           style={{ height: `${height}px` }}
         >
-          {/* Category Label */}
+          {/* Category Tag */}
           <div className="absolute top-6 left-6 z-10">
-            <CategoryLabel 
+            <Tag 
               category={category}
               variant="white"
             />
@@ -167,11 +156,11 @@ export default function WorkProjectCard({ project, displayRow, displayColumn, si
           />
         </div>
         
-          <div className={`font-mono font-mono-normal tracking-wider mb-fluid-xs transition-all duration-200 hover:font-semibold active:font-semibold ${textSizes[size].meta}`}>{location.toLowerCase()} | {year}</div>
-          <h2 className={`font-display font-area-black leading-none mb-fluid-sm uppercase transition-colors duration-300 hover:text-marker active:text-marker ${textSizes[size].title}`}>{title}</h2>
+          <div className="link mb-fluid-xs">{location.toLowerCase()} | {year}</div>
+          <h2 className="title-card mb-fluid-sm uppercase transition-colors duration-300 hover:text-marker active:text-marker">{title}</h2>
       </Link>
-      <UnderlineLink href={projectUrl} className="text-marker">
-        // more about the project
+      <UnderlineLink href={projectUrl} className="text-marker uppercase">
+        more about the project
       </UnderlineLink>
     </div>
   )

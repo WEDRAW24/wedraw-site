@@ -151,14 +151,90 @@ body {
    ============================================ */
 
 @layer components {
-  /* DISPLAY HEADINGS - For hero sections and major page titles */
+  /* ============================================
+     NEW TYPOGRAPHY SYSTEM - Consolidated Styles
+     ============================================ */
+  
+  /* HERO HEADINGS - Main page heroes (Home, Contact) */
+  .display-xl {
+    @apply font-sans font-area-extrabold text-display-xl;
+  }
+  
+  /* SECTION HEADINGS - Major section titles (desktop) */
+  .section-heading {
+    @apply font-sans font-area-extrabold text-section-heading;
+  }
+  
+  /* SECTION HEADINGS MOBILE - Major section titles (mobile only - tighter, uppercase, bolder) */
+  .section-heading-mobile {
+    @apply font-sans font-area-black text-section-heading-mobile uppercase;
+  }
+  
+  /* EXPERTISE CAROUSEL - Specialized text for vertical carousel */
+  .expertise-carousel {
+    @apply font-sans font-area-black text-expertise-carousel;
+    transform: translateY(-0.075em);
+    -webkit-text-stroke: 3px currentColor;
+  }
+  
+  /* BODY TEXT - XL (Featured/intro paragraphs - bold, larger) */
+  .body-xl {
+    @apply font-sans font-area-bold text-body-xl text-dark-grey;
+  }
+  
+  /* BODY TEXT - Large (Main paragraphs - normal weight, standard) */
+  .body-lg {
+    @apply font-sans font-area-normal text-body-lg text-dark-grey;
+  }
+  
+  /* BODY TEXT - Medium (Standard paragraphs - normal weight, smaller) */
+  .body-md {
+    @apply font-sans font-area-normal text-body-md text-dark-grey;
+  }
+  
+  /* BUTTON TEXT - For all button components */
+  .button {
+    @apply font-mono font-mono-medium text-button uppercase tracking-wider;
+  }
+  
+  /* LINK TEXT - For all text links (clean, bold on hover, no underline) */
+  .link {
+    @apply font-mono font-mono-normal text-link tracking-wider;
+    @apply hover:font-semibold active:font-semibold;
+    @apply transition-all duration-200;
+  }
+  
+  /* TAG - For category labels (mono, light weight, uppercase) */
+  .tag {
+    @apply font-mono font-mono-light text-tag uppercase tracking-wider;
+  }
+  
+  /* TITLE CARD - For project/card titles (bold, large) */
+  .title-card {
+    @apply font-sans font-area-extrabold text-title-card leading-tight;
+  }
+  
+  /* CTA - For call-to-action titles (specialized, lowercase) */
+  .cta {
+    @apply font-sans font-area-extrabold text-cta lowercase;
+  }
+  
+  /* ACCORDION HEADING - For mobile accordion titles (bold, medium-large) */
+  .accordion-heading {
+    @apply font-sans font-area-extrabold text-accordion-heading;
+  }
+  
+  
+  /* ============================================
+     OLD SYSTEM - To be phased out
+     ============================================ */
+  
+  /* DISPLAY HEADINGS - For hero sections and major page titles - OLD */
   .display-xxl {
     @apply font-sans font-area-extrabold text-display-xxl;
   }
   
-  .display-xl {
-    @apply font-sans font-area-extrabold text-display-xl;
-  }
+  /* .display-xl - MOVED TO NEW SYSTEM ABOVE */
   
   .display-lg {
     @apply font-sans font-area-extrabold text-display-lg;
@@ -172,7 +248,7 @@ body {
     @apply font-sans font-area-extrabold text-display-sm;
   }
 
-  /* HEADINGS - For section titles and content hierarchy */
+  /* HEADINGS - For section titles and content hierarchy - OLD */
   .heading-1 {
     @apply font-sans font-area-extrabold text-heading-1;
   }
@@ -189,18 +265,10 @@ body {
     @apply font-sans font-area-semibold text-heading-4;
   }
 
-  /* BODY TEXT - For paragraphs and main content */
-  .body-xl {
-    @apply font-sans font-area-bold text-body-xl text-dark-grey;
-  }
-  
-  .body-lg {
-    @apply font-sans font-area-normal text-body-lg text-dark-grey;
-  }
-  
-  .body-md {
-    @apply font-sans font-area-normal text-body-md text-dark-grey;
-  }
+  /* BODY TEXT - For paragraphs and main content - OLD */
+  /* .body-xl - MOVED TO NEW SYSTEM ABOVE */
+  /* .body-lg - MOVED TO NEW SYSTEM ABOVE */
+  /* .body-md - MOVED TO NEW SYSTEM ABOVE */
   
   .body-sm {
     @apply font-sans font-area-normal text-body-sm text-dark-grey;
@@ -210,7 +278,7 @@ body {
     @apply font-sans font-area-normal text-body-xs text-dark-grey;
   }
 
-  /* MONO HEADINGS - Big bold mono text (NOT uppercase) */
+  /* MONO HEADINGS - Big bold mono text (NOT uppercase) - OLD */
   .mono-heading-lg {
     @apply font-mono font-mono-semibold text-mono-heading-lg tracking-wide;
   }
@@ -223,7 +291,7 @@ body {
     @apply font-mono font-mono-semibold text-mono-heading-sm tracking-wide;
   }
 
-  /* LABELS - For buttons, tags, metadata (monospace, uppercase) */
+  /* LABELS - For tags, metadata (monospace, uppercase) - OLD */
   .label-lg {
     @apply font-mono font-mono-medium text-label-lg uppercase tracking-wider;
   }
@@ -235,8 +303,10 @@ body {
   .label-sm {
     @apply font-mono font-mono-normal text-label-sm uppercase tracking-wider;
   }
+  
+  /* .button - MOVED TO NEW SYSTEM ABOVE */
 
-  /* UTILITY VARIANTS - Modify existing classes */
+  /* UTILITY VARIANTS - Modify existing classes - OLD */
   .body-xl-light,
   .body-lg-light,
   .body-md-light,

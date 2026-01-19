@@ -1,5 +1,6 @@
 'use client'
 
+import SectionHeader from '../../components/SectionHeader'
 import TestimonialCard from '../../components/TestimonialCard'
 import HatchedPattern from '../../components/HatchedPattern'
 
@@ -11,9 +12,11 @@ export default function TestimonialsSection() {
     <div className={`relative pb-[100px] pt-[100px] ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
       {/* Section Header - Green Container */}
       <div className={`max-w-[1680px] mx-auto px-fluid-md md:px-4 sm:px-6 lg:px-[60px] ${DEBUG ? 'border-4 border-green-500' : ''}`}>
-        <h2 className="text-display-lg md:text-[clamp(36px,4vw,58px)] font-sans font-black md:font-extrabold text-blueprint mb-fluid-lg md:mb-12 leading-[1.15] md:leading-normal uppercase md:normal-case">
-          Testimonials
-        </h2>
+        <SectionHeader
+          title="Testimonials"
+          color="blueprint"
+          showLine={false}
+        />
       </div>
 
       {/* Testimonials Content - Blue Container */}

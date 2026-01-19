@@ -29,22 +29,22 @@ export default function SelectedProjectCard({ project, debug = false }: Selected
             />
           </div>
           
-          <div className="font-mono font-mono-normal text-body-sm tracking-wider mb-fluid-xs text-dark-grey">
+          <div className="link text-dark-grey mb-fluid-xs">
             {location.toLowerCase()} | {year}
           </div>
-          <h3 className="text-heading-1 font-sans font-extrabold leading-none mb-fluid-sm uppercase transition-colors duration-300 hover:text-marker">
+          <h3 className="title-card mb-fluid-sm uppercase transition-colors duration-300 hover:text-marker">
             {title}
           </h3>
         </Link>
         
         {/* Description - Now included on mobile */}
         {description && (
-          <p className="text-body-md font-sans font-normal text-dark-grey mb-fluid-sm leading-[180%]">
+          <p className="body-md mb-fluid-sm">
             {description}
           </p>
         )}
         
-        <UnderlineLink href={projectUrl} className="text-marker text-label-md uppercase">
+        <UnderlineLink href={projectUrl} className="text-marker uppercase">
           more about the project
         </UnderlineLink>
       </div>
@@ -56,18 +56,15 @@ export default function SelectedProjectCard({ project, debug = false }: Selected
           {/* Vertical Project Label */}
           <Link 
             href={projectUrl}
-            className={`absolute hover:opacity-70 transition-opacity ${debug ? 'border-2 border-pink-500' : ''}`}
+            className={`absolute link text-marker uppercase ${debug ? 'border-2 border-pink-500' : ''}`}
             style={{
               left: '0px',
               top: '0px',
               writingMode: 'vertical-rl',
-              transform: 'rotate(180deg)',
-              fontSize: 'clamp(12px, 1.2vw, 14px)'
+              transform: 'rotate(180deg)'
             }}
           >
-            <p className="font-mono font-mono-medium tracking-wider text-marker uppercase">
-              {location} | {year}
-            </p>
+            {location} | {year}
           </Link>
 
           {/* Image */}
@@ -111,12 +108,7 @@ export default function SelectedProjectCard({ project, debug = false }: Selected
             {/* Title */}
             <div className={`col-span-5 ${debug ? 'border-4 border-red-500' : ''}`}>
               <Link href={projectUrl} className="group">
-                <h3 
-                  className="font-sans font-extrabold leading-none transition-colors duration-300 group-hover:text-marker"
-                  style={{
-                    fontSize: 'clamp(24px, 2.8vw, 32px)'
-                  }}
-                >
+                <h3 className="title-card transition-colors duration-300 group-hover:text-marker">
                   {title}
                 </h3>
               </Link>
@@ -126,10 +118,8 @@ export default function SelectedProjectCard({ project, debug = false }: Selected
             <div className={`col-span-7 ${debug ? 'border-4 border-blue-500' : ''}`}>
               {description && (
                 <p 
-                  className="font-sans font-normal text-dark-grey"
+                  className="body-md"
                   style={{
-                    fontSize: 'clamp(13px, 1.3vw, 15px)',
-                    lineHeight: '180%',
                     marginBottom: 'clamp(16px, 2vw, 24px)'
                   }}
                 >

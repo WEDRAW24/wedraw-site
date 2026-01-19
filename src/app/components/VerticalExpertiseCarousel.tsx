@@ -175,15 +175,10 @@ export default function VerticalExpertiseCarousel({ debug = false, onExpertiseCh
               style={{ height: `${rowHeight}px` }}
             >
               <p 
-                className="font-sans font-area-black text-meadow" 
+                className="expertise-carousel text-meadow" 
                 style={{ 
-                  fontSize: 'clamp(32px, 7vw, 84px)', 
-                  lineHeight: '0.85', 
-                  transform: 'translateY(-0.075em)',
                   opacity: opacity,
                   transition: isTransitioning ? 'opacity 500ms ease-in-out' : 'none',
-                  WebkitTextStroke: '3px currentColor',
-                  letterSpacing: '0.03em',
                 }}
               >
                 {item}
