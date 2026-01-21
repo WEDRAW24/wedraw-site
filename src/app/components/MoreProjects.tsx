@@ -1,8 +1,9 @@
 'use client';
 
-import Link from 'next/link'
-import Button from './Button'
 import SimpleProjectCard from './SimpleProjectCard'
+import SectionHeader from './SectionHeader'
+import MobileProjectsCarousel from './MobileProjectsCarousel'
+import Button from './Button'
 import { ProjectMetadata } from '@/app/work/projects/types'
 
 type MoreProjectsProps = {
@@ -20,16 +21,28 @@ export default function MoreProjects({ currentProjectSlug, projects }: MoreProje
   return (
     <section className="pt-24 pb-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
-        <div className="flex justify-between items-end mb-16 pb-8 border-b-2 border-marker">
-          <h2 className="text-[72px] font-area-extrabold leading-[120%] text-marker">More projects</h2>
-          <Link href="/work">
-            <Button variant="marker">
+        <SectionHeader
+          title="More projects"
+          color="marker"
+          buttonText="ALL PROJECTS"
+          buttonHref="/work"
+          className="mb-12"
+        />
+
+        {/* MOBILE: Swipe carousel with dots */}
+        <div className="md:hidden">
+          <MobileProjectsCarousel projects={otherProjects} />
+          
+          {/* All Projects Button - Below carousel on mobile */}
+          <div className="flex justify-center mt-fluid-xl">
+            <Button variant="marker" href="/work">
               ALL PROJECTS
             </Button>
-          </Link>
+          </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-8">
+        {/* DESKTOP: Grid layout */}
+        <div className="hidden md:grid grid-cols-3 gap-8">
           {otherProjects.map((project) => (
             <div key={project.slug} className="w-full">
               <SimpleProjectCard 

@@ -80,8 +80,7 @@ export default function Tag({
         ${className}
       `}
       style={{ 
-        padding: 'clamp(4px, 0.5vw, 4px) clamp(12px, 2vw, 16px)',
-        minWidth: 'clamp(65px, 12vw, 90px)'
+        padding: 'clamp(5px, 0.85vw, 7px) clamp(14px, 2.1vw, 20px)'
       }}
     >
       {normalizedCategory.toUpperCase()}

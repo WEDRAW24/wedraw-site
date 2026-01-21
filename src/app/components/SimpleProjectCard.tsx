@@ -39,10 +39,10 @@ export default function SimpleProjectCard({ project, size = 'default' }: SimpleP
           />
         </div>
         
-        <div className="link uppercase mb-2 transition-colors duration-300 hover:text-marker">
-          {location} | {year}
+        <div className="link mb-2 transition-colors duration-300 hover:text-marker">
+          {location.toLowerCase()} | {year}
         </div>
-        <h2 className="title-card mb-4 transition-colors duration-300 hover:text-marker">
+        <h2 className="title-card mb-4 uppercase transition-colors duration-300 hover:text-marker">
           {title}
         </h2>
       </Link>

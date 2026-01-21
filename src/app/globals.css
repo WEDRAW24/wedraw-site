@@ -155,9 +155,19 @@ body {
      NEW TYPOGRAPHY SYSTEM - Consolidated Styles
      ============================================ */
   
+  /* PAGE HEADINGS - Internal page heroes (Work, Journal, etc.) */
+  .display-xxl {
+    @apply font-sans font-area-extrabold text-display-xxl;
+  }
+  
   /* HERO HEADINGS - Main page heroes (Home, Contact) */
   .display-xl {
     @apply font-sans font-area-extrabold text-display-xl;
+  }
+  
+  /* SUBTITLE - Taglines/subtitles under headings */
+  .subtitle {
+    @apply font-sans font-area-bold text-subtitle;
   }
   
   /* SECTION HEADINGS - Major section titles (desktop) */
@@ -239,16 +249,22 @@ body {
     @apply font-sans font-area-extrabold text-accordion-heading;
   }
   
+  /* PULL QUOTE LARGE - For large featured quotes (bold, sans-serif) */
+  .pull-quote-lg {
+    @apply font-sans font-area-bold text-pull-quote-lg;
+  }
+  
+  /* PULL QUOTE SMALL - For sidebar quotes (mono, uppercase) */
+  .pull-quote-sm {
+    @apply font-mono font-mono-normal text-pull-quote-sm uppercase;
+  }
+  
   
   /* ============================================
      OLD SYSTEM - To be phased out
      ============================================ */
   
-  /* DISPLAY HEADINGS - For hero sections and major page titles - OLD */
-  .display-xxl {
-    @apply font-sans font-area-extrabold text-display-xxl;
-  }
-  
+  /* .display-xxl - MOVED TO NEW SYSTEM ABOVE */
   /* .display-xl - MOVED TO NEW SYSTEM ABOVE */
   
   .display-lg {

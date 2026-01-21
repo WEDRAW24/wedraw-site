@@ -12,14 +12,15 @@ export default function ProjectLabel({
   variant = 'marker'
 }: ProjectLabelProps) {
   return (
-    <div className={`
-      inline-flex items-center
-      font-mono font-mono-medium uppercase border-2
-      text-[16px] px-4 py-1
-      tracking-wider
-      ${variant === 'marker' ? 'border-marker text-marker' : 'border-white text-white'}
-      ${className}
-    `}>
+    <div 
+      className={`
+        inline-flex items-center
+        button border-2
+        ${variant === 'marker' ? 'border-marker text-marker' : 'border-white text-white'}
+        ${className}
+      `}
+      style={{ padding: 'clamp(6px, 1vw, 8px) clamp(16px, 2.5vw, 24px)' }}
+    >
       <span>{location}</span>
       <span className="mx-4">|</span>
       <span>{year}</span>

@@ -33,14 +33,14 @@ export default function ProjectLayout({ metadata, heroImage, children }: Project
       <section className="bg-white py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
           <div className="grid grid-cols-12 gap-4">
-            <div className="col-start-5 col-span-8">
+            <div className="col-span-12 px-4 md:px-0 md:col-start-5 md:col-span-8">
               <ProjectLabel
                 location={metadata.location}
                 year={metadata.year.toString()}
                 variant="marker"
                 className="mb-6"
               />
-              <h1 className="text-[72px] font-area-extrabold leading-[120%] text-black mb-3">
+              <h1 className="section-heading text-black mb-3">
                 {metadata.title}
               </h1>
             </div>
@@ -65,21 +65,15 @@ export default function ProjectLayout({ metadata, heroImage, children }: Project
         projects={projects}
       />
 
-      {/* CTA Section - 12 column grid container with full-width background */}
-      <section className="bg-white py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px]">
-          <div className="grid grid-cols-12 gap-4">
-            <div className="col-span-12">
-              <CTA 
-                magnetType="lines"
-                magnetColor="var(--color-marker)"
-                title="Let's get Started"
-                buttonText="GET IN TOUCH"
-                buttonHref="/contact"
-              />
-            </div>
-          </div>
-        </div>
+      {/* CTA Section - Full width like Work page */}
+      <section className="bg-white">
+        <CTA 
+          magnetType="lines"
+          magnetColor="var(--color-marker)"
+          title="Let's get Started"
+          buttonText="GET IN TOUCH"
+          buttonHref="/contact"
+        />
       </section>
     </div>
   )

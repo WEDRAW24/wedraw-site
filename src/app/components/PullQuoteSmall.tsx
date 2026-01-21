@@ -42,7 +42,7 @@ export default function PullQuoteSmall({ text, className = '', image }: PullQuot
       </div>
       
       {/* Quote text */}
-      <p className="font-mono font-mono-normal text-[20px] leading-[140%] text-marker uppercase">
+      <p className="pull-quote-sm text-marker">
         {text}
       </p>
     </div>

@@ -26,23 +26,23 @@ export default function Credits({ sections, className = '' }: CreditsProps) {
       </div>
 
       {/* Credits heading */}
-      <h2 className="text-[36px] font-area-extrabold text-black">Credits</h2>
+      <h2 className="section-heading text-black">Credits</h2>
 
       {/* Credit sections */}
       {sections.map((section, index) => (
         <div key={index} className="flex flex-col gap-3">
-          <h3 className="font-mono font-mono-medium text-[14px] tracking-wider text-marker uppercase">
+          <h3 className="button text-marker">
             {section.title}
           </h3>
           <div className="flex flex-col gap-2">
             {section.items.map((item, itemIndex) => (
               <div key={itemIndex} className="flex items-center gap-2">
                 {item.role && (
-                  <span className="font-area-normal text-[16px] leading-[140%]">
+                  <span className="body-md">
                     {item.role}:
                   </span>
                 )}
-                <span className="font-area-bold text-[16px] leading-[140%]">
+                <span className="body-md font-area-bold">
                   {item.name}
                 </span>
               </div>

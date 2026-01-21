@@ -53,10 +53,10 @@ export default function ProjectContent() {
       {/* First body text section */}
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-12 px-4 md:px-0 md:col-start-5 md:col-span-8">
-          <p className="font-area-normal text-[18px] leading-[180%] mb-3">
+          <p className="body-lg mb-3">
             We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront. Taking place over 10 nights, this year's event embraced the theme of 'Play,' showcasing 12 large-scale light installations crafted by both local and international artists.
           </p>
-          <p className="font-area-normal text-[18px] leading-[180%] mb-20">
+          <p className="body-lg mb-20">
             The carefully curated 3km trail transformed Liverpool's waterfront into an open-air gallery, with some installations turning the area into a playful experience while others explored the deeper meanings of play and its impact on individuals, communities, and the city. It was a joy to collaborate on an event that not only celebrates artistic expression but also enriches the cultural fabric of Liverpool, inviting people of all ages to engage with the city in a whole new light.
           </p>
         </div>
@@ -69,11 +69,11 @@ export default function ProjectContent() {
 
       {/* Second body text section with side quote */}
       <div className="grid grid-cols-12 gap-4 mb-20">
-        {/* Small pull quote starting from edge */}
-        <div className="col-start-1 col-span-3 pt-[0.45em]">
+        {/* Small pull quote - full width on mobile, side column on desktop */}
+        <div className="col-span-12 px-4 md:px-0 md:col-start-1 md:col-span-3 pt-[0.45em] mb-8 md:mb-0">
           <PullQuoteSmall 
             text="A spectacular celebration of creativity and illumination along the city's iconic waterfront."
-            className="sticky top-8"
+            className="md:sticky md:top-8"
             image={{
               src: images.gallery.dronePositiveSpin,
               alt: "Positive Spin light installation at Liverpool River of Light",
@@ -84,10 +84,10 @@ export default function ProjectContent() {
         </div>
 
         <div className="col-span-12 px-4 md:px-0 md:col-start-5 md:col-span-8">
-          <p className="font-area-normal text-[18px] leading-[180%] mb-3">
+          <p className="body-lg mb-3">
             We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront. Taking place over 10 nights, this year's event embraced the theme of 'Play,' showcasing 12 large-scale light installations crafted by both local and international artists.
           </p>
-          <p className="font-area-normal text-[18px] leading-[180%]">
+          <p className="body-lg">
             The carefully curated 3km trail transformed Liverpool's waterfront into an open-air gallery, with some installations turning the area into a playful experience while others explored the deeper meanings of play and its impact on individuals, communities, and the city. It was a joy to collaborate on an event that not only celebrates artistic expression but also enriches the cultural fabric of Liverpool, inviting people of all ages to engage with the city in a whole new light.
           </p>
         </div>
@@ -107,10 +107,10 @@ export default function ProjectContent() {
       {/* Third body text section */}
       <div className="grid grid-cols-12 gap-4 mb-20">
         <div className="col-span-12 px-4 md:px-0 md:col-start-5 md:col-span-8">
-          <p className="font-area-normal text-[18px] leading-[180%] mb-3">
+          <p className="body-lg mb-3">
             We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront. Taking place over 10 nights, this year's event embraced the theme of 'Play,' showcasing 12 large-scale light installations crafted by both local and international artists.
           </p>
-          <p className="font-area-normal text-[18px] leading-[180%]">
+          <p className="body-lg">
             The carefully curated 3km trail transformed Liverpool's waterfront into an open-air gallery, with some installations turning the area into a playful experience while others explored the deeper meanings of play and its impact on individuals, communities, and the city. It was a joy to collaborate on an event that not only celebrates artistic expression but also enriches the cultural fabric of Liverpool, inviting people of all ages to engage with the city in a whole new light.
           </p>
         </div>
@@ -121,8 +121,8 @@ export default function ProjectContent() {
 
       {/* Fourth body text section with Credits side by side */}
       <div className="grid grid-cols-12 gap-4 mb-20">
-        {/* Credits section on the left */}
-        <div className="col-start-1 col-span-3 px-4 md:px-0">
+        {/* Credits section - full width on mobile, left column on desktop */}
+        <div className="col-span-12 px-4 md:px-0 md:col-start-1 md:col-span-3 mb-8 md:mb-0">
           <Credits 
             sections={[
               {
@@ -145,10 +145,10 @@ export default function ProjectContent() {
 
         {/* Body text on the right */}
         <div className="col-span-12 px-4 md:px-0 md:col-start-5 md:col-span-8">
-          <p className="font-area-normal text-[18px] leading-[180%] mb-3">
+          <p className="body-lg mb-3">
             We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront. Taking place over 10 nights, this year's event embraced the theme of 'Play,' showcasing 12 large-scale light installations crafted by both local and international artists.
           </p>
-          <p className="font-area-normal text-[18px] leading-[180%]">
+          <p className="body-lg">
             The carefully curated 3km trail transformed Liverpool's waterfront into an open-air gallery, with some installations turning the area into a playful experience while others explored the deeper meanings of play and its impact on individuals, communities, and the city. It was a joy to collaborate on an event that not only celebrates artistic expression but also enriches the cultural fabric of Liverpool, inviting people of all ages to engage with the city in a whole new light.
           </p>
         </div>

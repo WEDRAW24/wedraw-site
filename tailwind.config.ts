@@ -41,8 +41,14 @@ const config: Config = {
 			// NEW TYPOGRAPHY SYSTEM - Consolidated Styles
 			// ============================================
 			
+			// Page Headings (for internal page heroes - Work, Journal, etc.)
+			'display-xxl': ['clamp(72px, 12vw, 128px)', { lineHeight: '120%', letterSpacing: '0%' }],
+			
 			// Hero Headings (for main page heroes - Home, Contact)
 			'display-xl': ['clamp(48px, 8vw, 85px)', { lineHeight: '120%', letterSpacing: '0%' }],
+			
+			// Subtitle (for taglines/subtitles under headings)
+			'subtitle': ['clamp(20px, 3.5vw, 30px)', { lineHeight: '130%', letterSpacing: '0%' }],
 			
 			// Section Headings (for major section titles - desktop)
 			'section-heading': ['clamp(36px, 4.5vw, 58px)', { lineHeight: '120%', letterSpacing: '0%' }],
@@ -90,13 +96,18 @@ const config: Config = {
 			// Accordion Heading (for mobile accordion titles - bold, medium-large)
 			'accordion-heading': ['clamp(28px, 4.5vw, 38px)', { lineHeight: '130%', letterSpacing: '0%' }],
 			
+			// Pull Quote Large (for large featured quotes - bold, sans-serif)
+			'pull-quote-lg': ['clamp(24px, 3vw, 30px)', { lineHeight: '130%', letterSpacing: '0%' }],
+			
+			// Pull Quote Small (for sidebar quotes - mono, uppercase)
+			'pull-quote-sm': ['clamp(16px, 2vw, 20px)', { lineHeight: '140%', letterSpacing: '0%' }],
+			
 			
 			// ============================================
 			// OLD SYSTEM - To be phased out
 			// ============================================
 			
-			// Display sizes (for hero headings) - OLD
-			'display-xxl': ['clamp(72px, 12vw, 128px)', { lineHeight: '120%', letterSpacing: '0%' }],
+			// 'display-xxl' - MOVED TO NEW SYSTEM ABOVE
 			// 'display-xl' - MOVED TO NEW SYSTEM ABOVE
 			'display-lg': ['clamp(40px, 7vw, 72px)', { lineHeight: '120%', letterSpacing: '0%' }],
 			'display-md': ['clamp(36px, 6vw, 58px)', { lineHeight: '120%', letterSpacing: '0%' }],
