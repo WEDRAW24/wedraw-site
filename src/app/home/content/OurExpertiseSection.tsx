@@ -19,7 +19,7 @@ export default function OurExpertiseSection() {
       <div className={`max-w-[1680px] mx-auto px-fluid-md md:px-4 sm:px-6 lg:px-[60px] ${DEBUG ? 'border-4 border-blue-500' : ''}`}>
         {/* Section Header */}
         <SectionHeader
-          title="Our expertise"
+          title="Our Expertise"
           color="meadow"
           buttonText="READ ABOUT OUR STUDIO"
           buttonHref="/studio"
@@ -207,16 +207,19 @@ export default function OurExpertiseSection() {
         </div>
 
         {/* DESKTOP LAYOUT - 2x2 Grid (unchanged) */}
-        <div className={`hidden md:grid grid-cols-2 gap-8 ${DEBUG ? 'border-2 border-orange-500' : ''}`}>
-          {/* Container 1 - Top Left */}
-          <div className={`min-h-[600px] ${DEBUG ? 'border-4 border-red-500' : ''}`}>
+        <div className={`hidden md:grid grid-cols-2 gap-8 overflow-visible ${DEBUG ? 'border-2 border-orange-500' : ''}`}>
+          {/* Container 1 - Top Left - Container query parent */}
+          <div 
+            className={`${DEBUG ? 'border-4 border-red-500' : ''}`}
+            style={{ containerType: 'inline-size' }}
+          >
             <div className={`flex h-full ${DEBUG ? 'border-2 border-purple-500' : ''}`}>
               {/* Left Container - 30% */}
               <div className={`flex items-center justify-end pr-2 ${DEBUG ? 'border-4 border-cyan-500' : ''}`} style={{ width: '30%' }}>
                 <Image 
                   src={WESVGMeadow}
                   alt="WE"
-                  style={{ height: 'clamp(32px, 6.5vw, 67px)', width: 'auto' }}
+                  style={{ height: 'clamp(32px, 10cqi, 67px)', width: 'auto' }}
                 />
               </div>
 
@@ -229,12 +232,12 @@ export default function OurExpertiseSection() {
           </div>
 
           {/* Container 2 - Top Right - Expertise Image */}
-          <div className={`min-h-[600px] ${DEBUG ? 'border-4 border-blue-500' : ''}`}>
+          <div className={`${DEBUG ? 'border-4 border-blue-500' : ''}`}>
             <ExpertiseImage currentExpertise={currentExpertise} debug={DEBUG} />
           </div>
 
           {/* Container 3 - Bottom Left - Expertise Description */}
-          <div className={`min-h-[300px] ${DEBUG ? 'border-4 border-green-500' : ''}`}>
+          <div className={`${DEBUG ? 'border-4 border-green-500' : ''}`}>
             <div className={`flex h-full ${DEBUG ? 'border-2 border-purple-500' : ''}`}>
               {/* Left Container - 30% (empty to align with WE logo) */}
               <div className={`${DEBUG ? 'border-4 border-cyan-500' : ''}`} style={{ width: '30%' }}>
@@ -264,7 +267,7 @@ export default function OurExpertiseSection() {
           </div>
 
           {/* Container 4 - Bottom Right - Empty */}
-          <div className={`min-h-[300px] ${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
+          <div className={`${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
           </div>
         </div>
       </div>

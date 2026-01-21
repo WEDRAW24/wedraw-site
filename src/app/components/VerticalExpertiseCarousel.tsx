@@ -21,10 +21,27 @@ export default function VerticalExpertiseCarousel({ debug = false, onExpertiseCh
   const [isTransitioning, setIsTransitioning] = useState(true)
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
+  const [containerWidth, setContainerWidth] = useState(800)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const totalItems = expertiseItems.length
-  const rowHeight = 120 // Height of each row in pixels (600px / 5 rows)
+  
+  // Dynamic row height based on container width (scales proportionally)
+  // At ~550px container width = 120px row height, scales down from there
+  const rowHeight = Math.max(60, Math.min(120, containerWidth * 0.22))
+  const containerHeight = rowHeight * 5 // 5 visible rows
+
+  // Measure container width on mount and resize
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.offsetWidth)
+      }
+    }
+    updateWidth()
+    window.addEventListener('resize', updateWidth)
+    return () => window.removeEventListener('resize', updateWidth)
+  }, [])
 
   // Create extended array with full clones on each end for smooth infinite loop
   const extendedItems = [
@@ -140,8 +157,8 @@ export default function VerticalExpertiseCarousel({ debug = false, onExpertiseCh
   return (
     <div 
       ref={containerRef}
-      className={`relative overflow-hidden ${debug ? 'border-4 border-yellow-500' : ''}`}
-      style={{ width: '70%', height: '600px', paddingLeft: '8px' }}
+      className={`relative ${debug ? 'border-4 border-yellow-500' : ''}`}
+      style={{ width: '70%', height: `${containerHeight}px`, paddingLeft: '8px', overflowY: 'hidden', overflowX: 'visible' }}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -150,7 +167,7 @@ export default function VerticalExpertiseCarousel({ debug = false, onExpertiseCh
       <div
         className="flex flex-col"
         style={{
-          transform: `translateY(${trackOffset + 240}px)`, // +240px to center (600px height / 5 rows * 2 rows offset)
+          transform: `translateY(${trackOffset + (rowHeight * 2)}px)`, // Center offset (2 rows worth)
           transition: isTransitioning ? 'transform 500ms ease-in-out' : 'none'
         }}
       >
@@ -175,8 +192,13 @@ export default function VerticalExpertiseCarousel({ debug = false, onExpertiseCh
               style={{ height: `${rowHeight}px` }}
             >
               <p 
-                className="expertise-carousel text-meadow" 
+                className="text-meadow font-area-black"
                 style={{ 
+                  fontSize: 'clamp(32px, 12cqi, 84px)',
+                  lineHeight: '85%',
+                  letterSpacing: '0.03em',
+                  WebkitTextStroke: '3px currentColor',
+                  transform: 'translateY(-0.075em)',
                   opacity: opacity,
                   transition: isTransitioning ? 'opacity 500ms ease-in-out' : 'none',
                 }}

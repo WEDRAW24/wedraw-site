@@ -59,13 +59,14 @@ export default function MobileProjectsCarousel({ projects }: MobileProjectsCarou
             transform: `translateX(-${currentIndex * 100}%)`
           }}
         >
-          {projects.map((project) => {
+          {projects.map((project, index) => {
             const projectUrl = `/work/projects/${project.slug}`
             
             return (
               <div 
                 key={project.slug}
                 className="w-full flex-shrink-0"
+                style={{ paddingLeft: 'clamp(8px, 2vw, 12px)', paddingRight: 'clamp(8px, 2vw, 12px)' }}
               >
                 <div className="w-full max-w-full">
                   <Link href={projectUrl} className="block">

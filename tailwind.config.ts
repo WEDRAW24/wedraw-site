@@ -51,7 +51,13 @@ const config: Config = {
 			'section-heading-mobile': ['clamp(36px, 4.5vw, 58px)', { lineHeight: '115%', letterSpacing: '0%' }],
 			
 			// Expertise Carousel (specialized for vertical carousel - scales with WE SVG)
-			'expertise-carousel': ['clamp(32px, 7vw, 84px)', { lineHeight: '85%', letterSpacing: '0.03em' }],
+        'expertise-carousel': ['clamp(32px, 7vw, 84px)', { lineHeight: '85%', letterSpacing: '0.03em' }],
+			
+			// Nav Heading Desktop (for large navigation menu titles)
+			'nav-heading': ['clamp(100px, 8.5vw, 120px)', { lineHeight: '100%', letterSpacing: '0%' }],
+			
+			// Nav Heading Mobile (for mobile navigation menu titles)
+			'nav-heading-mobile': ['clamp(48px, 14vw, 72px)', { lineHeight: '100%', letterSpacing: '0%' }],
 			
 			// Body text - XL (for featured/intro paragraphs - bold)
 			'body-xl': ['clamp(18px, 2.2vw, 24px)', { lineHeight: '160%', letterSpacing: '0%' }],
@@ -61,6 +67,9 @@ const config: Config = {
 			
 			// Body text - Medium (for standard paragraphs - normal weight)
 			'body-md': ['clamp(14px, 1.5vw, 18px)', { lineHeight: '160%', letterSpacing: '0%' }],
+			
+			// Mono Large (for mono text at body-lg size - semibold)
+			'mono-lg': ['clamp(16px, 1.8vw, 20px)', { lineHeight: '160%', letterSpacing: '0%' }],
 			
 			// Button text (mono, uppercase, tight line-height)
 			'button': ['clamp(12px, 1.8vw, 16px)', { lineHeight: '100%', letterSpacing: '2%' }],

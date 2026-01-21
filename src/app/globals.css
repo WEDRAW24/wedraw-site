@@ -162,7 +162,7 @@ body {
   
   /* SECTION HEADINGS - Major section titles (desktop) */
   .section-heading {
-    @apply font-sans font-area-extrabold text-section-heading;
+    @apply font-sans font-area-extrabold text-section-heading normal-case;
   }
   
   /* SECTION HEADINGS MOBILE - Major section titles (mobile only - tighter, uppercase, bolder) */
@@ -175,6 +175,16 @@ body {
     @apply font-sans font-area-black text-expertise-carousel;
     transform: translateY(-0.075em);
     -webkit-text-stroke: 3px currentColor;
+  }
+  
+  /* NAV HEADING - Large navigation menu titles (desktop) */
+  .nav-heading {
+    @apply font-sans font-area-bold text-nav-heading;
+  }
+  
+  /* NAV HEADING MOBILE - Navigation menu titles (mobile) */
+  .nav-heading-mobile {
+    @apply font-sans font-area-extrabold text-nav-heading-mobile;
   }
   
   /* BODY TEXT - XL (Featured/intro paragraphs - bold, larger) */
@@ -190,6 +200,11 @@ body {
   /* BODY TEXT - Medium (Standard paragraphs - normal weight, smaller) */
   .body-md {
     @apply font-sans font-area-normal text-body-md text-dark-grey;
+  }
+  
+  /* MONO LARGE - Mono typeface at body-lg size, normal weight */
+  .mono-lg {
+    @apply font-mono font-normal text-mono-lg text-dark-grey;
   }
   
   /* BUTTON TEXT - For all button components */

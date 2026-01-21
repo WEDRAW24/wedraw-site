@@ -161,7 +161,7 @@ export default function SelectedProjectsCarousel({ projects, debug = false }: Se
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        style={{ minHeight: windowWidth < 768 ? 'auto' : '800px' }}
+        style={{ minHeight: windowWidth < 768 ? 'auto' : windowWidth < 1024 ? '600px' : '800px' }}
       >
         {/* Inner container - centered, no clipping so cards can peek */}
         <div className="relative w-full mx-auto overflow-visible" style={{ maxWidth: `${containerMaxWidth}px` }}>

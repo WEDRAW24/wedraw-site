@@ -17,7 +17,7 @@ export default function SelectedProjectsSection() {
   const projects = [riverOfLightMetadata, blenheimMetadata, balloonFiestaMetadata]
 
   return (
-    <div className={`relative pb-[100px] pt-[30px] ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
+    <div className={`relative pb-[100px] pt-[30px] overflow-x-hidden ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
       <div className={`max-w-[1680px] mx-auto px-fluid-md md:px-4 sm:px-6 lg:px-[60px] ${DEBUG ? 'border-4 border-blue-500' : ''}`}>
         {/* Section Header */}
         <SectionHeader

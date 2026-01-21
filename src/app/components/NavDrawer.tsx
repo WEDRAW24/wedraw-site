@@ -118,12 +118,11 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
                 >
                   <div className={`flex justify-between items-end ${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
                     <h2
-                      className={`text-${color} leading-none font-bold transition-all duration-300 ${
+                      className={`nav-heading text-${color} transition-all duration-300 ${
                         hoveredSection ? 
                           title === hoveredSection ? 'text-white' : 'text-white opacity-50' 
                           : ''
                       } ${DEBUG ? 'border-2 border-green-500' : ''}`}
-                      style={{ fontSize: 'clamp(100px, 8.5vw, 120px)' }}
                     >
                       <Link href={href} onClick={onClose} className="block">
                         {title}
@@ -131,13 +130,13 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
                     </h2>
 
                     {/* Sub-links - hidden on smaller desktops, visible from 1100px+ */}
-                    <div className={`hidden min-[1100px]:block text-right font-mono text-[18px] flex flex-col justify-end ${DEBUG ? 'border-4 border-cyan-500' : ''}`}>
+                    <div className={`hidden min-[1100px]:block text-right flex flex-col justify-end ${DEBUG ? 'border-4 border-cyan-500' : ''}`}>
                       {links.map((link) => (
                         <Link
                           key={link.href}
                           href={link.href}
                           onClick={onClose}
-                          className={`block text-${color} transition-all duration-300 ${
+                          className={`block mono-lg text-${color} transition-all duration-300 ${
                             hoveredSection ? 
                               title === hoveredSection ? 'text-white' : 'text-white opacity-50'
                               : ''
@@ -153,15 +152,15 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
             </ul>
 
             {/* Contact Info - Desktop only */}
-            <div className={`absolute bottom-[40px] right-12 font-mono text-[16px] space-y-12 transition-all duration-300 ${
+            <div className={`absolute bottom-[40px] right-12 space-y-12 transition-all duration-300 ${
               hoveredSection ? 'text-white opacity-50' : ''
             } ${DEBUG ? 'border-4 border-pink-500' : ''}`}>
               <div>
-                <h3 className={`mb-2 text-blueprint transition-all duration-300 ${
+                <h3 className={`tag mb-2 text-blueprint transition-all duration-300 ${
                   hoveredSection ? 'text-white opacity-50' : ''
                 }`}>OFFICE</h3>
-                <p className={`font-sans text-[18px] leading-[140%] font-semibold text-black transition-all duration-300 ${
-                  hoveredSection ? 'text-white opacity-50' : ''
+                <p className={`body-md !text-black transition-all duration-300 ${
+                  hoveredSection ? '!text-white opacity-50' : ''
                 }`}>
                   59 Prince Street<br />
                   Bristol<br />
@@ -169,16 +168,16 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
                 </p>
               </div>
               <div>
-                <h3 className={`mb-2 text-blueprint transition-all duration-300 ${
+                <h3 className={`tag mb-2 text-blueprint transition-all duration-300 ${
                   hoveredSection ? 'text-white opacity-50' : ''
                 }`}>EMAIL ADDRESS</h3>
                 <a
-                  href="mailto:info@we-draw.co.uk"
-                  className={`font-sans text-[18px] leading-[140%] font-semibold text-black transition-all duration-300 ${
-                    hoveredSection ? 'text-white opacity-50' : ''
+                  href="mailto:info@wedraw.uk"
+                  className={`body-md !text-black transition-all duration-300 ${
+                    hoveredSection ? '!text-white opacity-50' : ''
                   }`}
                 >
-                  info@we-draw.co.uk
+                  info@wedraw.uk
                 </a>
               </div>
             </div>
@@ -220,20 +219,20 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
                   className={`border-b-2 border-${color} pb-5 ${DEBUG ? 'border-4 border-red-500' : ''}`}
                 >
                   <div className="flex justify-between items-end">
-                    <h2 className={`text-${color} leading-none font-extrabold ${DEBUG ? 'border-2 border-yellow-500' : ''}`} style={{ fontSize: 'clamp(48px, 14vw, 72px)' }}>
+                    <h2 className={`nav-heading-mobile text-${color} ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
                       <Link href={href} onClick={onClose} className="block">
                         {title}
                       </Link>
                     </h2>
 
                     {/* Sub-links - hidden on small phones, visible on tablets */}
-                    <div className="hidden min-[500px]:block text-right font-mono flex flex-col justify-end" style={{ fontSize: 'clamp(10px, 2.5vw, 14px)' }}>
+                    <div className="hidden min-[500px]:block text-right flex flex-col justify-end">
                       {links.map((link) => (
                         <Link
                           key={link.href}
                           href={link.href}
                           onClick={onClose}
-                          className={`block text-${color}`}
+                          className={`block link text-${color}`}
                         >
                           {link.label}
                         </Link>
@@ -247,42 +246,30 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
             {/* Contact Info & Social Icons - Mobile */}
             <div className={`flex justify-between items-end flex-shrink-0 ${DEBUG ? 'border-4 border-green-500' : ''}`}>
               {/* Contact Info - LEFT */}
-              <div className={`font-mono text-[12px] space-y-4 ${DEBUG ? 'border-4 border-cyan-500' : ''}`}>
+              <div className={`space-y-4 ${DEBUG ? 'border-4 border-cyan-500' : ''}`}>
                 <div>
-                  <h3 className="mb-1 text-blueprint font-semibold">OFFICE</h3>
-                  <p className="font-sans text-[14px] leading-[140%] font-semibold text-black">
+                  <h3 className="tag mb-1 text-blueprint">OFFICE</h3>
+                  <p className="body-md !text-black">
                     59 Prince Street<br />
                     Bristol<br />
                     BS1 4QH
                   </p>
                 </div>
                 <div>
-                  <h3 className="mb-1 text-blueprint font-semibold">EMAIL ADDRESS</h3>
+                  <h3 className="tag mb-1 text-blueprint">EMAIL ADDRESS</h3>
                   <a
-                    href="mailto:info@we-draw.co.uk"
-                    className="font-sans text-[14px] leading-[140%] font-semibold text-black"
+                    href="mailto:info@wedraw.uk"
+                    className="body-md !text-black"
                   >
-                    info@we-draw.co.uk
+                    info@wedraw.uk
                   </a>
                 </div>
               </div>
 
-              {/* Social Icons - RIGHT */}
+              {/* Social Icon - RIGHT */}
               <div className={`flex flex-col gap-3 pb-1 ${DEBUG ? 'border-4 border-pink-500' : ''}`}>
                 <Link 
-                  href="https://instagram.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-blueprint"
-                >
-                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13.7277 0H5.57001C2.49378 0 0 2.58454 0 5.77272V14.2273C0 17.4155 2.49378 20 5.57001 20H13.7277C16.8039 20 19.2976 17.4155 19.2976 14.2273V5.77272C19.2976 2.58454 16.8039 0 13.7277 0ZM17.5205 14.3759C17.5205 16.4922 15.8651 18.2079 13.8231 18.2079H5.47454C3.43253 18.2079 1.77716 16.4922 1.77716 14.3759V5.72347C1.77716 3.60714 3.43253 1.89151 5.47454 1.89151H13.8231C15.8651 1.89151 17.5205 3.60714 17.5205 5.72347V14.3759Z" fill="currentColor"/>
-                    <path d="M9.64968 4.86035C6.88434 4.86035 4.64258 7.18369 4.64258 10.0497C4.64258 12.9157 6.88433 15.239 9.64968 15.239C12.415 15.239 14.6567 12.9157 14.6567 10.0497C14.6567 7.18369 12.415 4.86035 9.64968 4.86035ZM9.64968 13.4136C7.85706 13.4136 6.40386 11.9075 6.40386 10.0497C6.40386 8.19181 7.85706 6.68573 9.64968 6.68573C11.4423 6.68573 12.8955 8.19182 12.8955 10.0497C12.8955 11.9075 11.4423 13.4136 9.64968 13.4136Z" fill="currentColor"/>
-                    <path d="M14.8227 5.87194C15.4669 5.87194 15.9892 5.33069 15.9892 4.66302C15.9892 3.99535 15.4669 3.4541 14.8227 3.4541C14.1785 3.4541 13.6562 3.99535 13.6562 4.66302C13.6562 5.33069 14.1785 5.87194 14.8227 5.87194Z" fill="currentColor"/>
-                  </svg>
-                </Link>
-                <Link 
-                  href="https://linkedin.com" 
+                  href="https://www.linkedin.com/company/wedraw-uk/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-blueprint"

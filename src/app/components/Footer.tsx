@@ -5,7 +5,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import LogoSvg from "../assets/logos/WEDRAW Logo Primary White.svg";
-import InstagramWhite from "../assets/icons/Instagram_white.svg";
 import LinkedInWhite from "../assets/icons/LinkedIn_white.svg";
 
 export default function Footer() {
@@ -57,26 +56,11 @@ export default function Footer() {
               </ul>
             </nav>
 
-            {/* Social Section */}
-            <div className={`mb-8 pb-8 border-b border-white/30 ${DEBUG ? 'border-4 border-cyan-500' : ''}`}>
-              <p className="font-mono text-sm mb-3 opacity-80">Let's be social</p>
-              <div className="flex gap-4">
+            {/* Social Section - Icon first on mobile */}
+            <div className={`mb-6 pb-6 border-b border-white/30 ${DEBUG ? 'border-4 border-cyan-500' : ''}`}>
+              <div className="flex items-center gap-3">
                 <Link 
-                  href="https://www.instagram.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:opacity-80 transition"
-                >
-                  <Image
-                    src={InstagramWhite}
-                    alt="Instagram"
-                    width={24}
-                    height={24}
-                    className="w-6 h-6"
-                  />
-                </Link>
-                <Link 
-                  href="https://www.linkedin.com" 
+                  href="https://www.linkedin.com/company/wedraw-uk/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="hover:opacity-80 transition"
@@ -89,30 +73,31 @@ export default function Footer() {
                     className="w-6 h-6"
                   />
                 </Link>
+                <p className="font-mono text-link">Let's be social</p>
               </div>
             </div>
 
             {/* Contact Info */}
             <div className={`mb-6 ${DEBUG ? 'border-4 border-pink-500' : ''}`}>
-              <a href="mailto:info@we-draw.co.uk" className="block font-mono text-sm mb-2 hover:opacity-80 transition">
-                info@we-draw.co.uk
+              <a href="mailto:info@wedraw.uk" className="block font-mono text-link mb-4 hover:opacity-80 transition">
+                info@wedraw.uk
               </a>
-              <p className="font-mono text-sm opacity-80">
+              <p className="font-mono text-link">
                 59 Prince Street<br />
                 Bristol, BS1 4QH
               </p>
             </div>
 
             {/* Footer Credits */}
-            <div className={`flex flex-col gap-2 font-mono text-xs opacity-60 pb-6 ${DEBUG ? 'border-4 border-lime-500' : ''}`}>
+            <div className={`flex flex-col gap-4 font-mono text-link pb-6 ${DEBUG ? 'border-4 border-lime-500' : ''}`}>
               <div className="flex gap-3">
                 <span>© {new Date().getFullYear()}</span>
                 <Link href="/privacy-policy" className="link">
                   Privacy Policy
                 </Link>
               </div>
-              <a href="https://aidanjones.design" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">
-                Branding by Aidan Jones Design
+              <a href="https://www.aidanjonesdesign.co.uk/" target="_blank" rel="noopener noreferrer" className="link">
+                Branding by...
               </a>
             </div>
           </div>
@@ -129,38 +114,22 @@ export default function Footer() {
                 <li><Link href="/studio" className="link">STUDIO</Link></li>
                 <li><Link href="/journal" className="link">JOURNAL</Link></li>
                 <li><Link href="/contact" className="link">CONTACT</Link></li>
-                <li className="flex items-center" style={{ gap: 'clamp(4px, 1vw, 16px)' }}>
-                  <span className="hidden min-[600px]:inline">FOLLOW US</span>
-                  <div className="flex" style={{ gap: 'clamp(4px, 1vw, 16px)' }}>
-                    <Link 
-                      href="https://www.instagram.com" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="hover:opacity-80 transition"
-                    >
-                      <Image
-                        src={InstagramWhite}
-                        alt="Instagram"
-                        width={16}
-                        height={16}
-                        className="w-4 h-4 min-[600px]:w-5 min-[600px]:h-5"
-                      />
-                    </Link>
-                    <Link 
-                      href="https://www.linkedin.com" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="hover:opacity-80 transition"
-                    >
-                      <Image
-                        src={LinkedInWhite}
-                        alt="LinkedIn"
-                        width={16}
-                        height={16}
-                        className="w-4 h-4 min-[600px]:w-5 min-[600px]:h-5"
-                      />
-                    </Link>
-                  </div>
+                <li className="flex items-center" style={{ gap: 'clamp(4px, 1vw, 12px)' }}>
+                  <span className="font-mono text-sm hidden min-[600px]:inline">Let's be social</span>
+                  <Link 
+                    href="https://www.linkedin.com/company/wedraw-uk/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:opacity-80 transition"
+                  >
+                    <Image
+                      src={LinkedInWhite}
+                      alt="LinkedIn"
+                      width={16}
+                      height={16}
+                      className="w-4 h-4 min-[600px]:w-5 min-[600px]:h-5"
+                    />
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -181,8 +150,8 @@ export default function Footer() {
           {/* Contact Info */}
           <div className={`border-b border-white ${DEBUG ? 'border-4 border-cyan-500' : ''}`} style={{ paddingBottom: 'clamp(8px, 2vw, 24px)' }}>
             <div className={`flex justify-between items-center font-mono ${DEBUG ? 'border-4 border-pink-500' : ''}`} style={{ fontSize: 'clamp(9px, 2vw, 14px)' }}>
-              <a href="mailto:info@we-draw.co.uk" className="hover:opacity-80 transition">
-                info@we-draw.co.uk
+              <a href="mailto:info@wedraw.uk" className="hover:opacity-80 transition">
+                info@wedraw.uk
               </a>
               <span>59 Prince Street, Bristol, BS1 4QH</span>
             </div>
@@ -194,8 +163,8 @@ export default function Footer() {
             <Link href="/privacy-policy" className="link">
               Privacy Policy
             </Link>
-            <a href="https://aidanjones.design" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">
-              Branding by Aidan Jones Design
+            <a href="https://www.aidanjonesdesign.co.uk/" target="_blank" rel="noopener noreferrer" className="link">
+              Branding by...
             </a>
           </div>
         </div>

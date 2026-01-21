@@ -98,39 +98,36 @@ export default function SelectedProjectCard({ project, debug = false }: Selected
             }}
           ></div>
 
-          {/* Two Column Layout */}
-          <div 
-            className={`grid grid-cols-12 ${debug ? 'border-4 border-orange-500' : ''}`}
-            style={{
-              gap: 'clamp(16px, 2vw, 24px)'
-            }}
-          >
+          {/* Stacked Layout: Title, Description, Link */}
+          <div className={`${debug ? 'border-4 border-orange-500' : ''}`}>
             {/* Title */}
-            <div className={`col-span-5 ${debug ? 'border-4 border-red-500' : ''}`}>
-              <Link href={projectUrl} className="group">
-                <h3 className="title-card transition-colors duration-300 group-hover:text-marker">
-                  {title}
-                </h3>
-              </Link>
-            </div>
+            <Link href={projectUrl} className="group">
+              <h3 
+                className="title-card transition-colors duration-300 group-hover:text-marker"
+                style={{
+                  marginBottom: 'clamp(12px, 1.5vw, 20px)'
+                }}
+              >
+                {title}
+              </h3>
+            </Link>
 
-            {/* Description + Link */}
-            <div className={`col-span-7 ${debug ? 'border-4 border-blue-500' : ''}`}>
-              {description && (
-                <p 
-                  className="body-md"
-                  style={{
-                    marginBottom: 'clamp(16px, 2vw, 24px)'
-                  }}
-                >
-                  {description}
-                </p>
-              )}
-              
-              <UnderlineLink href={projectUrl} className="text-marker uppercase">
-                More about the project
-              </UnderlineLink>
-            </div>
+            {/* Description */}
+            {description && (
+              <p 
+                className="body-md"
+                style={{
+                  marginBottom: 'clamp(16px, 2vw, 24px)'
+                }}
+              >
+                {description}
+              </p>
+            )}
+            
+            {/* Link */}
+            <UnderlineLink href={projectUrl} className="text-marker uppercase">
+              More about the project
+            </UnderlineLink>
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ import {
 
 export default function HomeContent() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       <HeroSection />
       <OurExpertiseSection />
       <SelectedProjectsSection />

@@ -148,9 +148,9 @@ export default function HeroSection() {
       <div className={`relative py-fluid-xl md:pb-[100px] md:pt-[30px] ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
         {/* Max Width Container */}
         <div className="max-w-[1680px] mx-auto">
-          {/* Mobile: Full width with padding, Desktop: Original 70% width on right */}
+          {/* Mobile: Full width with padding, Desktop: Original 70% width on right, max-width to not exceed image */}
           <div className={`w-full px-fluid-md md:ml-auto md:mr-[64px] md:px-0 ${DEBUG ? 'border-4 border-blue-500' : ''}`} style={{ width: '100%' }}>
-            <div className="md:w-[calc(70vw-64px)] md:ml-auto">
+            <div className="md:w-[calc(70vw-64px)] md:max-w-[1100px] md:ml-auto">
               {/* Blueprint Divider Line */}
               <div className={`h-[2px] bg-blueprint mb-fluid-lg md:mb-[20px] ${DEBUG ? 'border-2 border-cyan-500' : ''}`}></div>
 
