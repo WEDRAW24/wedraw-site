@@ -7,8 +7,8 @@ export default function ProjectContent() {
     <>
       {/* First body text section with Credits side by side */}
       <div className="grid grid-cols-12 gap-4 mb-20">
-        {/* Credits section on the left */}
-        <div className="col-start-1 col-span-3 px-4 md:px-0">
+        {/* Credits section - full width on mobile, left column on desktop */}
+        <div className="col-span-12 px-4 md:px-0 md:col-start-1 md:col-span-3 mb-8 md:mb-0">
           <Credits 
             sections={[
               {
@@ -34,10 +34,10 @@ export default function ProjectContent() {
 
         {/* Body text on the right */}
         <div className="col-span-12 px-4 md:px-0 md:col-start-5 md:col-span-8">
-          <p className="font-area-normal text-[18px] leading-[180%] mb-3">
+          <p className="body-lg mb-3">
             We were delighted to provide site design services for the 2024 Bristol International Balloon Fiesta at Ashton Court Estate. This iconic event, which has become Europe's largest annual meeting of hot air balloons, draws hundreds of thousands of visitors to witness the spectacular mass ascents and nightglows against Bristol's historic skyline.
           </p>
-          <p className="font-area-normal text-[18px] leading-[180%]">
+          <p className="body-lg">
             Our team worked to optimize the site layout to enhance both the visitor experience and operational efficiency. The design carefully balanced the needs of balloon operators, food vendors, and entertainment areas while ensuring smooth crowd flow and maintaining clear sight lines for the event's stunning aerial displays.
           </p>
         </div>

@@ -105,8 +105,8 @@ export default function ProjectEnquiryPage() {
             <div className="w-4 h-4 border-2 border-blueprint"></div>
           </div>
 
-          {/* Subtitle - Using new display-md class */}
-          <h2 className="display-md text-blueprint mb-fluid-xl">
+          {/* Subtitle */}
+          <h2 className="form-heading text-blueprint mb-fluid-xl">
             Help us to understand your vision
           </h2>
 
@@ -114,7 +114,7 @@ export default function ProjectEnquiryPage() {
           <div className="space-y-fluid-lg max-w-[800px]">
             {/* Project Description */}
             <div>
-              <label className="label-md text-blueprint block mb-3">
+              <label className="button text-blueprint block mb-3">
                 Tell us a bit about your project
               </label>
               <textarea
@@ -129,9 +129,9 @@ export default function ProjectEnquiryPage() {
               />
               <div className="flex justify-between mt-2">
                 {errors.projectDescription && (
-                  <span className="text-red-500 body-xs">{errors.projectDescription}</span>
+                  <span className="text-red-500 body-sm">{errors.projectDescription}</span>
                 )}
-                <span className="body-xs text-gray-500 ml-auto">
+                <span className="body-sm text-gray-500 ml-auto">
                   {formData.projectDescription.length}/500
                 </span>
               </div>
@@ -141,7 +141,7 @@ export default function ProjectEnquiryPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-fluid-sm">
               {/* Location */}
               <div>
-                <label className="label-md text-blueprint block mb-3">
+                <label className="button text-blueprint block mb-3">
                   Location
                 </label>
                 <input
@@ -154,13 +154,13 @@ export default function ProjectEnquiryPage() {
                   className="w-full border border-black px-4 py-3 body-md focus:outline-none focus:border-blueprint"
                 />
                 {errors.location && (
-                  <span className="text-red-500 body-xs block mt-1">{errors.location}</span>
+                  <span className="text-red-500 body-sm block mt-1">{errors.location}</span>
                 )}
               </div>
 
               {/* Size/Capacity */}
               <div>
-                <label className="label-md text-blueprint block mb-3">
+                <label className="button text-blueprint block mb-3">
                   Size/Capacity
                 </label>
                 <input
@@ -173,13 +173,13 @@ export default function ProjectEnquiryPage() {
                   className="w-full border border-black px-4 py-3 body-md focus:outline-none focus:border-blueprint"
                 />
                 {errors.sizeCapacity && (
-                  <span className="text-red-500 body-xs block mt-1">{errors.sizeCapacity}</span>
+                  <span className="text-red-500 body-sm block mt-1">{errors.sizeCapacity}</span>
                 )}
               </div>
 
               {/* Dates of Event */}
               <div>
-                <label className="label-md text-blueprint block mb-3">
+                <label className="button text-blueprint block mb-3">
                   Dates of Event
                 </label>
                 <DatePicker
@@ -199,14 +199,14 @@ export default function ProjectEnquiryPage() {
                   dateFormat="dd/MM/yy"
                 />
                 {errors.dates && (
-                  <span className="text-red-500 body-xs block mt-1">{errors.dates}</span>
+                  <span className="text-red-500 body-sm block mt-1">{errors.dates}</span>
                 )}
               </div>
             </div>
 
             {/* Services Interested In */}
             <div>
-              <label className="label-md text-blueprint block mb-4">
+              <label className="button text-blueprint block mb-4">
                 Services Interested In
               </label>
               {/* Stack vertically on mobile, all on one line on tablet+ */}
@@ -230,7 +230,7 @@ export default function ProjectEnquiryPage() {
                 ))}
               </div>
               {errors.services && (
-                <span className="text-red-500 body-xs mt-2 block">{errors.services}</span>
+                <span className="text-red-500 body-sm mt-2 block">{errors.services}</span>
               )}
             </div>
 

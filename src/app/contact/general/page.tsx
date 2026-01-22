@@ -117,8 +117,8 @@ export default function GeneralContactPage() {
             <div className="w-4 h-4 bg-blueprint"></div>
           </div>
 
-          {/* Subtitle - Using new display-md class */}
-          <h2 className="display-md text-blueprint mb-fluid-xl">
+          {/* Subtitle */}
+          <h2 className="form-heading text-blueprint mb-fluid-xl">
             Tell us how we can help
           </h2>
 
@@ -128,7 +128,7 @@ export default function GeneralContactPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-fluid-sm">
               {/* Name */}
               <div>
-                <label className="label-md text-blueprint block mb-3">
+                <label className="button text-blueprint block mb-3">
                   Name
                 </label>
                 <input
@@ -141,13 +141,13 @@ export default function GeneralContactPage() {
                   className="w-full border border-black px-4 py-3 body-md focus:outline-none focus:border-blueprint"
                 />
                 {errors.name && (
-                  <span className="text-red-500 body-xs block mt-1">{errors.name}</span>
+                  <span className="text-red-500 body-sm block mt-1">{errors.name}</span>
                 )}
               </div>
 
               {/* Phone */}
               <div>
-                <label className="label-md text-blueprint block mb-3">
+                <label className="button text-blueprint block mb-3">
                   Phone
                 </label>
                 <input
@@ -160,13 +160,13 @@ export default function GeneralContactPage() {
                   className="w-full border border-black px-4 py-3 body-md focus:outline-none focus:border-blueprint"
                 />
                 {errors.phone && (
-                  <span className="text-red-500 body-xs block mt-1">{errors.phone}</span>
+                  <span className="text-red-500 body-sm block mt-1">{errors.phone}</span>
                 )}
               </div>
 
               {/* Email */}
               <div>
-                <label className="label-md text-blueprint block mb-3">
+                <label className="button text-blueprint block mb-3">
                   Email
                 </label>
                 <input
@@ -179,14 +179,14 @@ export default function GeneralContactPage() {
                   className="w-full border border-black px-4 py-3 body-md focus:outline-none focus:border-blueprint"
                 />
                 {errors.email && (
-                  <span className="text-red-500 body-xs block mt-1">{errors.email}</span>
+                  <span className="text-red-500 body-sm block mt-1">{errors.email}</span>
                 )}
               </div>
             </div>
 
             {/* Message */}
             <div>
-              <label className="label-md text-blueprint block mb-3">
+              <label className="button text-blueprint block mb-3">
                 Your Message
               </label>
               <textarea
@@ -201,9 +201,9 @@ export default function GeneralContactPage() {
               />
               <div className="flex justify-between mt-2">
                 {errors.message && (
-                  <span className="text-red-500 body-xs">{errors.message}</span>
+                  <span className="text-red-500 body-sm">{errors.message}</span>
                 )}
-                <span className="body-xs text-gray-500 ml-auto">
+                <span className="body-sm text-gray-500 ml-auto">
                   {formData.message.length}/500
                 </span>
               </div>
@@ -211,7 +211,7 @@ export default function GeneralContactPage() {
 
             {/* Services Interested In */}
             <div>
-              <label className="label-md text-blueprint block mb-4">
+              <label className="button text-blueprint block mb-4">
                 Services Interested In
               </label>
               {/* Stack vertically on mobile, all on one line on tablet+ */}

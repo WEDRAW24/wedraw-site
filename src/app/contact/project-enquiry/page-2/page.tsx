@@ -136,8 +136,8 @@ export default function ProjectEnquiryPage2() {
             <div className="w-4 h-4 bg-blueprint"></div>
           </div>
 
-          {/* Subtitle - Using new display-md class */}
-          <h2 className="display-md text-blueprint mb-fluid-xl">
+          {/* Subtitle */}
+          <h2 className="form-heading text-blueprint mb-fluid-xl">
             Now let's get your information
           </h2>
 
@@ -147,7 +147,7 @@ export default function ProjectEnquiryPage2() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-fluid-sm">
               {/* Name */}
               <div>
-                <label className="label-md text-blueprint block mb-3">
+                <label className="button text-blueprint block mb-3">
                   Name
                 </label>
                 <input
@@ -160,13 +160,13 @@ export default function ProjectEnquiryPage2() {
                   className="w-full border border-black px-4 py-3 body-md focus:outline-none focus:border-blueprint"
                 />
                 {errors.name && (
-                  <span className="text-red-500 body-xs block mt-1">{errors.name}</span>
+                  <span className="text-red-500 body-sm block mt-1">{errors.name}</span>
                 )}
               </div>
 
               {/* Phone */}
               <div>
-                <label className="label-md text-blueprint block mb-3">
+                <label className="button text-blueprint block mb-3">
                   Phone
                 </label>
                 <input
@@ -179,13 +179,13 @@ export default function ProjectEnquiryPage2() {
                   className="w-full border border-black px-4 py-3 body-md focus:outline-none focus:border-blueprint"
                 />
                 {errors.phone && (
-                  <span className="text-red-500 body-xs block mt-1">{errors.phone}</span>
+                  <span className="text-red-500 body-sm block mt-1">{errors.phone}</span>
                 )}
               </div>
 
               {/* Email */}
               <div>
-                <label className="label-md text-blueprint block mb-3">
+                <label className="button text-blueprint block mb-3">
                   Email
                 </label>
                 <input
@@ -198,7 +198,7 @@ export default function ProjectEnquiryPage2() {
                   className="w-full border border-black px-4 py-3 body-md focus:outline-none focus:border-blueprint"
                 />
                 {errors.email && (
-                  <span className="text-red-500 body-xs block mt-1">{errors.email}</span>
+                  <span className="text-red-500 body-sm block mt-1">{errors.email}</span>
                 )}
               </div>
             </div>
@@ -207,7 +207,7 @@ export default function ProjectEnquiryPage2() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-fluid-sm">
               {/* Profession */}
               <div>
-                <label className="label-md text-blueprint block mb-3">
+                <label className="button text-blueprint block mb-3">
                   Profession
                 </label>
                 <textarea
@@ -222,7 +222,7 @@ export default function ProjectEnquiryPage2() {
 
               {/* How Did You Learn About Us */}
               <div>
-                <label className="label-md text-blueprint block mb-3">
+                <label className="button text-blueprint block mb-3">
                   How did you learn about us?
                 </label>
                 <textarea

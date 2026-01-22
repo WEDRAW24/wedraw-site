@@ -33,11 +33,19 @@ export default function HeroSection() {
                 src="/home-hero.jpg"
                 alt="Hot air balloons at festival"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-top scale-x-[-1]"
                 priority
                 sizes="100vw"
               />
             </motion.div>
+
+            {/* White gradient overlay for text readability */}
+            <div 
+              className="absolute inset-0 z-[5] pointer-events-none"
+              style={{
+                background: 'linear-gradient(to bottom, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.6) 25%, rgba(255,255,255,0) 50%)'
+              }}
+            />
 
             {/* Overlaid Content */}
             <div className={`relative z-10 h-full flex flex-col px-fluid-md pt-fluid-xl ${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
@@ -102,7 +110,7 @@ export default function HeroSection() {
                 src="/home-hero.jpg"
                 alt="Hot air balloons at festival"
                 fill
-                className="object-cover"
+                className="object-cover object-top scale-x-[-1]"
                 priority
                 sizes="(max-width: 768px) 100vw, 80vw"
               />

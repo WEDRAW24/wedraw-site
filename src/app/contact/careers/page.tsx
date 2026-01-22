@@ -19,8 +19,8 @@ export default function CareersPage() {
             <div className="w-4 h-4 bg-blueprint"></div>
           </div>
 
-          {/* Subtitle - Using new display-md class */}
-          <h2 className="display-md text-blueprint mb-fluid-lg">
+          {/* Subtitle */}
+          <h2 className="form-heading text-blueprint mb-fluid-lg">
             Lets get connected
           </h2>
 
@@ -31,7 +31,7 @@ export default function CareersPage() {
             </p>
             
             <p className="body-lg">
-              To reach out to us about either, please email with the subject line 'Application' to info@we-draw.co.uk
+              To reach out to us about either, please email with the subject line 'Application' to info@wedraw.uk
             </p>
 
             {/* Buttons - Side by side on all screen sizes */}
@@ -46,7 +46,7 @@ export default function CareersPage() {
               <Button
                 variant="blueprint"
                 size="md"
-                href="mailto:info@we-draw.co.uk?subject=Application"
+                href="mailto:info@wedraw.uk?subject=Application"
               >
                 EMAIL US
               </Button>

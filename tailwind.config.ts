@@ -105,40 +105,11 @@ const config: Config = {
 			// Featured Text (for mission statements, large featured copy)
 			'featured-text': ['clamp(28px, 4vw, 42px)', { lineHeight: '140%', letterSpacing: '0%' }],
 			
+			// Body text - Small (for helper text, error messages, character counts)
+			'body-sm': ['clamp(11px, 1.2vw, 14px)', { lineHeight: '140%', letterSpacing: '0%' }],
 			
-			// ============================================
-			// OLD SYSTEM - To be phased out
-			// ============================================
-			
-			// 'display-xxl' - MOVED TO NEW SYSTEM ABOVE
-			// 'display-xl' - MOVED TO NEW SYSTEM ABOVE
-			'display-lg': ['clamp(40px, 7vw, 72px)', { lineHeight: '120%', letterSpacing: '0%' }],
-			'display-md': ['clamp(36px, 6vw, 58px)', { lineHeight: '120%', letterSpacing: '0%' }],
-			'display-sm': ['clamp(32px, 5vw, 48px)', { lineHeight: '120%', letterSpacing: '0%' }],
-			
-			// Heading sizes - OLD
-			'heading-1': ['clamp(28px, 4.5vw, 38px)', { lineHeight: '130%', letterSpacing: '0%' }],
-			'heading-2': ['clamp(24px, 4vw, 32px)', { lineHeight: '130%', letterSpacing: '0%' }],
-			'heading-3': ['clamp(20px, 3.5vw, 30px)', { lineHeight: '130%', letterSpacing: '0%' }],
-			'heading-4': ['clamp(18px, 3vw, 24px)', { lineHeight: '140%', letterSpacing: '0%' }],
-			
-			// Mono Heading sizes (for big bold mono text, NOT uppercase) - OLD
-			'mono-heading-lg': ['clamp(24px, 4vw, 32px)', { lineHeight: '130%', letterSpacing: '0%' }],
-			'mono-heading-md': ['clamp(20px, 3.5vw, 30px)', { lineHeight: '130%', letterSpacing: '0%' }],
-			'mono-heading-sm': ['clamp(18px, 3vw, 24px)', { lineHeight: '140%', letterSpacing: '0%' }],
-			
-			// Body text sizes - OLD
-			// 'body-xl' - MOVED TO NEW SYSTEM ABOVE
-			// 'body-lg' - MOVED TO NEW SYSTEM ABOVE
-			// 'body-md' - MOVED TO NEW SYSTEM ABOVE
-			'body-sm': ['clamp(12px, 1.2vw, 15px)', { lineHeight: '160%', letterSpacing: '0%' }],
-			'body-xs': ['clamp(10px, 1vw, 14px)', { lineHeight: '160%', letterSpacing: '0%' }],
-			
-			// Mono/label sizes (for tags, metadata) - OLD
-			'label-lg': ['clamp(14px, 1.8vw, 16px)', { lineHeight: '100%', letterSpacing: '2%' }],
-			'label-md': ['clamp(13px, 1.5vw, 14px)', { lineHeight: '100%', letterSpacing: '2%' }],
-			'label-sm': ['clamp(11px, 1.2vw, 12px)', { lineHeight: '100%', letterSpacing: '2%' }],
-			// 'button' - MOVED TO NEW SYSTEM ABOVE
+			// Form Heading (for form page subtitles - contact pages)
+			'form-heading': ['clamp(36px, 6vw, 58px)', { lineHeight: '120%', letterSpacing: '0%' }],
 		},
   		colors: {
   			blueprint: '#2242FF',

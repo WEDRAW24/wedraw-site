@@ -264,90 +264,13 @@ body {
     @apply font-sans font-area-bold text-featured-text text-dark-grey;
   }
   
-  
-  /* ============================================
-     OLD SYSTEM - To be phased out
-     ============================================ */
-  
-  /* .display-xxl - MOVED TO NEW SYSTEM ABOVE */
-  /* .display-xl - MOVED TO NEW SYSTEM ABOVE */
-  
-  .display-lg {
-    @apply font-sans font-area-extrabold text-display-lg;
-  }
-  
-  .display-md {
-    @apply font-sans font-area-extrabold text-display-md;
-  }
-  
-  .display-sm {
-    @apply font-sans font-area-extrabold text-display-sm;
-  }
-
-  /* HEADINGS - For section titles and content hierarchy - OLD */
-  .heading-1 {
-    @apply font-sans font-area-extrabold text-heading-1;
-  }
-  
-  .heading-2 {
-    @apply font-sans font-area-bold text-heading-2;
-  }
-  
-  .heading-3 {
-    @apply font-sans font-area-bold text-heading-3;
-  }
-  
-  .heading-4 {
-    @apply font-sans font-area-semibold text-heading-4;
-  }
-
-  /* BODY TEXT - For paragraphs and main content - OLD */
-  /* .body-xl - MOVED TO NEW SYSTEM ABOVE */
-  /* .body-lg - MOVED TO NEW SYSTEM ABOVE */
-  /* .body-md - MOVED TO NEW SYSTEM ABOVE */
-  
+  /* BODY TEXT - Small (Helper text, error messages, character counts) */
   .body-sm {
     @apply font-sans font-area-normal text-body-sm text-dark-grey;
   }
   
-  .body-xs {
-    @apply font-sans font-area-normal text-body-xs text-dark-grey;
-  }
-
-  /* MONO HEADINGS - Big bold mono text (NOT uppercase) - OLD */
-  .mono-heading-lg {
-    @apply font-mono font-mono-semibold text-mono-heading-lg tracking-wide;
-  }
-  
-  .mono-heading-md {
-    @apply font-mono font-mono-semibold text-mono-heading-md tracking-wide;
-  }
-  
-  .mono-heading-sm {
-    @apply font-mono font-mono-semibold text-mono-heading-sm tracking-wide;
-  }
-
-  /* LABELS - For tags, metadata (monospace, uppercase) - OLD */
-  .label-lg {
-    @apply font-mono font-mono-medium text-label-lg uppercase tracking-wider;
-  }
-  
-  .label-md {
-    @apply font-mono font-mono-medium text-label-md uppercase tracking-wider;
-  }
-  
-  .label-sm {
-    @apply font-mono font-mono-normal text-label-sm uppercase tracking-wider;
-  }
-  
-  /* .button - MOVED TO NEW SYSTEM ABOVE */
-
-  /* UTILITY VARIANTS - Modify existing classes - OLD */
-  .body-xl-light,
-  .body-lg-light,
-  .body-md-light,
-  .body-sm-light,
-  .body-xs-light {
-    @apply font-area-normal;
+  /* FORM HEADING - For form page subtitles (contact pages) */
+  .form-heading {
+    @apply font-sans font-area-extrabold text-form-heading;
   }
 }

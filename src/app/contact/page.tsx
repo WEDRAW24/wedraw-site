@@ -21,8 +21,8 @@ export default function ContactPage() {
             <div className="w-4 h-4 border-2 border-blueprint"></div>
           </div>
 
-          {/* Subtitle - Using new display-md class */}
-          <h2 className="display-md text-blueprint mb-fluid-xl">
+          {/* Subtitle */}
+          <h2 className="form-heading text-blueprint mb-fluid-xl">
             Why are you reaching out today?
           </h2>
 

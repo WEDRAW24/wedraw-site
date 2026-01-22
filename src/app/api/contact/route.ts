@@ -223,7 +223,7 @@ ${selectedServices}
     // Send email
     await transporter.sendMail({
       from: process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER,
-      to: 'theo@hatchastudios.co.uk',
+      to: 'info@wedraw.uk',
       subject: emailSubject,
       text: emailText,
       html: emailHtml,
