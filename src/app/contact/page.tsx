@@ -32,21 +32,18 @@ export default function ContactPage() {
             <div className="flex flex-col sm:flex-row flex-wrap items-start gap-fluid-sm">
               <Button 
                 variant="blueprint" 
-                size="md"
                 href="/contact/project-enquiry"
               >
                 PROJECT ENQUIRY
               </Button>
               <Button 
                 variant="blueprint" 
-                size="md"
                 href="/contact/general"
               >
                 GENERAL CONTACT
               </Button>
               <Button 
                 variant="blueprint" 
-                size="md"
                 href="/contact/careers"
               >
                 CAREERS / INTERNSHIPS

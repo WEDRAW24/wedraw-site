@@ -38,14 +38,12 @@ export default function CareersPage() {
             <div className="flex items-start gap-fluid-sm pt-fluid-md">
               <Button
                 variant="blueprint"
-                size="md"
                 href="/contact"
               >
                 BACK
               </Button>
               <Button
                 variant="blueprint"
-                size="md"
                 href="mailto:info@wedraw.uk?subject=Application"
               >
                 EMAIL US

@@ -238,14 +238,12 @@ export default function ProjectEnquiryPage() {
             <div className="flex items-start gap-fluid-sm pt-fluid-sm">
               <Button 
                 variant="blueprint" 
-                size="md"
                 onClick={() => router.push('/contact')}
               >
                 BACK
               </Button>
               <Button 
                 variant="blueprint" 
-                size="md"
                 onClick={handleNext}
               >
                 NEXT

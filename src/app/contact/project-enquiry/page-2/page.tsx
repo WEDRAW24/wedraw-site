@@ -240,14 +240,12 @@ export default function ProjectEnquiryPage2() {
             <div className="flex items-start gap-fluid-sm pt-fluid-sm">
               <Button
                 variant="blueprint"
-                size="md"
                 onClick={handleBack}
               >
                 BACK
               </Button>
               <Button
                 variant="blueprint"
-                size="md"
                 onClick={handleSubmit}
                 disabled={isSubmitting}
               >

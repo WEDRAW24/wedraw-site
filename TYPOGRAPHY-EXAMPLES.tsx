@@ -25,7 +25,7 @@ export function HeroExample() {
       </p>
       
       {/* CTA Button */}
-      <Button variant="blueprint" size="md" href="/contact">
+      <Button variant="blueprint"  href="/contact">
         GET IN TOUCH
       </Button>
     </section>
@@ -248,7 +248,7 @@ export function FormExample() {
       </div>
       
       {/* Submit */}
-      <Button variant="blueprint" size="md" type="submit">
+      <Button variant="blueprint"  type="submit">
         SEND MESSAGE
       </Button>
       

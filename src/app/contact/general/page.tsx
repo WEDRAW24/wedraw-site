@@ -240,14 +240,12 @@ export default function GeneralContactPage() {
             <div className="flex items-start gap-fluid-sm pt-fluid-sm">
               <Button
                 variant="blueprint"
-                size="md"
                 onClick={() => router.push('/contact')}
               >
                 BACK
               </Button>
               <Button
                 variant="blueprint"
-                size="md"
                 onClick={handleSubmit}
                 disabled={isSubmitting}
               >

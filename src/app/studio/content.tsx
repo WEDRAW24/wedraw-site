@@ -68,7 +68,6 @@ export default function StudioContent() {
             <div className="relative flex-1 bg-meadow flex flex-col justify-center px-6">
               <Button 
                 variant="white-meadow"
-                size="md"
                 className="mb-6 self-start"
                 href="/work/projects/bristol-international-balloon-fiesta-2024"
               >
@@ -144,7 +143,6 @@ export default function StudioContent() {
               <div className="col-start-7 col-span-6 pl-16">
                 <Button 
                   variant="white-meadow"
-                    size="md"
                   className="mb-6"
                   href="/work/projects/bristol-international-balloon-fiesta-2024"
                 >
@@ -216,7 +214,6 @@ export default function StudioContent() {
 
                 <Button 
                   variant="meadow"
-                  size="md"
                   className="mt-fluid-xl"
                   href="/contact"
                 >
