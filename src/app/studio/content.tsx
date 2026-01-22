@@ -5,9 +5,9 @@ import Button from '@/app/components/Button'
 import HatchedPattern from '@/app/components/HatchedPattern'
 import CTA from '@/app/components/CTA'
 import AnimatedExpertiseBox from '@/app/components/AnimatedExpertiseBox'
+import SectionHeader from '@/app/components/SectionHeader'
 import { useState } from 'react'
 import { images } from './images'
-import { truncate } from 'fs/promises'
 
 export default function StudioContent() {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -184,9 +184,7 @@ export default function StudioContent() {
           <div className={`grid grid-cols-12 gap-fluid-sm ${DEBUG ? 'border-4 border-orange-500' : ''}`}>
             {/* Title */}
             <div className={`col-span-12 ${DEBUG ? 'border-4 border-cyan-500' : ''}`}>
-              <h2 className="display-md text-meadow border-b-2 border-meadow pb-2 mb-fluid-xl">
-                About us
-              </h2>
+              <SectionHeader title={<span>About us</span>} color="meadow" className="mb-fluid-lg" />
             </div>
 
             {/* Content Grid */}
@@ -205,7 +203,7 @@ export default function StudioContent() {
 
               {/* Text Content */}
               <div className={`md:col-start-7 md:col-span-6 lg:col-start-6 lg:col-span-7 xl:col-start-6 xl:col-span-7 ${DEBUG ? 'border-4 border-green-500' : ''}`}>
-                <h3 className="heading-3 mb-fluid-md">
+                <h3 className="subtitle mb-fluid-md">
                   We believe that great events<br />
                   begin with great design.
                 </h3>
@@ -236,9 +234,7 @@ export default function StudioContent() {
           <div className="grid grid-cols-12 gap-fluid-sm">
             {/* Title */}
             <div className="col-span-12">
-              <h2 className="display-md text-meadow border-b-2 border-meadow pb-2 mb-fluid-xl">
-                Our expertise
-              </h2>
+              <SectionHeader title="Our Expertise" color="meadow" className="mb-fluid-lg" />
             </div>
 
             {/* Accordion Items */}
@@ -251,7 +247,7 @@ export default function StudioContent() {
                       onClick={() => setMobileAccordionIndex(mobileAccordionIndex === index ? -1 : index)}
                       className="w-full flex items-center justify-between py-fluid-sm text-left cursor-pointer hover:opacity-80 transition-opacity"
                     >
-                      <span className="heading-1 text-meadow">{item.title}</span>
+                      <span className="accordion-heading text-meadow">{item.title}</span>
                       <svg 
                         className={`w-6 h-6 text-meadow transition-transform duration-300 flex-shrink-0 ml-4 ${mobileAccordionIndex === index ? 'rotate-90' : ''}`}
                         fill="none" 
@@ -267,7 +263,7 @@ export default function StudioContent() {
                       }`}
                     >
                       <div className="pt-fluid-lg pb-fluid-lg">
-                        <h4 className="heading-4 mb-fluid-md">
+                        <h4 className="body-xl mb-fluid-md">
                           {item.heading}
                         </h4>
                         <p className="body-lg">
@@ -291,9 +287,7 @@ export default function StudioContent() {
             <div className="grid grid-cols-12 gap-fluid-sm">
               {/* Title */}
               <div className="col-span-12">
-                <h2 className="display-md text-meadow border-b-2 border-meadow pb-2 mb-fluid-xl">
-                  Our expertise
-                </h2>
+                <SectionHeader title="Our Expertise" color="meadow" className="mb-fluid-lg" />
               </div>
 
               {/* Content Grid */}
@@ -319,7 +313,7 @@ export default function StudioContent() {
                   <div className="relative">
                     {expertiseItems.map((item, index) => (
                       <div key={index} className={`absolute inset-0 transition-opacity duration-700 ${activeIndex === index ? 'opacity-100' : 'opacity-0'}`}>
-                        <h4 className="heading-4 mb-fluid-md">
+                        <h4 className="body-xl mb-fluid-md">
                           {item.heading}
                       </h4>
                         <p className="body-lg">
@@ -341,9 +335,7 @@ export default function StudioContent() {
           <div className="grid grid-cols-12 gap-fluid-sm">
             {/* Title */}
             <div className="col-span-12">
-              <h2 className="display-md text-meadow border-b-2 border-meadow pb-2 mb-fluid-xl">
-                Our mission
-              </h2>
+              <SectionHeader title="Our mission" color="meadow" className="mb-fluid-lg" />
             </div>
 
             {/* Content Grid */}
@@ -358,21 +350,21 @@ export default function StudioContent() {
 
               {/* Main Text */}
               <div className="col-span-12 md:col-start-5 md:col-span-9">
-                <h3 className="display-sm mb-fluid-lg">
+                <h3 className="featured-text mb-fluid-lg">
                   Transforming spaces into unforgettable experiences through creative ambition and technical precision. We collaborate closely, communicate clearly and map out what matters.
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-fluid-lg border-t-2 border-meadow pt-fluid-md">
                   <div>
-                    <h4 className="heading-4 mb-fluid-xs">
+                    <h4 className="body-xl mb-fluid-xs">
                       We believe that great events<br />begin with great design.
                     </h4>
                   </div>
                   <div className="space-y-fluid-lg">
-                    <p className="body-sm">
+                    <p className="body-md">
                       With a balance of creative vision and technical expertise we create environments that not only function seamlessly but inspire and engage. Collaboration and communication are at the core of everything we do. Working closely with event organisers and production teams, we ensure that every detail is considered and each requirement met.
                     </p>
-                    <p className="body-sm">
+                    <p className="body-md">
                       We recognise that each event is unique which is why we tailor our approach from the initial concept to the final layout, delivering solutions that work for everyone.
                     </p>
                   </div>
@@ -389,9 +381,7 @@ export default function StudioContent() {
           <div className={`grid grid-cols-12 gap-fluid-sm ${DEBUG ? 'border-4 border-orange-500' : ''}`}>
             {/* Title */}
             <div className={`col-span-12 ${DEBUG ? 'border-4 border-cyan-500' : ''}`}>
-              <h2 className="display-md text-meadow border-b-2 border-meadow pb-2 mb-fluid-xl">
-                Our values
-              </h2>
+              <SectionHeader title="Our values" color="meadow" className="mb-fluid-lg" />
             </div>
 
             {/* Content Grid */}
@@ -408,10 +398,10 @@ export default function StudioContent() {
                   />
                   </div>
                   <div className={`mb-fluid-xs md:min-h-[80px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-                    <h3 className="heading-2">Clarity first</h3>
+                    <h3 className="title-card">Clarity first</h3>
                   </div>
                   <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
-                    <p className="body-sm">
+                    <p className="body-md">
                     We transform complex ideas into precise, easy-to-understand visual plans. Every design choice enhances comprehension and usability.
                   </p>
                   </div>
@@ -428,10 +418,10 @@ export default function StudioContent() {
                   />
                   </div>
                   <div className={`mb-fluid-xs md:min-h-[80px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-                    <h3 className="heading-2">Creative at heart</h3>
+                    <h3 className="title-card">Creative at heart</h3>
                   </div>
                   <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
-                    <p className="body-sm">
+                    <p className="body-md">
                     We are driven by the joy of shaping novel and inspiring event experiences. We take ambitious ideas and ground them in careful, calculated design, ensuring every plan is both visionary and flawlessly executed in the real world.
                   </p>
                   </div>
@@ -448,10 +438,10 @@ export default function StudioContent() {
                   />
                   </div>
                   <div className={`mb-fluid-xs md:min-h-[80px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-                    <h3 className="heading-2">Precise by nature</h3>
+                    <h3 className="title-card">Precise by nature</h3>
                   </div>
                   <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
-                    <p className="body-sm">
+                    <p className="body-md">
                     We push creative boundaries while ensuring that every plan is grounded in careful, real-world execution. Our site plans are rigorously detailed, leveraging the latest technology to enhance ease-of-use and accuracy.
                   </p>
                   </div>
@@ -468,10 +458,10 @@ export default function StudioContent() {
                   />
                   </div>
                   <div className={`mb-fluid-xs md:min-h-[80px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-                    <h3 className="heading-2">Adaptable and responsive</h3>
+                    <h3 className="title-card">Adaptable and responsive</h3>
                   </div>
                   <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
-                    <p className="body-sm">
+                    <p className="body-md">
                     We thrive in the ever-changing landscape of event planning, acting as a calming presence that quickly adapts to new challenges and evolving needs without compromising clarity or execution.
                   </p>
                   </div>
@@ -488,10 +478,10 @@ export default function StudioContent() {
                   />
                   </div>
                   <div className={`mb-fluid-xs md:min-h-[80px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-                    <h3 className="heading-2">Facilitating collaboration</h3>
+                    <h3 className="title-card">Facilitating collaboration</h3>
                   </div>
                   <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
-                    <p className="body-sm">
+                    <p className="body-md">
                     As a central point of connection in event planning, we are the main touchpoint to various stakeholder teams, offering insights that inspire and refine creative visions.
                   </p>
                   </div>
@@ -508,10 +498,10 @@ export default function StudioContent() {
                   />
                   </div>
                   <div className={`mb-fluid-xs md:min-h-[80px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-                    <h3 className="heading-2">Innovative approach</h3>
+                    <h3 className="title-card">Innovative approach</h3>
                   </div>
                   <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
-                    <p className="body-sm">
+                    <p className="body-md">
                     We're at the forefront of industry trends, continuously refining our methodologies and embracing new technologies to set higher standards in event design.
                   </p>
                   </div>

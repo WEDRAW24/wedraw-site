@@ -31,13 +31,13 @@ export default function ArticleLayout({ metadata, heroImage, children }: Article
       <section className="bg-white py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-[60px] max-w-[1680px]">
           <div className="max-w-[800px] mx-auto">
-            <div className="text-sunny font-mono uppercase text-sm mb-4">
-              {metadata.category} | {metadata.date}
+            <div className="tag text-sunny border-none mb-4 px-0">
+              {metadata.category.toUpperCase()} | {metadata.date.toUpperCase()}
             </div>
-            <h1 className="text-[72px] font-area-extrabold leading-[120%] text-black mb-6">
+            <h1 className="section-heading text-black mb-6">
               {metadata.title}
             </h1>
-            <p className="text-[18px] leading-[180%] text-black/70">
+            <p className="body-lg">
               {metadata.blurb}
             </p>
           </div>
@@ -57,14 +57,13 @@ export default function ArticleLayout({ metadata, heroImage, children }: Article
       <MoreFromJournal currentArticleSlug={metadata.slug} />
 
       {/* CTA Section */}
-      <section className="bg-white py-20 mt-32">
+      <section className="bg-white">
         <CTA 
           magnetType="grid"
           magnetColor="var(--color-sunny)"
           title="Let's get Started"
           buttonText="GET IN TOUCH"
           buttonHref="/contact"
-          className="py-20"
         />
       </section>
     </div>

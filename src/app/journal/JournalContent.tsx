@@ -18,7 +18,7 @@ export default function JournalContent() {
       <div className="container mx-auto px-fluid-md max-w-[1680px]">
         <div className="pt-fluid-xl mb-fluid-xl">
           <h1 className="display-xxl text-sunny mb-fluid-sm">Journal</h1>
-          <p className="heading-3 text-sunny">// studio updates, insights and explorations</p>
+          <p className="subtitle text-sunny">// studio updates, insights and explorations</p>
         </div>
 
         <div className="mb-fluid-xl">

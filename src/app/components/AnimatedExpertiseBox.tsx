@@ -96,7 +96,7 @@ export default function AnimatedExpertiseBox({
     >
       <h3 
         className={`
-          text-[32px] font-area-bold transition-colors duration-700
+          accordion-heading transition-colors duration-700
           ${isActive ? 'text-white' : 'text-black'}
         `}
       >

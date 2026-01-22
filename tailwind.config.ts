@@ -102,6 +102,9 @@ const config: Config = {
 			// Pull Quote Small (for sidebar quotes - mono, uppercase)
 			'pull-quote-sm': ['clamp(16px, 2vw, 20px)', { lineHeight: '140%', letterSpacing: '0%' }],
 			
+			// Featured Text (for mission statements, large featured copy)
+			'featured-text': ['clamp(28px, 4vw, 42px)', { lineHeight: '140%', letterSpacing: '0%' }],
+			
 			
 			// ============================================
 			// OLD SYSTEM - To be phased out

@@ -259,6 +259,11 @@ body {
     @apply font-mono font-mono-normal text-pull-quote-sm uppercase;
   }
   
+  /* FEATURED TEXT - For mission statements, large featured copy */
+  .featured-text {
+    @apply font-sans font-area-bold text-featured-text text-dark-grey;
+  }
+  
   
   /* ============================================
      OLD SYSTEM - To be phased out

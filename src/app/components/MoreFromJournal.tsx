@@ -1,8 +1,9 @@
 'use client';
 
-import Link from 'next/link'
 import Button from './Button'
 import JournalCard from './JournalCard'
+import SectionHeader from './SectionHeader'
+import MobileJournalCarousel from './MobileJournalCarousel'
 import { articles } from '@/app/journal/articles/registry'
 
 type MoreFromJournalProps = {
@@ -19,16 +20,33 @@ export default function MoreFromJournal({ currentArticleSlug }: MoreFromJournalP
   return (
     <section className="pt-24 pb-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-[60px] max-w-[1680px]">
-        <div className="flex justify-between items-end mb-16 pb-8 border-b-2 border-sunny">
-          <h2 className="text-[72px] font-area-extrabold leading-[120%] text-sunny">More from the journal</h2>
-          <Link href="/journal">
-            <Button variant="sunny">
-              MORE JOURNAL ARTICLES
+        <SectionHeader
+          title={
+            <>
+              <span className="md:hidden">More from<br />the journal</span>
+              <span className="hidden md:inline">More from the journal</span>
+            </>
+          }
+          color="sunny"
+          buttonText="MORE ARTICLES"
+          buttonHref="/journal"
+          className="mb-12"
+        />
+
+        {/* MOBILE: Swipe carousel */}
+        <div className="md:hidden">
+          <MobileJournalCarousel articles={otherArticles} />
+          
+          {/* All Articles Button - Below carousel on mobile */}
+          <div className="flex justify-center mt-fluid-xl">
+            <Button variant="sunny" href="/journal">
+              MORE ARTICLES
             </Button>
-          </Link>
+          </div>
         </div>
 
-        <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-3">
+        {/* DESKTOP: 3-column grid */}
+        <div className="hidden md:grid gap-16 md:grid-cols-2 lg:grid-cols-3">
           {otherArticles.map((article) => (
             <JournalCard 
               key={article.slug}
