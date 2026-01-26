@@ -17,8 +17,7 @@ export default function ProjectEnquiryPage() {
     services: {
       eventDesign: false,
       markOut: false,
-      survey: false,
-      siteValidation: false,
+      'survey&mapping': false,
       technicalSupport: false,
     },
   })
@@ -98,11 +97,22 @@ export default function ProjectEnquiryPage() {
 
           {/* Progress Indicator - Scales for mobile */}
           <div className="flex items-center gap-1 mb-fluid-lg scale-75 sm:scale-100 origin-left">
-            <div className="w-4 h-4 bg-blueprint"></div>
-            <div className="w-8 h-[2px] bg-blueprint"></div>
-            <div className="w-4 h-4 bg-blueprint"></div>
+            {/* Dot 1 - Form selection (/contact) - Clickable */}
+            <button 
+              onClick={() => router.push('/contact')}
+              className="w-4 h-4 border-2 border-blueprint hover:bg-blueprint/20 transition-colors cursor-pointer"
+              aria-label="Go to form selection"
+            />
             <div className="w-8 h-[2px] border border-blueprint"></div>
-            <div className="w-4 h-4 border-2 border-blueprint"></div>
+            {/* Dot 2 - Current page */}
+            <div className="w-4 h-4 border-2 border-blueprint bg-blueprint"></div>
+            <div className="w-8 h-[2px] border border-blueprint"></div>
+            {/* Dot 3 - Page 2 - Clickable (validates before navigating) */}
+            <button 
+              onClick={handleNext}
+              className="w-4 h-4 border-2 border-blueprint hover:bg-blueprint/20 transition-colors cursor-pointer"
+              aria-label="Go to contact details"
+            />
           </div>
 
           {/* Subtitle */}
@@ -177,10 +187,10 @@ export default function ProjectEnquiryPage() {
                 )}
               </div>
 
-              {/* Dates of Event */}
+              {/* Dates */}
               <div>
                 <label className="button text-blueprint block mb-3">
-                  Dates of Event
+                  Dates
                 </label>
                 <DatePicker
                   selected={formData.startDate}
@@ -214,8 +224,7 @@ export default function ProjectEnquiryPage() {
                 {[
                   { key: 'eventDesign', label: 'Event Design' },
                   { key: 'markOut', label: 'Mark Out' },
-                  { key: 'survey', label: 'Survey' },
-                  { key: 'siteValidation', label: 'Site Validation' },
+                  { key: 'survey&mapping', label: 'Survey & Mapping' },
                   { key: 'technicalSupport', label: 'Technical Support' },
                 ].map(({ key, label }) => (
                   <label key={key} className="flex items-center gap-3 cursor-pointer">

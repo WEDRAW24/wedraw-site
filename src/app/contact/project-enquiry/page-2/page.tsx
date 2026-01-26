@@ -127,13 +127,24 @@ export default function ProjectEnquiryPage2() {
             Ready to collaborate?
           </h1>
 
-          {/* Progress Indicator - All filled, scales for mobile */}
+          {/* Progress Indicator - Only current page filled, scales for mobile */}
           <div className="flex items-center gap-1 mb-fluid-lg scale-75 sm:scale-100 origin-left">
-            <div className="w-4 h-4 bg-blueprint"></div>
-            <div className="w-8 h-[2px] bg-blueprint"></div>
-            <div className="w-4 h-4 bg-blueprint"></div>
-            <div className="w-8 h-[2px] bg-blueprint"></div>
-            <div className="w-4 h-4 bg-blueprint"></div>
+            {/* Dot 1 - Form selection (/contact) - Clickable */}
+            <button 
+              onClick={() => router.push('/contact')}
+              className="w-4 h-4 border-2 border-blueprint hover:bg-blueprint/20 transition-colors cursor-pointer"
+              aria-label="Go to form selection"
+            />
+            <div className="w-8 h-[2px] border border-blueprint"></div>
+            {/* Dot 2 - Project enquiry page 1 - Clickable */}
+            <button 
+              onClick={() => router.push('/contact/project-enquiry')}
+              className="w-4 h-4 border-2 border-blueprint hover:bg-blueprint/20 transition-colors cursor-pointer"
+              aria-label="Go to project details"
+            />
+            <div className="w-8 h-[2px] border border-blueprint"></div>
+            {/* Dot 3 - Current page */}
+            <div className="w-4 h-4 border-2 border-blueprint bg-blueprint"></div>
           </div>
 
           {/* Subtitle */}
@@ -208,7 +219,7 @@ export default function ProjectEnquiryPage2() {
               {/* Profession */}
               <div>
                 <label className="button text-blueprint block mb-3">
-                  Profession
+                  Tell us a bit about you
                 </label>
                 <textarea
                   value={formData.profession}
@@ -216,8 +227,12 @@ export default function ProjectEnquiryPage2() {
                     setFormData(prev => ({ ...prev, profession: e.target.value }))
                   }}
                   className="w-full h-32 border border-black px-4 py-3 body-md leading-[180%] resize-none focus:outline-none focus:border-blueprint"
+                  maxLength={200}
                   placeholder=""
                 />
+                <div className="flex justify-end mt-2">
+                  <span className="body-sm text-gray-500">{formData.profession.length}/200</span>
+                </div>
               </div>
 
               {/* How Did You Learn About Us */}
@@ -231,8 +246,12 @@ export default function ProjectEnquiryPage2() {
                     setFormData(prev => ({ ...prev, howDidYouHear: e.target.value }))
                   }}
                   className="w-full h-32 border border-black px-4 py-3 body-md leading-[180%] resize-none focus:outline-none focus:border-blueprint"
+                  maxLength={200}
                   placeholder=""
                 />
+                <div className="flex justify-end mt-2">
+                  <span className="body-sm text-gray-500">{formData.howDidYouHear.length}/200</span>
+                </div>
               </div>
             </div>
 

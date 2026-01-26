@@ -6,6 +6,7 @@ import HatchedPattern from '@/app/components/HatchedPattern'
 import CTA from '@/app/components/CTA'
 import AnimatedExpertiseBox from '@/app/components/AnimatedExpertiseBox'
 import SectionHeader from '@/app/components/SectionHeader'
+import ValuesAnimation from '@/app/components/ValuesAnimation'
 import { useState } from 'react'
 import { images } from './images'
 
@@ -507,6 +508,14 @@ export default function StudioContent() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* NEW Our Values Section */}
+      <section className={`relative py-fluid-2xl ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
+        <div className={`container mx-auto px-6 mb-fluid-lg ${DEBUG ? 'border-4 border-blue-500' : ''}`}>
+          <SectionHeader title="Our values" color="meadow" />
+        </div>
+        <ValuesAnimation />
       </section>
 
       {/* CTA Section */}

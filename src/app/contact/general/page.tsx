@@ -14,8 +14,7 @@ export default function GeneralContactPage() {
     services: {
       eventDesign: false,
       markOut: false,
-      survey: false,
-      siteValidation: false,
+      'survey&mapping': false,
       technicalSupport: false,
     },
   })
@@ -112,9 +111,15 @@ export default function GeneralContactPage() {
 
           {/* Progress Indicator - 2 steps, scales for mobile */}
           <div className="flex items-center gap-1 mb-fluid-lg scale-75 sm:scale-100 origin-left">
-            <div className="w-4 h-4 bg-blueprint"></div>
-            <div className="w-8 h-[2px] bg-blueprint"></div>
-            <div className="w-4 h-4 bg-blueprint"></div>
+            {/* Dot 1 - Form selection (/contact) - Clickable */}
+            <button 
+              onClick={() => router.push('/contact')}
+              className="w-4 h-4 border-2 border-blueprint hover:bg-blueprint/20 transition-colors cursor-pointer"
+              aria-label="Go to form selection"
+            />
+            <div className="w-8 h-[2px] border border-blueprint"></div>
+            {/* Dot 2 - Current page */}
+            <div className="w-4 h-4 border-2 border-blueprint bg-blueprint"></div>
           </div>
 
           {/* Subtitle */}
@@ -219,8 +224,7 @@ export default function GeneralContactPage() {
                 {[
                   { key: 'eventDesign', label: 'Event Design' },
                   { key: 'markOut', label: 'Mark Out' },
-                  { key: 'survey', label: 'Survey' },
-                  { key: 'siteValidation', label: 'Site Validation' },
+                  { key: 'survey&mapping', label: 'Survey & Mapping' },
                   { key: 'technicalSupport', label: 'Technical Support' },
                 ].map(({ key, label }) => (
                   <label key={key} className="flex items-center gap-3 cursor-pointer">

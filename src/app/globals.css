@@ -274,3 +274,27 @@ body {
     @apply font-sans font-area-extrabold text-form-heading;
   }
 }
+
+/* ============================================
+   REACT-DATEPICKER CUSTOM STYLES
+   ============================================ */
+
+/* Fix header to fill rounded corners */
+.react-datepicker {
+  border-radius: 8px !important;
+  overflow: hidden;
+  border: none !important;
+}
+
+.react-datepicker__header {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  margin: 0 !important;
+  padding-top: 10px !important;
+}
+
+.react-datepicker__month-container {
+  border: 1px solid #aeaeae;
+  border-radius: 8px;
+  overflow: hidden;
+}
