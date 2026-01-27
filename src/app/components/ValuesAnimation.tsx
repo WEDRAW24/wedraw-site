@@ -3,65 +3,75 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 
 // Row content
-const ROW_1_WORDS = ['Fun', 'Experiment', 'Tea', 'Ideas', 'Playful', 'Creative', 'Cake', 'Innovative', 'Ingenuity', 'Journey', 'Cheese', 'Learning', 'Play', 'Curious', 'Apples', 'Inquisitive', 'Music']
-const ROW_2_WORDS = ['We', 'Share', 'Collaboration', 'Opener', 'Interaction', 'We', 'Community', 'Empowerment', 'Independent', 'Communication', 'Together']
-const ROW_3_WORDS = ['Sketch', 'Draw', 'Research', 'Design', 'Lateral', 'We', 'Thinking', 'Solutions', 'Clarity', 'Efficiency']
-const ROW_4_WORDS = ['Tools', 'Paper', 'Innovation', 'Wood', 'Place', 'Hands', 'Steel', 'Outdoors', 'Stationery', 'Pioneer', 'Pencil', 'Landscape', 'Materials', 'Pen', 'Sustainability']
+const ROW_1_WORDS = ['We', 'Pencil', 'Research', 'Fun', 'Tea', 'Creative', 'Innovative', 'Playful', 'Curious', 'Inquisitive', 'Journey', 'Cheese', 'Landscape', 'Experiment', 'Ingenuity', 'Sustainable']
+const ROW_2_WORDS = ['Play', 'Sketch', 'Design', 'Share', 'Collaboration', 'Communication', 'Interaction', 'Opener', 'Independent', 'Draw', 'Empowerment']
+const ROW_3_WORDS = ['Music', 'Learning', 'Lateral', 'Clarity', 'Efficiency', 'Apples', 'Cake', 'Innovation', 'Place']
+const ROW_4_WORDS = ['Hands', 'Tools', 'Thinking', 'Solutions', 'Ideas', 'Together', 'Community', 'Paper', 'Pen', 'Outdoors', 'Materials']
 
-// Connection pairs (adjacent rows only)
+// Connection pairs - A (above) connects to B (below)
 const CONNECTIONS: Record<string, Set<string>> = {
-  // Row 1 ↔ Row 2
-  'Creative': new Set(['Communication']),
-  'Innovative': new Set(['Collaboration', 'Communication']),
-  'Ideas': new Set(['Share', 'Collaboration']),
-  'Curious': new Set(['Interaction']),
-  'Playful': new Set(['Community']),
+  // Row 1 connections
+  'Fun': new Set(['Solutions', 'Learning', 'Ideas']),
+  'Tea': new Set(['Cake', 'Share']),
+  'Playful': new Set(['Hands', 'Tools', 'Thinking']),
+  'Creative': new Set(['Communication', 'Innovation', 'Collaboration']),
+  'Innovative': new Set(['Solutions', 'Tools', 'Thinking']),
   'Journey': new Set(['Together']),
-  'Fun': new Set(['Community']),
-  'Cheese': new Set(['Share']),
-  'Inquisitive': new Set(['Interaction']),
-  'Play': new Set(['Together', 'We']),
-  'Tea': new Set(['Community']),
-  'Cake': new Set(['Share']),
-  'Music': new Set(['Together']),
-  // Row 2 ↔ Row 3
-  'We': new Set(['Design', 'Draw', 'Pioneer', 'Sketch', 'Research', 'Thinking', 'Solutions', 'Innovation']),
-  'Communication': new Set(['Clarity']),
-  'Collaboration': new Set(['Design']),
-  'Independent': new Set(['Thinking']),
-  'Together': new Set(['Design']),
-  // Row 3 ↔ Row 4
-  'Sketch': new Set(['Pencil', 'Paper', 'Pen']),
-  'Hands': new Set(['Cheese']),
-  'Design': new Set(['Tools']),
-  'Thinking': new Set(['Innovation', 'Sustainability']),
-  'Solutions': new Set(['Sustainability']),
-  'Draw': new Set(['Pen', 'Paper']),
-  'Research': new Set(['Materials']),
-  'Clarity': new Set(['Tools']),
-  'Efficiency': new Set(['Tools', 'Materials']),
+  'Cheese': new Set(['Share', 'Hands']),
+  'Curious': new Set(['Apples', 'Innovation', 'Thinking', 'Solutions']),
+  'Inquisitive': new Set(['Ideas', 'Play', 'Interaction']),
+  'We': new Set(['Draw', 'Design', 'Sketch', 'Play']),
+  'Research': new Set(['Learning', 'Ideas', 'Design']),
+  'Pencil': new Set(['Sketch', 'Design']),
+  'Landscape': new Set(['Design']),
+  'Sustainable': new Set(['Tools', 'Thinking', 'Solutions']),
+  // Row 2 connections
+  'Play': new Set(['Music']),
+  'Share': new Set(['Ideas', 'Solutions', 'Innovation']),
+  'Independent': new Set(['Thinking', 'Ideas']),
+  'Sketch': new Set(['Apples', 'Hands', 'Ideas']),
+  'Design': new Set(['Together', 'Efficiency', 'Clarity']),
+  // Row 3 connections
+  'Learning': new Set(['Together', 'Tools', 'Community']),
+  'Music': new Set(['Hands']),
+  'Lateral': new Set(['Thinking', 'Solutions']),
+  'Efficiency': new Set(['Tools']),
+  'Innovation': new Set(['Ideas']),
 }
 
 function MarqueeRow({ 
   words, 
   direction, 
-  duration, 
+  speed, 
   rowIndex,
   isPaused,
   flashingElements,
 }: { 
   words: string[]
   direction: 'left' | 'right'
-  duration: number
+  speed: number // pixels per second
   rowIndex: number
   isPaused: boolean
   flashingElements: Set<string>
 }) {
+  const rowRef = useRef<HTMLDivElement>(null)
+  const [duration, setDuration] = useState(50) // default fallback
+  
   const getElementKey = (copy: number, index: number) => `${rowIndex}-${copy}-${index}`
+  
+  // Calculate duration based on content width and desired speed
+  useEffect(() => {
+    if (rowRef.current) {
+      const contentWidth = rowRef.current.scrollWidth / 2 // Half because we have 2 copies
+      const calculatedDuration = contentWidth / speed
+      setDuration(calculatedDuration)
+    }
+  }, [speed, words])
   
   return (
     <div className="overflow-hidden py-1 md:py-2">
       <div
+        ref={rowRef}
         data-row={rowIndex}
         className="flex w-max"
         style={{
@@ -81,7 +91,7 @@ function MarqueeRow({
                   data-copy={copy}
                   data-index={i}
                   className={`inline-block px-3 md:px-6 lg:px-8 font-area-extrabold uppercase transition-colors duration-300 ${
-                    flashingElements.has(elKey) ? 'text-blueprint' : 'text-meadow'
+                    flashingElements.has(elKey) ? 'text-meadow' : 'text-gray-300'
                   }`}
                   style={{
                     fontSize: 'clamp(40px, 8vw, 90px)',
@@ -104,10 +114,8 @@ export default function ValuesAnimation() {
   const [flashingElements, setFlashingElements] = useState<Set<string>>(new Set()) // Now tracks element keys, not word strings
   const [pausedRows, setPausedRows] = useState<Set<number>>(new Set())
   
-  // Track which element pairs have connected this cycle (by their unique identifier)
-  const connectedThisCycleRef = useRef<Set<string>>(new Set())
-  // Track elements that have gone off-screen (eligible to connect again)
-  const offScreenElementsRef = useRef<Set<string>>(new Set())
+  // Track individual elements that have connected this viewport pass (can only connect once per pass)
+  const connectedElementsRef = useRef<Set<string>>(new Set())
   // Global cooldown - no connections allowed during this time
   const globalCooldownRef = useRef<boolean>(false)
   
@@ -128,11 +136,11 @@ export default function ValuesAnimation() {
     // Set global cooldown immediately
     globalCooldownRef.current = true
     
-    // Mark these specific elements as having connected
-    const pairKey = `${el1Key}|${el2Key}`
-    connectedThisCycleRef.current.add(pairKey)
+    // Mark these individual elements as having connected (one connection per viewport pass)
+    connectedElementsRef.current.add(el1Key)
+    connectedElementsRef.current.add(el2Key)
     
-    setPausedRows(new Set([row1, row2]))
+    setPausedRows(new Set([0, 1, 2, 3])) // Pause all rows
     setFlashingElements(new Set([el1Key, el2Key])) // Flash specific elements, not all words with same name
     
     // Resume animation after pause
@@ -154,7 +162,7 @@ export default function ValuesAnimation() {
     const containerRect = containerRef.current.getBoundingClientRect()
     const rows = containerRef.current.querySelectorAll('[data-row]')
     
-    // First, check for elements that have gone off-screen and mark them as eligible again
+    // First, check for elements that have gone off-screen and reset their connection status
     rows.forEach((row) => {
       const words = row.querySelectorAll('span[data-word]')
       words.forEach((el) => {
@@ -164,14 +172,15 @@ export default function ValuesAnimation() {
         const index = parseInt(el.getAttribute('data-index') || '0')
         const elKey = getElementKey(rowIndex, copy, index)
         
-        // If element is off-screen, mark it so it can connect again when it comes back
+        // If element is off-screen, remove from connected set so it can connect again when it comes back
         if (rect.right < containerRect.left || rect.left > containerRect.right) {
-          offScreenElementsRef.current.add(elKey)
+          connectedElementsRef.current.delete(elKey)
         }
       })
     })
     
-    const rowPairs: [number, number][] = [[0, 1], [1, 2], [2, 3]]
+    // Check all row pairs (any row can connect to any other row)
+    const rowPairs: [number, number][] = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]]
     
     for (const [upperRowIdx, lowerRowIdx] of rowPairs) {
       const upperRow = rows[upperRowIdx]
@@ -210,24 +219,12 @@ export default function ValuesAnimation() {
           // Check alignment
           if (Math.abs(upperCenterX - lowerCenterX) > ALIGNMENT_THRESHOLD) continue
           
-          // Check if this pair has already connected this cycle
-          const pairKey = `${upperKey}|${lowerKey}`
-          const reversePairKey = `${lowerKey}|${upperKey}`
-          
-          if (connectedThisCycleRef.current.has(pairKey) || connectedThisCycleRef.current.has(reversePairKey)) {
-            // Check if both have gone off-screen since connecting (eligible again)
-            if (offScreenElementsRef.current.has(upperKey) && offScreenElementsRef.current.has(lowerKey)) {
-              // Remove from connected set and off-screen set - they can connect again
-              connectedThisCycleRef.current.delete(pairKey)
-              connectedThisCycleRef.current.delete(reversePairKey)
-              offScreenElementsRef.current.delete(upperKey)
-              offScreenElementsRef.current.delete(lowerKey)
-            } else {
-              continue // Still in cooldown
-            }
+          // Check if either element has already connected this viewport pass
+          if (connectedElementsRef.current.has(upperKey) || connectedElementsRef.current.has(lowerKey)) {
+            continue // One connection per element per viewport pass
           }
           
-          // Check if valid connection
+          // Check if valid connection (words must be specified in CONNECTIONS)
           const isValid = CONNECTIONS[upperWord]?.has(lowerWord) || CONNECTIONS[lowerWord]?.has(upperWord)
           
           if (isValid) {
@@ -262,7 +259,7 @@ export default function ValuesAnimation() {
           words={ROW_1_WORDS} 
           rowIndex={0} 
           direction="right" 
-          duration={60} 
+          speed={100} 
           isPaused={pausedRows.has(0)}
           flashingElements={flashingElements}
         />
@@ -270,7 +267,7 @@ export default function ValuesAnimation() {
           words={ROW_2_WORDS} 
           rowIndex={1} 
           direction="left" 
-          duration={55} 
+          speed={100} 
           isPaused={pausedRows.has(1)}
           flashingElements={flashingElements}
         />
@@ -278,7 +275,7 @@ export default function ValuesAnimation() {
           words={ROW_3_WORDS} 
           rowIndex={2} 
           direction="right" 
-          duration={50} 
+          speed={100} 
           isPaused={pausedRows.has(2)}
           flashingElements={flashingElements}
         />
@@ -286,7 +283,7 @@ export default function ValuesAnimation() {
           words={ROW_4_WORDS} 
           rowIndex={3} 
           direction="left" 
-          duration={65} 
+          speed={100} 
           isPaused={pausedRows.has(3)}
           flashingElements={flashingElements}
         />
