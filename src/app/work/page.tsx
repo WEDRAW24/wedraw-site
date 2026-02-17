@@ -108,33 +108,36 @@ export default function WorkPage() {
   return (
     <div className={`min-h-screen ${DEBUG ? 'border-8 border-purple-500' : ''}`}>
       <div className={`container mx-auto px-fluid-md max-w-[1440px] ${DEBUG ? 'border-8 border-blue-500' : ''}`}>
-        {/* Hero Section */}
-        <div className="pt-fluid-xl mb-fluid-xl">
-          <h1 className="display-xxl text-marker mb-fluid-sm">Work</h1>
-          <p className="subtitle text-marker">// projects, case studies, and client collaborations</p>
-        </div>
+        {/* Mobile content wrapper for 40px margins */}
+        <div className="px-2 md:px-0">
+          {/* Hero Section */}
+          <div className="pt-fluid-xl mb-fluid-xl">
+            <h1 className="display-xxl text-marker mb-fluid-sm">Work</h1>
+            <p className="subtitle text-marker">// projects, case studies, and client collaborations</p>
+          </div>
 
-        {/* Category Filter - Mobile & Tablet */}
-        <div className="mb-fluid-xl lg:hidden">
-          <WorkCategoryFilter
-            selectedCategories={selectedCategories}
-            onCategoryChange={setSelectedCategories}
-            isTablet={isTablet}
-          />
-        </div>
-        
-        {/* Mobile Layout - Simple Stack (< 768px) */}
-        <div className={`md:hidden flex flex-col gap-fluid-2xl mb-fluid-2xl ${DEBUG ? 'border-4 border-green-500' : ''}`}>
-          
-          {filteredProjects.map((project) => (
-            <WorkProjectCard 
-              key={project.slug} 
-              project={project}
-              displayRow={project.gridRow}
-              displayColumn={project.gridColumn}
-              isMobile={true}
+          {/* Category Filter - Mobile & Tablet */}
+          <div className="mb-fluid-xl lg:hidden">
+            <WorkCategoryFilter
+              selectedCategories={selectedCategories}
+              onCategoryChange={setSelectedCategories}
+              isTablet={isTablet}
             />
-          ))}
+          </div>
+          
+          {/* Mobile Layout - Simple Stack (< 768px) */}
+          <div className={`md:hidden flex flex-col gap-fluid-2xl mb-fluid-2xl ${DEBUG ? 'border-4 border-green-500' : ''}`}>
+            
+            {filteredProjects.map((project) => (
+              <WorkProjectCard 
+                key={project.slug} 
+                project={project}
+                displayRow={project.gridRow}
+                displayColumn={project.gridColumn}
+                isMobile={true}
+              />
+            ))}
+          </div>
         </div>
         
         {/* Tablet Layout - Single Column (768px - 1024px) */}

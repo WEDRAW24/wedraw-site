@@ -248,8 +248,8 @@ export default function OurExpertiseSection() {
                 {/* Meadow Divider Line */}
                 <div className={`h-[2px] bg-meadow mb-8 ${DEBUG ? 'border-2 border-cyan-500' : ''}`}></div>
                 
-                {/* Dynamic Description Text */}
-                <div key={currentExpertise} className="animate-fadeIn">
+                {/* Dynamic Description Text - min-height prevents section jumping */}
+                <div key={currentExpertise} className="animate-fadeIn min-h-[200px]">
                   <p className="body-md mb-6">
                     {currentExpertise === 'VALIDATE' && "We help future-proof events by capturing vital on-site data on what really happened, so we can learn and improve for next year"}
                     {currentExpertise === 'SUPPORT' && "Whether it's full CAD drawing setups, troubleshooting tech headaches or more general advice, we provide reliable, responsive support to help your tema deliver with confidence."}

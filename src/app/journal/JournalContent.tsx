@@ -15,27 +15,29 @@ export default function JournalContent() {
 
   return (
     <main className="min-h-screen">
-      <div className="container mx-auto px-fluid-md max-w-[1680px]">
-        <div className="pt-fluid-xl mb-fluid-xl">
-          <h1 className="display-xxl text-sunny mb-fluid-sm">Journal</h1>
-          <p className="subtitle text-sunny">// studio updates, insights and explorations</p>
-        </div>
+      <div className="container mx-auto px-fluid-md max-w-[1440px]">
+        <div className="px-2 md:px-0">
+          <div className="pt-fluid-xl mb-fluid-xl">
+            <h1 className="display-xxl text-sunny mb-fluid-sm">Journal</h1>
+            <p className="subtitle text-sunny">// studio updates, insights and explorations</p>
+          </div>
 
-        <div className="mb-fluid-xl">
-          <CategoryFilter
-            selectedCategories={selectedCategories}
-            onCategoryChange={setSelectedCategories}
-          />
-        </div>
-
-        <div className="grid gap-fluid-xl md:grid-cols-2 lg:grid-cols-3 pb-fluid-3xl">
-          {filteredArticles.map((article) => (
-            <JournalCard 
-              key={article.slug}
-              article={article}
-              showReadMoreLink={true}
+          <div className="mb-fluid-xl">
+            <CategoryFilter
+              selectedCategories={selectedCategories}
+              onCategoryChange={setSelectedCategories}
             />
-          ))}
+          </div>
+
+          <div className="grid gap-fluid-xl md:grid-cols-2 lg:grid-cols-3 pb-fluid-3xl">
+            {filteredArticles.map((article) => (
+              <JournalCard 
+                key={article.slug}
+                article={article}
+                showReadMoreLink={true}
+              />
+            ))}
+          </div>
         </div>
       </div>
 

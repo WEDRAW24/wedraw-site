@@ -7,7 +7,7 @@ import LogoBristol from '../../assets/logos_client/Logo_bristol_balloon_fiesta.s
 import LogoEnglishHeritage from '../../assets/logos_client/Logo_english_heritage.svg'
 import LogoFarmFest from '../../assets/logos_client/Logo_farm_fest.svg'
 import LogoFEI from '../../assets/logos_client/Logo_fei_european_champs.svg'
-import LogoGlastonbury from '../../assets/logos_client/Logo_glastonbury.svg'
+import LogoHPowerGroup from '../../assets/logos_client/Logo_h_power_group.svg'
 import LogoREM from '../../assets/logos_client/Logo_rem.svg'
 import LogoRiverOfLight from '../../assets/logos_client/Logo_river_of_light.svg'
 import LogoGameFair from '../../assets/logos_client/Logo_the_game_fair.svg'
@@ -19,9 +19,9 @@ export default function ProvenInTheFieldSection() {
   const clientLogos = [
     { logo: LogoREM, alt: 'Richmond Event Management', width: 90 },
     { logo: LogoRiverOfLight, alt: 'River of Light', width: 100 },
-    { logo: LogoFarmFest, alt: 'Farm Fest', width: 140 },
+    { logo: LogoHPowerGroup, alt: 'H Power Group', width: 190 },
     { logo: LogoBristol, alt: 'Bristol Balloon Fiesta', width: 120 },
-    { logo: LogoGlastonbury, alt: 'Glastonbury Festival', width: 190 },
+    { logo: LogoFarmFest, alt: 'Farm Fest', width: 140 },
     { logo: LogoGameFair, alt: 'The Game Fair', width: 130 },
     { logo: LogoFEI, alt: 'FEI European Championships', width: 130 },
     { logo: LogoEnglishHeritage, alt: 'English Heritage', width: 160 },
@@ -35,12 +35,14 @@ export default function ProvenInTheFieldSection() {
           {/* Mobile pattern */}
           <div className="md:hidden w-full h-full" style={{ 
             backgroundImage: 'radial-gradient(circle, white 1.25px, transparent 1.25px)',
-            backgroundSize: '20px 20px'
+            backgroundSize: '20px 20px',
+            backgroundPosition: 'center'
           }} />
           {/* Desktop pattern */}
           <div className="hidden md:block w-full h-full" style={{ 
             backgroundImage: 'radial-gradient(circle, white 1.75px, transparent 1.75px)',
-            backgroundSize: '30px 30px'
+            backgroundSize: '30px 30px',
+            backgroundPosition: 'center'
           }} />
         </div>
       </div>

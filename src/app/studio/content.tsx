@@ -66,15 +66,15 @@ export default function StudioContent() {
           {/* Bottom: Green section with content + Hatched Pattern */}
           <div className="relative h-1/2 w-full flex flex-col">
             {/* Green section with content */}
-            <div className="relative flex-1 bg-meadow flex flex-col justify-center px-6">
+            <div className="relative flex-1 bg-meadow flex flex-col justify-end px-6 py-6">
               <Button 
                 variant="white-meadow"
-                className="mb-6 self-start"
+                className="mb-4 self-start"
                 href="/work/projects/bristol-international-balloon-fiesta-2024"
               >
                 BRISTOL BALLOON FIESTA
               </Button>
-              <div style={{ fontSize: 'clamp(40px, 10vw, 85px)' }}>
+              <div style={{ fontSize: 'clamp(36px, 8vw, 65px)' }}>
                 <h1 className="text-white font-area-black leading-[120%] text-[1em]">
                   <div className="flex items-center">
                     <div className="relative flex-shrink-0" style={{ marginBottom: '-0.118em' }}>
@@ -124,11 +124,11 @@ export default function StudioContent() {
           />
         </div>
         
-          {/* Green Background Block */}
-          <div className="absolute right-0 top-0 h-[calc(100vh-300px)] bg-meadow w-1/2" />
+          {/* Green Background Block - 72% of viewport height */}
+          <div className="absolute right-0 top-0 h-[72vh] bg-meadow w-1/2" />
         
-        {/* Hatched Pattern Section */}
-        <div className="absolute right-0 bottom-0 w-1/2 h-[300px]">
+        {/* Hatched Pattern Section - 28% of viewport height to maintain ratio */}
+        <div className="absolute right-0 bottom-0 w-1/2 h-[28vh]">
           <HatchedPattern 
             color="var(--color-meadow)"
             strokeWidth={10} 
@@ -137,58 +137,48 @@ export default function StudioContent() {
           />
         </div>
         
-        {/* Content Overlay */}
-        <div className="absolute inset-0 flex flex-col justify-center">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-12 gap-4">
-              <div className="col-start-7 col-span-6 pl-16">
-                <Button 
-                  variant="white-meadow"
-                  className="mb-6"
-                  href="/work/projects/bristol-international-balloon-fiesta-2024"
-                >
-                  BRISTOL BALLOON FIESTA
-                </Button>
-                  <div style={{ fontSize: 'clamp(40px, 4.5vw, 85px)' }}>
-                    <h1 className="text-white font-area-black leading-[120%] text-[1em]">
-                  <div className="flex items-center">
-                        <div className="relative flex-shrink-0" style={{ marginBottom: '-0.153em' }}>
-                      <Image
-                        src={images.WE_SVG}
-                        alt="WE"
-                        width={160}
-                        height={85}
-                            style={{ 
-                              height: '0.98em',
-                              width: '1.845em',
-                              marginRight: '0.188em'
-                            }}
-                      />
-                    </div>
-                        <span className="flex-shrink-0">ELEVATE</span>
-                  </div>
-                  EVENTS
-                </h1>
-                  </div>
+        {/* Content Overlay - aligned to bottom-left of solid green area */}
+        <div className="absolute top-0 right-0 bottom-[28vh] left-1/2 flex flex-col justify-end p-[clamp(32px,5vw,60px)] pr-[clamp(48px,8vw,80px)]">
+          <Button 
+            variant="white-meadow"
+            className="mb-6 self-start"
+            href="/work/projects/bristol-international-balloon-fiesta-2024"
+          >
+            BRISTOL BALLOON FIESTA
+          </Button>
+          <div style={{ fontSize: 'clamp(40px, 4.5vw, 85px)' }}>
+            <h1 className="text-white font-area-black leading-[120%] text-[1em]">
+              <div className="flex items-center">
+                <div className="relative flex-shrink-0" style={{ marginBottom: '-0.153em' }}>
+                  <Image
+                    src={images.WE_SVG}
+                    alt="WE"
+                    width={160}
+                    height={85}
+                    style={{ 
+                      height: '0.98em',
+                      width: '1.845em',
+                      marginRight: '0.188em'
+                    }}
+                  />
                 </div>
+                <span className="flex-shrink-0">ELEVATE</span>
               </div>
-            </div>
+              EVENTS
+            </h1>
           </div>
+        </div>
         </div>
       </section>
 
-      {/* About Us Section */}
+      {/* About Us Section - HIDDEN FOR LAUNCH
       <section className={`relative py-fluid-2xl min-h-screen ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
         <div className={`container mx-auto px-6 ${DEBUG ? 'border-4 border-blue-500' : ''}`}>
           <div className={`grid grid-cols-12 gap-fluid-sm ${DEBUG ? 'border-4 border-orange-500' : ''}`}>
-            {/* Title */}
             <div className={`col-span-12 ${DEBUG ? 'border-4 border-cyan-500' : ''}`}>
               <SectionHeader title={<span>About us</span>} color="meadow" className="mb-fluid-lg" />
             </div>
-
-            {/* Content Grid */}
             <div className={`col-span-12 grid grid-cols-1 md:grid-cols-12 gap-fluid-md ${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
-              {/* Image */}
               <div className={`md:col-span-6 lg:col-span-5 xl:col-span-5 flex items-start justify-center ${DEBUG ? 'border-4 border-red-500' : ''}`}>
                 <div className={`relative aspect-[4/5] w-full max-w-[280px] ${DEBUG ? 'border-4 border-pink-500' : ''}`}>
                   <Image
@@ -199,20 +189,16 @@ export default function StudioContent() {
                   />
                 </div>
               </div>
-
-              {/* Text Content */}
               <div className={`md:col-start-7 md:col-span-6 lg:col-start-6 lg:col-span-7 xl:col-start-6 xl:col-span-7 ${DEBUG ? 'border-4 border-green-500' : ''}`}>
                 <h3 className="subtitle mb-fluid-md">
                   We believe that great events<br />
                   begin with great design.
                 </h3>
-
                 <div className="space-y-fluid-lg">
                   <p className="body-lg">
                     With a balance of creative vision and technical expertise we create environments that not only function seamlessly but inspire and engage. Collaboration and communication are at the core of everything we do. Working closely with event organisers and production teams, we ensure that every detail is considered and each requirement met. We recognise that each event is unique which is why we tailor our approach from the initial concept to the final layout, delivering solutions that work for everyone.
                   </p>
                 </div>
-
                 <Button 
                   variant="meadow"
                   className="mt-fluid-xl"
@@ -224,6 +210,15 @@ export default function StudioContent() {
             </div>
           </div>
         </div>
+      </section>
+      */}
+
+      {/* How We Work Section */}
+      <section className={`relative py-fluid-2xl ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
+        <div className={`container mx-auto px-6 mb-fluid-lg ${DEBUG ? 'border-4 border-blue-500' : ''}`}>
+          <SectionHeader title="Our Studio" color="meadow" />
+        </div>
+        <ValuesAnimation />
       </section>
 
       {/* Our Expertise Section - Mobile, Tablet & Small Desktop Accordion */}
@@ -327,31 +322,24 @@ export default function StudioContent() {
         </div>
       </section>
 
-      {/* Our Mission Section */}
+      {/* Our Mission Section - HIDDEN FOR LAUNCH
       <section className="relative py-fluid-2xl min-h-screen">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-12 gap-fluid-sm">
-            {/* Title */}
             <div className="col-span-12">
               <SectionHeader title="Our mission" color="meadow" className="mb-fluid-lg" />
             </div>
-
-            {/* Content Grid */}
             <div className="col-span-12 grid grid-cols-1 md:grid-cols-12 gap-fluid-sm">
-              {/* Arrow Icon */}
               <div className="hidden md:block md:col-span-1 text-meadow">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M24 4L44 24L24 44" stroke="currentColor" strokeWidth="2"/>
                   <path d="M44 24H4" stroke="currentColor" strokeWidth="2"/>
                 </svg>
               </div>
-
-              {/* Main Text */}
               <div className="col-span-12 md:col-start-5 md:col-span-9">
                 <h3 className="featured-text mb-fluid-lg">
                   Transforming spaces into unforgettable experiences through creative ambition and technical precision. We collaborate closely, communicate clearly and map out what matters.
                 </h3>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-fluid-lg border-t-2 border-meadow pt-fluid-md">
                   <div>
                     <h4 className="body-xl mb-fluid-xs">
@@ -372,151 +360,7 @@ export default function StudioContent() {
           </div>
         </div>
       </section>
-
-      {/* Our Values Section */}
-      <section className={`relative py-fluid-2xl min-h-screen ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
-        <div className={`container mx-auto px-6 ${DEBUG ? 'border-4 border-blue-500' : ''}`}>
-          <div className={`grid grid-cols-12 gap-fluid-sm ${DEBUG ? 'border-4 border-orange-500' : ''}`}>
-            {/* Title */}
-            <div className={`col-span-12 ${DEBUG ? 'border-4 border-cyan-500' : ''}`}>
-              <SectionHeader title="Our values" color="meadow" className="mb-fluid-lg" />
-            </div>
-
-            {/* Content Grid */}
-            <div className={`col-span-12 ${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
-              <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-fluid-3xl md:gap-fluid-xl ${DEBUG ? 'border-4 border-green-500' : ''}`}>
-                {/* Clarity First */}
-                <div className={`flex flex-col ${DEBUG ? 'border-4 border-red-500' : ''}`}>
-                  <div className={`h-[120px] flex items-center mb-fluid-xs ${DEBUG ? 'border-2 border-pink-500' : ''}`}>
-                    <Image 
-                    src={images.icons.eye}
-                    alt="Eye icon representing clarity"
-                    width={120}
-                    height={120}
-                  />
-                  </div>
-                  <div className={`mb-fluid-xs md:min-h-[80px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-                    <h3 className="title-card">Clarity first</h3>
-                  </div>
-                  <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
-                    <p className="body-md">
-                    We transform complex ideas into precise, easy-to-understand visual plans. Every design choice enhances comprehension and usability.
-                  </p>
-                  </div>
-                </div>
-
-                {/* Creative at Heart */}
-                <div className={`flex flex-col ${DEBUG ? 'border-4 border-red-500' : ''}`}>
-                  <div className={`h-[120px] flex items-center mb-fluid-xs ${DEBUG ? 'border-2 border-pink-500' : ''}`}>
-                    <Image 
-                    src={images.icons.heart}
-                    alt="Heart icon representing creativity"
-                    width={100}
-                    height={100}
-                  />
-                  </div>
-                  <div className={`mb-fluid-xs md:min-h-[80px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-                    <h3 className="title-card">Creative at heart</h3>
-                  </div>
-                  <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
-                    <p className="body-md">
-                    We are driven by the joy of shaping novel and inspiring event experiences. We take ambitious ideas and ground them in careful, calculated design, ensuring every plan is both visionary and flawlessly executed in the real world.
-                  </p>
-                  </div>
-                </div>
-
-                {/* Precise by Nature */}
-                <div className={`flex flex-col ${DEBUG ? 'border-4 border-red-500' : ''}`}>
-                  <div className={`h-[120px] flex items-center mb-fluid-xs ${DEBUG ? 'border-2 border-pink-500' : ''}`}>
-                    <Image 
-                    src={images.icons.target}
-                    alt="Target icon representing precision"
-                    width={100}
-                    height={100}
-                  />
-                  </div>
-                  <div className={`mb-fluid-xs md:min-h-[80px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-                    <h3 className="title-card">Precise by nature</h3>
-                  </div>
-                  <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
-                    <p className="body-md">
-                    We push creative boundaries while ensuring that every plan is grounded in careful, real-world execution. Our site plans are rigorously detailed, leveraging the latest technology to enhance ease-of-use and accuracy.
-                  </p>
-                  </div>
-                </div>
-
-                {/* Adaptable and Responsive */}
-                <div className={`flex flex-col ${DEBUG ? 'border-4 border-red-500' : ''}`}>
-                  <div className={`h-[120px] flex items-center mb-fluid-xs ${DEBUG ? 'border-2 border-pink-500' : ''}`}>
-                    <Image 
-                    src={images.icons.adaptable}
-                    alt="Adaptable icon"
-                    width={110}
-                    height={110}
-                  />
-                  </div>
-                  <div className={`mb-fluid-xs md:min-h-[80px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-                    <h3 className="title-card">Adaptable and responsive</h3>
-                  </div>
-                  <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
-                    <p className="body-md">
-                    We thrive in the ever-changing landscape of event planning, acting as a calming presence that quickly adapts to new challenges and evolving needs without compromising clarity or execution.
-                  </p>
-                  </div>
-                </div>
-
-                {/* Facilitating Collaboration */}
-                <div className={`flex flex-col ${DEBUG ? 'border-4 border-red-500' : ''}`}>
-                  <div className={`h-[120px] flex items-center mb-fluid-xs ${DEBUG ? 'border-2 border-pink-500' : ''}`}>
-                    <Image 
-                    src={images.icons.collaboration}
-                    alt="Collaboration icon"
-                    width={100}
-                    height={100}
-                  />
-                  </div>
-                  <div className={`mb-fluid-xs md:min-h-[80px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-                    <h3 className="title-card">Facilitating collaboration</h3>
-                  </div>
-                  <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
-                    <p className="body-md">
-                    As a central point of connection in event planning, we are the main touchpoint to various stakeholder teams, offering insights that inspire and refine creative visions.
-                  </p>
-                  </div>
-                </div>
-
-                {/* Innovative Approach */}
-                <div className={`flex flex-col ${DEBUG ? 'border-4 border-red-500' : ''}`}>
-                  <div className={`h-[120px] flex items-center mb-fluid-xs ${DEBUG ? 'border-2 border-pink-500' : ''}`}>
-                    <Image 
-                    src={images.icons.lightbulb}
-                    alt="Lightbulb icon representing innovation"
-                    width={70}
-                    height={70}
-                  />
-                  </div>
-                  <div className={`mb-fluid-xs md:min-h-[80px] ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
-                    <h3 className="title-card">Innovative approach</h3>
-                  </div>
-                  <div className={`${DEBUG ? 'border-2 border-cyan-500' : ''}`}>
-                    <p className="body-md">
-                    We're at the forefront of industry trends, continuously refining our methodologies and embracing new technologies to set higher standards in event design.
-                  </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* NEW Our Values Section */}
-      <section className={`relative py-fluid-2xl ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
-        <div className={`container mx-auto px-6 mb-fluid-lg ${DEBUG ? 'border-4 border-blue-500' : ''}`}>
-          <SectionHeader title="Our values" color="meadow" />
-        </div>
-        <ValuesAnimation />
-      </section>
+      */}
 
       {/* CTA Section */}
       <section className="bg-white my-fluid-2xl">

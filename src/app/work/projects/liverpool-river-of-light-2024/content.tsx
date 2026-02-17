@@ -52,7 +52,7 @@ export default function ProjectContent() {
     <>
       {/* First body text section */}
       <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-12 px-4 md:px-0 md:col-start-5 md:col-span-8">
+        <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
           <p className="body-lg mb-3">
             We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront. Taking place over 10 nights, this year's event embraced the theme of 'Play,' showcasing 12 large-scale light installations crafted by both local and international artists.
           </p>
@@ -70,7 +70,7 @@ export default function ProjectContent() {
       {/* Second body text section with side quote */}
       <div className="grid grid-cols-12 gap-4 mb-20">
         {/* Small pull quote - full width on mobile, side column on desktop */}
-        <div className="col-span-12 px-4 md:px-0 md:col-start-1 md:col-span-3 pt-[0.45em] mb-8 md:mb-0">
+        <div className="col-span-12 px-2 md:px-0 md:col-start-1 md:col-span-3 pt-[0.45em] mb-8 md:mb-0">
           <PullQuoteSmall 
             text="A spectacular celebration of creativity and illumination along the city's iconic waterfront."
             className="md:sticky md:top-8"
@@ -83,7 +83,7 @@ export default function ProjectContent() {
           />
         </div>
 
-        <div className="col-span-12 px-4 md:px-0 md:col-start-5 md:col-span-8">
+        <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
           <p className="body-lg mb-3">
             We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront. Taking place over 10 nights, this year's event embraced the theme of 'Play,' showcasing 12 large-scale light installations crafted by both local and international artists.
           </p>
@@ -106,7 +106,7 @@ export default function ProjectContent() {
 
       {/* Third body text section */}
       <div className="grid grid-cols-12 gap-4 mb-20">
-        <div className="col-span-12 px-4 md:px-0 md:col-start-5 md:col-span-8">
+        <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
           <p className="body-lg mb-3">
             We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront. Taking place over 10 nights, this year's event embraced the theme of 'Play,' showcasing 12 large-scale light installations crafted by both local and international artists.
           </p>
@@ -122,7 +122,7 @@ export default function ProjectContent() {
       {/* Fourth body text section with Credits side by side */}
       <div className="grid grid-cols-12 gap-4 mb-20">
         {/* Credits section - full width on mobile, left column on desktop */}
-        <div className="col-span-12 px-4 md:px-0 md:col-start-1 md:col-span-3 mb-8 md:mb-0">
+        <div className="col-span-12 px-2 md:px-0 md:col-start-1 md:col-span-3 mb-8 md:mb-0">
           <Credits 
             sections={[
               {
@@ -144,7 +144,7 @@ export default function ProjectContent() {
         </div>
 
         {/* Body text on the right */}
-        <div className="col-span-12 px-4 md:px-0 md:col-start-5 md:col-span-8">
+        <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
           <p className="body-lg mb-3">
             We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront. Taking place over 10 nights, this year's event embraced the theme of 'Play,' showcasing 12 large-scale light installations crafted by both local and international artists.
           </p>

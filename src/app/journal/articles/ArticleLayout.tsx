@@ -14,23 +14,21 @@ interface ArticleLayoutProps {
 export default function ArticleLayout({ metadata, heroImage, children }: ArticleLayoutProps) {
   return (
     <div className="article-page">
-      {/* Hero Section - Full width */}
-      <section className="relative h-[60vh] min-h-[400px]">
-        <div className="absolute inset-0">
-          <Image 
-            src={heroImage}
-            alt={metadata.title}
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
+      {/* Hero Section - Full width, matching JournalCard aspect ratio */}
+      <section className="relative aspect-[4/3] w-full">
+        <Image 
+          src={heroImage}
+          alt={metadata.title}
+          fill
+          className="object-cover"
+          priority
+        />
       </section>
 
       {/* Article Info Section */}
       <section className="bg-white py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-[60px] max-w-[1680px]">
-          <div className="max-w-[800px] mx-auto">
+          <div className="max-w-[800px] mx-auto px-2 md:px-0">
             <div className="tag text-sunny border-none mb-4 px-0">
               {metadata.category.toUpperCase()} | {metadata.date.toUpperCase()}
             </div>
@@ -47,7 +45,7 @@ export default function ArticleLayout({ metadata, heroImage, children }: Article
       {/* Custom Content */}
       <main className="relative z-10 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-[60px] max-w-[1680px]">
-          <div className="max-w-[800px] mx-auto">
+          <div className="max-w-[800px] mx-auto px-2 md:px-0">
             {children}
           </div>
         </div>

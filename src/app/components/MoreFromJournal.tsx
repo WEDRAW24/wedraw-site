@@ -11,11 +11,16 @@ type MoreFromJournalProps = {
 }
 
 export default function MoreFromJournal({ currentArticleSlug }: MoreFromJournalProps) {
-  // Filter out current article and get 3 random articles
+  // Filter out current article and get up to 3 random articles
   const otherArticles = articles
     .filter(article => article.slug !== currentArticleSlug)
     .sort(() => Math.random() - 0.5)
     .slice(0, 3);
+
+  // Don't render anything if there are no other articles
+  if (otherArticles.length === 0) {
+    return null;
+  }
 
   return (
     <section className="pt-24 pb-32">
@@ -28,8 +33,8 @@ export default function MoreFromJournal({ currentArticleSlug }: MoreFromJournalP
             </>
           }
           color="sunny"
-          buttonText="MORE ARTICLES"
-          buttonHref="/journal"
+          buttonText={otherArticles.length > 1 ? "MORE ARTICLES" : undefined}
+          buttonHref={otherArticles.length > 1 ? "/journal" : undefined}
           className="mb-12"
         />
 
@@ -37,16 +42,24 @@ export default function MoreFromJournal({ currentArticleSlug }: MoreFromJournalP
         <div className="md:hidden">
           <MobileJournalCarousel articles={otherArticles} />
           
-          {/* All Articles Button - Below carousel on mobile */}
-          <div className="flex justify-center mt-fluid-xl">
-            <Button variant="sunny" href="/journal">
-              MORE ARTICLES
-            </Button>
-          </div>
+          {/* All Articles Button - Below carousel on mobile, only if multiple articles */}
+          {articles.length > 2 && (
+            <div className="flex justify-center mt-fluid-xl">
+              <Button variant="sunny" href="/journal">
+                MORE ARTICLES
+              </Button>
+            </div>
+          )}
         </div>
 
-        {/* DESKTOP: 3-column grid */}
-        <div className="hidden md:grid gap-16 md:grid-cols-2 lg:grid-cols-3">
+        {/* DESKTOP: Responsive grid based on article count */}
+        <div className={`hidden md:grid gap-16 ${
+          otherArticles.length === 1 
+            ? 'md:grid-cols-1 max-w-xl' 
+            : otherArticles.length === 2 
+              ? 'md:grid-cols-2' 
+              : 'md:grid-cols-2 lg:grid-cols-3'
+        }`}>
           {otherArticles.map((article) => (
             <JournalCard 
               key={article.slug}

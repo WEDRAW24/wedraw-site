@@ -8,7 +8,7 @@ export default function ProjectContent() {
       {/* First body text section with Credits side by side */}
       <div className="grid grid-cols-12 gap-4 mb-20">
         {/* Credits section - full width on mobile, left column on desktop */}
-        <div className="col-span-12 px-4 md:px-0 md:col-start-1 md:col-span-3 mb-8 md:mb-0">
+        <div className="col-span-12 px-2 md:px-0 md:col-start-1 md:col-span-3 mb-8 md:mb-0">
           <Credits 
             sections={[
               {
@@ -30,7 +30,7 @@ export default function ProjectContent() {
         </div>
 
         {/* Body text on the right */}
-        <div className="col-span-12 px-4 md:px-0 md:col-start-5 md:col-span-8">
+        <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
           <p className="body-lg mb-3">
             We were proud to provide site design services for The Game Fair 2024 at Blenheim Palace, Europe's largest outdoor countryside festival. This prestigious event brings together the best of country sports, outdoor activities, and rural lifestyle, showcasing everything from shooting and fishing to food, drink, and countryside crafts.
           </p>

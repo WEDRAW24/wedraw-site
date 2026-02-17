@@ -96,6 +96,7 @@ export default function Footer() {
                   Privacy Policy
                 </Link>
               </div>
+              <span className="link">Company Number - 15857641</span>
               <a href="https://www.aidanjonesdesign.co.uk/" target="_blank" rel="noopener noreferrer" className="link">
                 Branding by...
               </a>
@@ -163,6 +164,7 @@ export default function Footer() {
             <Link href="/privacy-policy" className="link">
               Privacy Policy
             </Link>
+            <span className="link">Company Number - 15857641</span>
             <a href="https://www.aidanjonesdesign.co.uk/" target="_blank" rel="noopener noreferrer" className="link">
               Branding by...
             </a>
