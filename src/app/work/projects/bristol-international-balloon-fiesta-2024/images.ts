@@ -23,7 +23,7 @@ import pb0003 from './assets/BIBF-24---Please-Credit-Paul-Box0A6A0003d.jpg'
 import fiesta75 from './assets/2024_08_10_Fiesta-75.jpg'
 import fiesta76 from './assets/2024_08_10_Fiesta-76.jpg'
 import fiesta91 from './assets/2024_08_10_Fiesta-91.jpg'
-import dscf1448 from './assets/DSCF1448.JPG'
+import dscf1448 from './assets/DSCF1448.jpg'
 
 // Export all images in a structured object
 export const images = {
