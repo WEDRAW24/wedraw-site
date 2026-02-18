@@ -113,7 +113,7 @@ export default function WorkPage() {
           {/* Hero Section */}
           <div className="pt-fluid-xl mb-fluid-xl">
             <h1 className="display-xxl text-marker mb-fluid-sm">Work</h1>
-            <p className="subtitle text-marker">// projects, case studies, and client collaborations</p>
+            <p className="subtitle text-marker">// projects, case studies, and collaborations</p>
           </div>
 
           {/* Category Filter - Mobile & Tablet */}

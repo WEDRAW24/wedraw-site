@@ -2,7 +2,7 @@ import { ProjectMetadata } from '../types'
 import { images } from './images'
 
 export const metadata: ProjectMetadata = {
-  slug: 'bristol-balloon-fiesta-2024',
+  slug: 'bristol-international-balloon-fiesta-2024',
   title: 'Bristol Balloon Fiesta',
   year: 2024,
   location: 'Ashton Court',

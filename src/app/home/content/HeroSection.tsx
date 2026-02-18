@@ -56,7 +56,7 @@ export default function HeroSection() {
                 delay={0.5}
                 staggerChildren={true}
               >
-                Shaping unforgettable experiences
+                Hands-on thinking for events
               </BlurIn>
             </div>
           </div>
@@ -136,16 +136,16 @@ export default function HeroSection() {
               style={{
                 top: '0px',
                 left: 'clamp(20px, 2.5vw, 30px)',
-                maxWidth: 'min(600px, 50vw)',
+                maxWidth: 'min(700px, 55vw)',
               }}
             >
               <BlurIn 
                 className="display-xl text-blueprint"
-                duration={3.0}
+                duration={6.0}
                 delay={0.5}
                 staggerChildren={true}
               >
-                Shaping unforgettable experiences
+                Hands-on thinking for events
               </BlurIn>
             </div>
           </div>

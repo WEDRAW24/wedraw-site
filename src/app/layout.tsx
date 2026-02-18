@@ -6,8 +6,8 @@ import { ReactNode } from "react";
 import ConditionalLayout from "./components/ConditionalLayout";
 
 export const metadata: Metadata = {
-  title: "WeDraw Style Guide",
-  description: "Style guide and component library",
+  title: "WEDRAW",
+  description: "A studio for hands-on thinking",
 };
 
 function Providers({ children }: { children: ReactNode }) {

@@ -53,11 +53,8 @@ export default function ProjectContent() {
       {/* First body text section */}
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
-          <p className="body-lg mb-3">
-            We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront. Taking place over 10 nights, this year's event embraced the theme of 'Play,' showcasing 12 large-scale light installations crafted by both local and international artists.
-          </p>
           <p className="body-lg mb-20">
-            The carefully curated 3km trail transformed Liverpool's waterfront into an open-air gallery, with some installations turning the area into a playful experience while others explored the deeper meanings of play and its impact on individuals, communities, and the city. It was a joy to collaborate on an event that not only celebrates artistic expression but also enriches the cultural fabric of Liverpool, inviting people of all ages to engage with the city in a whole new light.
+            We were proud to deliver site design services for the 2024 Liverpool River of Light, a ten-night celebration of art and illumination set across the city's iconic waterfront. With 12 large-scale installations positioned along a 3km public trail, the event transformed Liverpool's waterfront into an open-air gallery, welcoming thousands of visitors into the city centre each evening.
           </p>
         </div>
       </div>
@@ -72,7 +69,7 @@ export default function ProjectContent() {
         {/* Small pull quote - full width on mobile, side column on desktop */}
         <div className="col-span-12 px-2 md:px-0 md:col-start-1 md:col-span-3 pt-[0.45em] mb-8 md:mb-0">
           <PullQuoteSmall 
-            text="A spectacular celebration of creativity and illumination along the city's iconic waterfront."
+            text="Featuring installations by artists from across the globe."
             className="md:sticky md:top-8"
             image={{
               src: images.gallery.dronePositiveSpin,
@@ -84,11 +81,8 @@ export default function ProjectContent() {
         </div>
 
         <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
-          <p className="body-lg mb-3">
-            We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront. Taking place over 10 nights, this year's event embraced the theme of 'Play,' showcasing 12 large-scale light installations crafted by both local and international artists.
-          </p>
           <p className="body-lg">
-            The carefully curated 3km trail transformed Liverpool's waterfront into an open-air gallery, with some installations turning the area into a playful experience while others explored the deeper meanings of play and its impact on individuals, communities, and the city. It was a joy to collaborate on an event that not only celebrates artistic expression but also enriches the cultural fabric of Liverpool, inviting people of all ages to engage with the city in a whole new light.
+            Our role was to translate creative ambition into clear, coordinated site plans that could be delivered safely and efficiently. Each installation brought its own technical requirements, from power distribution and access routes to sightlines and audience interaction. Working closely with the production team, artists and stakeholders, we positioned every element to achieve maximum impact while ensuring it functioned seamlessly within a live public space.
           </p>
         </div>
       </div>
@@ -107,11 +101,8 @@ export default function ProjectContent() {
       {/* Third body text section */}
       <div className="grid grid-cols-12 gap-4 mb-20">
         <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
-          <p className="body-lg mb-3">
-            We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront. Taking place over 10 nights, this year's event embraced the theme of 'Play,' showcasing 12 large-scale light installations crafted by both local and international artists.
-          </p>
           <p className="body-lg">
-            The carefully curated 3km trail transformed Liverpool's waterfront into an open-air gallery, with some installations turning the area into a playful experience while others explored the deeper meanings of play and its impact on individuals, communities, and the city. It was a joy to collaborate on an event that not only celebrates artistic expression but also enriches the cultural fabric of Liverpool, inviting people of all ages to engage with the city in a whole new light.
+            The waterfront setting introduced further complexity. Narrow walkways, bridges, access limitations and existing street furniture coupled with significant pedestrian flow required careful consideration. Through detailed drawing packages and structured planning, we addressed crowd movement, emergency access, accessibility and back-of-house logistics long before arriving on site allowing the build to progress smoothly and ensuring a seamless experience for visitors.
           </p>
         </div>
       </div>
@@ -128,8 +119,8 @@ export default function ProjectContent() {
               {
                 title: "PROJECT TEAM",
                 items: [
-                  { role: "Operations", name: "REM" },
-                  { role: "Site Management", name: "REM" },
+                  { role: "Operations", name: "REM events" },
+                  { role: "Site Management", name: "REM events" },
                   { role: "Site Design", name: "WEDRAW" }
                 ]
               },
@@ -145,11 +136,8 @@ export default function ProjectContent() {
 
         {/* Body text on the right */}
         <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
-          <p className="body-lg mb-3">
-            We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront. Taking place over 10 nights, this year's event embraced the theme of 'Play,' showcasing 12 large-scale light installations crafted by both local and international artists.
-          </p>
           <p className="body-lg">
-            The carefully curated 3km trail transformed Liverpool's waterfront into an open-air gallery, with some installations turning the area into a playful experience while others explored the deeper meanings of play and its impact on individuals, communities, and the city. It was a joy to collaborate on an event that not only celebrates artistic expression but also enriches the cultural fabric of Liverpool, inviting people of all ages to engage with the city in a whole new light.
+            Working alongside the local council, what stood out most was the shared drive to improve and build upon what had gone before. There is real pride in creating an event that reflects the city at its best, and a determination to raise the standard each year. Seeing thousands of people gather purely to experience free public art is a powerful reminder of the value these events bring, strengthening community connection while generating meaningful footfall for local businesses. It is a privilege to contribute to events that not only illuminate a city but energise it.
           </p>
         </div>
       </div>

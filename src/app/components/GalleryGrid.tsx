@@ -72,65 +72,67 @@ export default function GalleryGrid({ className = '', images = [] }: GalleryGrid
     )
   }
 
-  // Desktop: Grid layout
+  // Desktop: inner grid has 57px L/R inset so negative-position image overhangs stay in the buffer (consistent across project pages)
   return (
-    <div 
-      className={`container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px] relative grid-container ${className}`}
-      style={{ height: `${containerHeight}px` }}
-    >
-      {/* Grid lines - using z-index below NavDrawer's z-index of 10 */}
-      <div className="absolute inset-0" style={{ zIndex: 1 }}>
-        {/* Vertical lines */}
-        {Array.from({ length: GRID_SIZE + 1 }, (_, i) => (
-          <div
-            key={`v-${i}`}
-            className="absolute top-0 bg-marker/30"
-            style={{
-              width: '0.5px',
-              height: '100%',
-              left: `${i * cellSize}px`
-            }}
-          />
-        ))}
+    <div className={`container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1440px] relative ${className}`}>
+      <div
+        className="grid-container relative pl-[57px] pr-[57px]"
+        style={{ height: `${containerHeight}px` }}
+      >
+        {/* Grid lines - using z-index below NavDrawer's z-index of 10 */}
+        <div className="absolute inset-0" style={{ zIndex: 1 }}>
+          {/* Vertical lines */}
+          {Array.from({ length: GRID_SIZE + 1 }, (_, i) => (
+            <div
+              key={`v-${i}`}
+              className="absolute top-0 bg-marker/30"
+              style={{
+                width: '0.5px',
+                height: '100%',
+                left: `${i * cellSize}px`
+              }}
+            />
+          ))}
 
-        {/* Horizontal lines */}
-        {Array.from({ length: GRID_SIZE + 1 }, (_, i) => (
+          {/* Horizontal lines */}
+          {Array.from({ length: GRID_SIZE + 1 }, (_, i) => (
+            <div
+              key={`h-${i}`}
+              className="absolute left-0 bg-marker/30"
+              style={{
+                height: '0.5px',
+                width: '100%',
+                top: `${i * cellSize}px`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Images - higher than grid but still below NavDrawer's z-index of 10 */}
+        {images.map((item, index) => (
           <div
-            key={`h-${i}`}
-            className="absolute left-0 bg-marker/30"
+            key={`image-${index}`}
+            className="absolute overflow-hidden"
             style={{
-              height: '0.5px',
-              width: '100%',
-              top: `${i * cellSize}px`
+              left: `${item.gridPosition.x * cellSize}px`,
+              top: `${item.gridPosition.y * cellSize}px`,
+              width: `${item.gridPosition.width * cellSize}px`,
+              height: `${item.gridPosition.height * cellSize}px`,
+              zIndex: 2
             }}
-          />
+          >
+            <Image
+              src={item.image}
+              alt=""
+              fill
+              quality={100}
+              unoptimized
+              className="object-cover"
+              sizes={`(max-width: 1440px) ${(item.gridPosition.width / GRID_SIZE) * 100}vw, ${item.gridPosition.width * 60}px`}
+            />
+          </div>
         ))}
       </div>
-
-      {/* Images - higher than grid but still below NavDrawer's z-index of 10 */}
-      {images.map((item, index) => (
-        <div
-          key={`image-${index}`}
-          className="absolute overflow-hidden"
-          style={{
-            left: `${item.gridPosition.x * cellSize}px`,
-            top: `${item.gridPosition.y * cellSize}px`,
-            width: `${item.gridPosition.width * cellSize}px`,
-            height: `${item.gridPosition.height * cellSize}px`,
-            zIndex: 2
-          }}
-        >
-          <Image
-            src={item.image}
-            alt=""
-            fill
-            quality={100}
-            unoptimized
-            className="object-cover"
-            sizes={`(max-width: 1440px) ${(item.gridPosition.width / GRID_SIZE) * 100}vw, ${item.gridPosition.width * 60}px`}
-          />
-        </div>
-      ))}
     </div>
   )
 } 

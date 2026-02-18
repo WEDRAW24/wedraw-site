@@ -8,7 +8,7 @@ const testimonials = [
   {
     quote: "Working with WEDRAW has felt like gaining an extra member of our team. Approachable, reliable, and genuinely invested in our success, they've made the entire process, from site planning to mark out, smoother and more enjoyable.",
     name: "Ben Hardy",
-    company: "REM"
+    company: "REM events"
   },
   {
     quote: "The Event Safety Shop has worked with the WEDRAW team for several years across a range of events and projects. Their accurate, detailed plans are delivered reliably and on time, allowing us to overlay event safety and operational strategies effectively. Their strong understanding of event environments and collaborative approach make them a trusted and valued partner.",
