@@ -46,6 +46,7 @@ function MarqueeRow({
   rowIndex,
   isPaused,
   flashingElements,
+  startOffset = 0,
 }: { 
   words: string[]
   direction: 'left' | 'right'
@@ -53,20 +54,26 @@ function MarqueeRow({
   rowIndex: number
   isPaused: boolean
   flashingElements: Set<string>
+  startOffset?: number // percentage offset (0–100) for staggering duplicate rows
 }) {
   const rowRef = useRef<HTMLDivElement>(null)
   const [duration, setDuration] = useState(50) // default fallback
+  const [offsetPx, setOffsetPx] = useState(0)
   
   const getElementKey = (copy: number, index: number) => `${rowIndex}-${copy}-${index}`
   
-  // Calculate duration based on content width and desired speed
+  // Calculate duration and offset based on content width and desired speed
   useEffect(() => {
     if (rowRef.current) {
       const contentWidth = rowRef.current.scrollWidth / 2 // Half because we have 2 copies
       const calculatedDuration = contentWidth / speed
       setDuration(calculatedDuration)
+      if (startOffset > 0) {
+        setOffsetPx(contentWidth * (startOffset / 100))
+      }
     }
-  }, [speed, words])
+  }, [speed, words, startOffset])
+  
   
   return (
     <div className="overflow-hidden py-1 md:py-2">
@@ -77,6 +84,7 @@ function MarqueeRow({
         style={{
           animation: `marquee-${direction} ${duration}s linear infinite`,
           animationPlayState: isPaused ? 'paused' : 'running',
+          marginLeft: startOffset > 0 ? `${-offsetPx}px` : undefined,
         }}
       >
         {/* Two identical copies for seamless loop */}
@@ -111,7 +119,8 @@ function MarqueeRow({
 
 export default function ValuesAnimation() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [flashingElements, setFlashingElements] = useState<Set<string>>(new Set()) // Now tracks element keys, not word strings
+  const mobileContainerRef = useRef<HTMLDivElement>(null)
+  const [flashingElements, setFlashingElements] = useState<Set<string>>(new Set())
   const [pausedRows, setPausedRows] = useState<Set<number>>(new Set())
   
   // Track individual elements that have connected this viewport pass (can only connect once per pass)
@@ -140,7 +149,7 @@ export default function ValuesAnimation() {
     connectedElementsRef.current.add(el1Key)
     connectedElementsRef.current.add(el2Key)
     
-    setPausedRows(new Set([0, 1, 2, 3])) // Pause all rows
+    setPausedRows(new Set([0, 1, 2, 3, 4, 5, 6, 7])) // Pause all rows (0–3 primary, 4–7 staggered mobile)
     setFlashingElements(new Set([el1Key, el2Key])) // Flash specific elements, not all words with same name
     
     // Resume animation after pause
@@ -157,10 +166,14 @@ export default function ValuesAnimation() {
   
   const checkConnections = useCallback(() => {
     // Don't check if paused, or during global cooldown
-    if (!containerRef.current || pausedRows.size > 0 || globalCooldownRef.current) return
+    if (pausedRows.size > 0 || globalCooldownRef.current) return
     
-    const containerRect = containerRef.current.getBoundingClientRect()
-    const rows = containerRef.current.querySelectorAll('[data-row]')
+    const desktopVisible = containerRef.current && containerRef.current.getBoundingClientRect().width > 0
+    const activeContainer = desktopVisible ? containerRef.current : mobileContainerRef.current
+    if (!activeContainer) return
+    
+    const containerRect = activeContainer.getBoundingClientRect()
+    const rows = activeContainer.querySelectorAll('[data-row]')
     
     // First, check for elements that have gone off-screen and reset their connection status
     rows.forEach((row) => {
@@ -179,12 +192,10 @@ export default function ValuesAnimation() {
       })
     })
     
-    // Check all row pairs (any row can connect to any other row)
-    const rowPairs: [number, number][] = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]]
-    
-    for (const [upperRowIdx, lowerRowIdx] of rowPairs) {
-      const upperRow = rows[upperRowIdx]
-      const lowerRow = rows[lowerRowIdx]
+    // Check all adjacent row pairs in DOM order (each row can connect to the row directly below it)
+    for (let i = 0; i < rows.length - 1; i++) {
+      const upperRow = rows[i]
+      const lowerRow = rows[i + 1]
       if (!upperRow || !lowerRow) continue
       
       const upperWords = upperRow.querySelectorAll('span[data-word]')
@@ -199,7 +210,8 @@ export default function ValuesAnimation() {
         const upperWord = upperEl.getAttribute('data-word') || ''
         const upperCopy = parseInt(upperEl.getAttribute('data-copy') || '0')
         const upperIndex = parseInt(upperEl.getAttribute('data-index') || '0')
-        const upperKey = getElementKey(upperRowIdx, upperCopy, upperIndex)
+        const upperRowId = parseInt(upperRow.getAttribute('data-row') || '0')
+        const upperKey = getElementKey(upperRowId, upperCopy, upperIndex)
         
         const upperCenterX = upperRect.left + upperRect.width / 2
         
@@ -212,7 +224,8 @@ export default function ValuesAnimation() {
           const lowerWord = lowerEl.getAttribute('data-word') || ''
           const lowerCopy = parseInt(lowerEl.getAttribute('data-copy') || '0')
           const lowerIndex = parseInt(lowerEl.getAttribute('data-index') || '0')
-          const lowerKey = getElementKey(lowerRowIdx, lowerCopy, lowerIndex)
+          const lowerRowId = parseInt(lowerRow.getAttribute('data-row') || '0')
+          const lowerKey = getElementKey(lowerRowId, lowerCopy, lowerIndex)
           
           const lowerCenterX = lowerRect.left + lowerRect.width / 2
           
@@ -228,7 +241,7 @@ export default function ValuesAnimation() {
           const isValid = CONNECTIONS[upperWord]?.has(lowerWord) || CONNECTIONS[lowerWord]?.has(upperWord)
           
           if (isValid) {
-            triggerConnection(upperRowIdx, lowerRowIdx, upperKey, lowerKey)
+            triggerConnection(upperRowId, lowerRowId, upperKey, lowerKey)
             return
           }
         }
@@ -254,39 +267,25 @@ export default function ValuesAnimation() {
         }
       `}</style>
       
-      <div ref={containerRef} className="w-full overflow-hidden">
-        <MarqueeRow 
-          words={ROW_1_WORDS} 
-          rowIndex={0} 
-          direction="right" 
-          speed={100} 
-          isPaused={pausedRows.has(0)}
-          flashingElements={flashingElements}
-        />
-        <MarqueeRow 
-          words={ROW_2_WORDS} 
-          rowIndex={1} 
-          direction="left" 
-          speed={100} 
-          isPaused={pausedRows.has(1)}
-          flashingElements={flashingElements}
-        />
-        <MarqueeRow 
-          words={ROW_3_WORDS} 
-          rowIndex={2} 
-          direction="right" 
-          speed={100} 
-          isPaused={pausedRows.has(2)}
-          flashingElements={flashingElements}
-        />
-        <MarqueeRow 
-          words={ROW_4_WORDS} 
-          rowIndex={3} 
-          direction="left" 
-          speed={100} 
-          isPaused={pausedRows.has(3)}
-          flashingElements={flashingElements}
-        />
+      {/* Desktop: 4 rows */}
+      <div ref={containerRef} className="w-full overflow-hidden hidden md:block">
+        <MarqueeRow words={ROW_1_WORDS} rowIndex={0} direction="right" speed={100} isPaused={pausedRows.has(0)} flashingElements={flashingElements} />
+        <MarqueeRow words={ROW_2_WORDS} rowIndex={1} direction="left" speed={100} isPaused={pausedRows.has(1)} flashingElements={flashingElements} />
+        <MarqueeRow words={ROW_3_WORDS} rowIndex={2} direction="right" speed={100} isPaused={pausedRows.has(2)} flashingElements={flashingElements} />
+        <MarqueeRow words={ROW_4_WORDS} rowIndex={3} direction="left" speed={100} isPaused={pausedRows.has(3)} flashingElements={flashingElements} />
+      </div>
+
+      {/* Mobile: 8 rows — order 1,2,1,2,3,4,3,4 with alternating directions and 50% stagger on duplicates, half speed */}
+      {/* Staggered duplicates use rowIndex 4–7 so their element keys don't collide with primaries */}
+      <div ref={mobileContainerRef} className="w-full overflow-hidden md:hidden">
+        <MarqueeRow words={ROW_1_WORDS} rowIndex={0} direction="right" speed={50} isPaused={pausedRows.has(0)} flashingElements={flashingElements} />
+        <MarqueeRow words={ROW_2_WORDS} rowIndex={1} direction="left" speed={50} isPaused={pausedRows.has(1)} flashingElements={flashingElements} />
+        <MarqueeRow words={ROW_1_WORDS} rowIndex={4} direction="right" speed={50} isPaused={pausedRows.has(4)} flashingElements={flashingElements} startOffset={50} />
+        <MarqueeRow words={ROW_2_WORDS} rowIndex={5} direction="left" speed={50} isPaused={pausedRows.has(5)} flashingElements={flashingElements} startOffset={50} />
+        <MarqueeRow words={ROW_3_WORDS} rowIndex={2} direction="right" speed={50} isPaused={pausedRows.has(2)} flashingElements={flashingElements} />
+        <MarqueeRow words={ROW_4_WORDS} rowIndex={3} direction="left" speed={50} isPaused={pausedRows.has(3)} flashingElements={flashingElements} />
+        <MarqueeRow words={ROW_3_WORDS} rowIndex={6} direction="right" speed={50} isPaused={pausedRows.has(6)} flashingElements={flashingElements} startOffset={50} />
+        <MarqueeRow words={ROW_4_WORDS} rowIndex={7} direction="left" speed={50} isPaused={pausedRows.has(7)} flashingElements={flashingElements} startOffset={50} />
       </div>
     </>
   )

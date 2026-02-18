@@ -1,7 +1,4 @@
-// Replace with your own hero: add hero.jpg to ./assets/ and use: import hero from './assets/hero.jpg'
-import { images as placeholderImages } from '../blenheim-palace-international-horse-trials-2024/images'
-
-const hero = placeholderImages.hero
+import hero from './assets/250621_SF00466.jpg'
 
 export const images = {
   all: {

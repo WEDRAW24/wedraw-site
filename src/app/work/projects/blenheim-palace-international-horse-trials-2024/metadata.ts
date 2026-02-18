@@ -6,7 +6,7 @@ export const metadata: ProjectMetadata = {
   title: 'Blenheim Palace Horse Trials',
   year: 2024,
   location: 'Blenheim Palace',
-  description: "Creating an exceptional experience at one of the world's premier equestrian events, set in the stunning grounds of Blenheim Palace.",
+  description: "An international equestrian competition inside a UNESCO World Heritage landscape. Precision site design for a fixture where history, reputation and responsibility come as standard.",
   category: 'sports',
   coverImage: images.hero,
   gridColumn: 2,

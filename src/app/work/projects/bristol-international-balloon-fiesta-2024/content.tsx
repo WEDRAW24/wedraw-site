@@ -59,8 +59,8 @@ export default function ProjectContent() {
 
       {/* Third body text section with Credits side by side */}
       <div className="grid grid-cols-12 gap-4 mb-20">
-        {/* Credits section - full width on mobile, left column on desktop */}
-        <div className="col-span-12 px-2 md:px-0 md:col-start-1 md:col-span-3 mb-8 md:mb-0">
+        {/* Credits – desktop only (left column); mobile version rendered at end of article */}
+        <div className="hidden md:block col-span-12 md:col-start-1 md:col-span-3">
           <Credits 
             sections={[
               {
@@ -93,6 +93,31 @@ export default function ProjectContent() {
             Our role was to support that vision through clear site planning process. Managing launch fields, spectator areas, trading zones and emergency access within the historic landscape of Ashton Court requires careful coordination. Through detailed survey work and accurate mark out, we helped create a framework that allowed pilots, crew and visitors alike to focus on what makes the Fiesta so special. We are proud to contribute to an event that celebrates our city’s heritage and brings Bristol together beneath a sky filled with colour.
           </p>
         </div>
+      </div>
+
+      {/* Credits – mobile only, always last in article */}
+      <div className="md:hidden px-2 mb-20">
+        <Credits 
+          sections={[
+            {
+              title: "PROJECT TEAM",
+              items: [
+                { role: "Operations", name: "REM events" },
+                { role: "Site Management", name: "REM events" },
+                { role: "Site Design", name: "WEDRAW" }
+              ]
+            },
+            {
+              title: "PHOTOGRAPHY",
+              items: [
+                { name: "George Blagdon" },
+                { name: "Paul Box" },
+                { name: "Inaz Hussein" },
+                { name: "Colin Rayner" }
+              ]
+            }
+          ]}
+        />
       </div>
     </>
   )

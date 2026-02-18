@@ -10,7 +10,7 @@ export const metadata: ProjectMetadata = {
   category: 'cultural',
   coverImage: images.hero,
   gridColumn: 2,
-  gridRow: 40,
+  gridRow: 32,
   gridWidth: 10,
-  gridHeight: 4
+  gridHeight: 5
 } as const

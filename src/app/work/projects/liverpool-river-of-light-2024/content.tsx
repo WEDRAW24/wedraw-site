@@ -112,8 +112,8 @@ export default function ProjectContent() {
 
       {/* Fourth body text section with Credits side by side */}
       <div className="grid grid-cols-12 gap-4 mb-20">
-        {/* Credits section - full width on mobile, left column on desktop */}
-        <div className="col-span-12 px-2 md:px-0 md:col-start-1 md:col-span-3 mb-8 md:mb-0">
+        {/* Credits – desktop only (left column); mobile version rendered at end of article */}
+        <div className="hidden md:block col-span-12 md:col-start-1 md:col-span-3">
           <Credits 
             sections={[
               {
@@ -140,6 +140,28 @@ export default function ProjectContent() {
             Working alongside the local council, what stood out most was the shared drive to improve and build upon what had gone before. There is real pride in creating an event that reflects the city at its best, and a determination to raise the standard each year. Seeing thousands of people gather purely to experience free public art is a powerful reminder of the value these events bring, strengthening community connection while generating meaningful footfall for local businesses. It is a privilege to contribute to events that not only illuminate a city but energise it.
           </p>
         </div>
+      </div>
+
+      {/* Credits – mobile only, always last in article */}
+      <div className="md:hidden px-2 mb-20">
+        <Credits 
+          sections={[
+            {
+              title: "PROJECT TEAM",
+              items: [
+                { role: "Operations", name: "REM events" },
+                { role: "Site Management", name: "REM events" },
+                { role: "Site Design", name: "WEDRAW" }
+              ]
+            },
+            {
+              title: "PHOTOGRAPHY",
+              items: [
+                { name: "Liverpool City Council" }
+              ]
+            }
+          ]}
+        />
       </div>
     </>
   )

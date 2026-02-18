@@ -46,8 +46,8 @@ export default function ProjectContent() {
 
       {/* Third body text section with Credits – credits above/first on mobile, left column on desktop */}
       <div className="grid grid-cols-12 gap-4 mb-20">
-        {/* Credits – above/first on mobile (order-1), left column on desktop */}
-        <div className="col-span-12 px-2 md:px-0 md:col-start-1 md:col-span-3 mb-8 md:mb-0 order-1 md:order-none">
+        {/* Credits – desktop only (left column); mobile version rendered at end of article */}
+        <div className="hidden md:block col-span-12 md:col-start-1 md:col-span-3">
           <Credits 
             sections={[
               {
@@ -69,8 +69,8 @@ export default function ProjectContent() {
           />
         </div>
 
-        {/* Third + fourth body text – below credits on mobile (order-2), right column on desktop */}
-        <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8 order-2 md:order-none">
+        {/* Body text – right column on desktop */}
+        <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
           <p className="body-lg mb-12">
             Working alongside individuals who have shaped the event for over twenty years brought invaluable insight to the planning process. Their deep understanding of ground conditions, crowd patterns, sporting sequencing and course history informed every revision. That depth of experience ensured that change was considered, deliberate and grounded in understanding rather than assumption.
           </p>
@@ -78,6 +78,29 @@ export default function ProjectContent() {
             Our involvement spanned site survey, design coordination and full GNSS mark out. From mapping existing constraints across the estate to setting out arenas, cross-country routes, trade stands and hospitality structures, we translated complex designs into a clear on-the-ground instruction. At a time of transition, an event with such a rich history demands a deliberate design approach that respects its heritage while supporting its future ambitions, made possible by collective experience, clear communication and careful planning.
           </p>
         </div>
+      </div>
+
+      {/* Credits – mobile only, always last in article */}
+      <div className="md:hidden px-2 mb-20">
+        <Credits 
+          sections={[
+            {
+              title: "PROJECT TEAM",
+              items: [
+                { role: "Operations", name: "Stable Events" },
+                { role: "Site Management", name: "REM events" },
+                { role: "Site Design", name: "WEDRAW" }
+              ]
+            },
+            {
+              title: "PHOTOGRAPHY",
+              items: [
+                { name: "India Hodder" },
+                { name: "Libby Law" }
+              ]
+            }
+          ]}
+        />
       </div>
     </>
   )

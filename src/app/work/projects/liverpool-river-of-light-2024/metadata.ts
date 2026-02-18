@@ -6,7 +6,7 @@ export const metadata: ProjectMetadata = {
   title: 'Liverpool River of Light',
   year: 2024,
   location: 'Liverpool Waterfront',
-  description: "We were delighted to provide site design services for the 2024 Liverpool River of Light, a spectacular celebration of creativity and illumination along the city's iconic waterfront.",
+  description: "Site design for a ten-night celebration of art and illumination, with twelve large-scale installations positioned along a 3km public trail across Liverpool's waterfront.",
   category: 'cultural',
   coverImage: images.hero,
   gridColumn: 7,

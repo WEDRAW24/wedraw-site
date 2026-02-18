@@ -6,11 +6,11 @@ export const metadata: ProjectMetadata = {
   title: 'Bristol Balloon Fiesta',
   year: 2024,
   location: 'Ashton Court',
-  description: "Bringing Europe's largest hot air balloon festival to life with innovative site design and unforgettable visitor experiences at Ashton Court.",
+  description: "Europe's largest annual hot air balloon gathering, approaching its 50th year at Ashton Court. Mass ascents, nightglows and hundreds of thousands of visitors beneath Bristol's skyline.",
   category: 'festivals',
   coverImage: images.hero,
   gridColumn: 2,
-  gridRow: 29,
+  gridRow: 22,
   gridWidth: 10,
   gridHeight: 6
 } as const 

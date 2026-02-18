@@ -17,7 +17,7 @@ export default function ProjectLayout({ metadata, heroImage, children }: Project
   return (
     <div className="project-page">
       {/* Hero Section - Full width */}
-      <section className="relative h-screen">
+      <section className="relative h-[66vh] md:h-screen">
         <div className="absolute inset-0">
           <Image 
             src={heroImage}

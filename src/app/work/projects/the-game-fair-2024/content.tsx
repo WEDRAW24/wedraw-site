@@ -80,8 +80,8 @@ export default function ProjectContent() {
 
       {/* Fourth body text section with Credits side by side */}
       <div className="grid grid-cols-12 gap-4 mb-20">
-        {/* Credits section - full width on mobile, left column on desktop */}
-        <div className="col-span-12 px-2 md:px-0 md:col-start-1 md:col-span-3 mb-8 md:mb-0">
+        {/* Credits – desktop only (left column); mobile version rendered at end of article */}
+        <div className="hidden md:block col-span-12 md:col-start-1 md:col-span-3">
           <Credits 
             sections={[
               {
@@ -108,6 +108,28 @@ export default function ProjectContent() {
             Clarity sits at the centre of what we do. Its value became evident during the live event when an urgent situation arose in event control. Key personnel gathered around a large printed site plan to assess the issue and agree a course of action. With a clear and accurate visual reference in front of them, they were able to communicate effectively, test options and respond decisively. In moments where time is critical, a well-considered site plan is not just useful, it becomes an essential decision-making tool.
           </p>
         </div>
+      </div>
+
+      {/* Credits – mobile only, always last in article */}
+      <div className="md:hidden px-2 mb-20">
+        <Credits 
+          sections={[
+            {
+              title: "PROJECT TEAM",
+              items: [
+                { role: "Operations", name: "Stable Events" },
+                { role: "Site Management", name: "REM events" },
+                { role: "Site Design", name: "WEDRAW" }
+              ]
+            },
+            {
+              title: "PHOTOGRAPHY",
+              items: [
+                { name: "Stable Events" }
+              ]
+            }
+          ]}
+        />
       </div>
     </>
   )

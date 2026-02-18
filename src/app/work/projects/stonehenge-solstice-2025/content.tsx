@@ -25,15 +25,15 @@ export default function ProjectContent() {
 
       {/* Third body text section with Credits – credits last on mobile */}
       <div className="grid grid-cols-12 gap-4 mb-20">
-        {/* Body text – first on mobile (order-1), right column on desktop */}
-        <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8 order-1 md:order-none">
+        {/* Body text – right column on desktop */}
+        <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
           <p className="body-lg">
             Working on an English Heritage site demands careful balance between operational delivery and long-term conservation. Managing traffic, visitor movement and temporary infrastructure within a World Heritage landscape calls for clear coordination and disciplined planning. At Stonehenge, that approach supports safe access today while protecting a monument that has stood for over four thousand years.
           </p>
         </div>
 
-        {/* Credits – last on mobile (order-2), left column on desktop */}
-        <div className="col-span-12 px-2 md:px-0 md:col-start-1 md:col-span-3 mb-8 md:mb-0 order-2 md:order-none">
+        {/* Credits – desktop only (left column); mobile version rendered at end of article */}
+        <div className="hidden md:block col-span-12 md:col-start-1 md:col-span-3">
           <Credits 
             sections={[
               {
@@ -53,6 +53,28 @@ export default function ProjectContent() {
             ]}
           />
         </div>
+      </div>
+
+      {/* Credits – mobile only, always last in article */}
+      <div className="md:hidden px-2 mb-20">
+        <Credits 
+          sections={[
+            {
+              title: "PROJECT TEAM",
+              items: [
+                { role: "Operations", name: "REM events" },
+                { role: "Site Management", name: "REM events" },
+                { role: "Site Design", name: "WEDRAW" }
+              ]
+            },
+            {
+              title: "PHOTOGRAPHY",
+              items: [
+                { name: "TBC" }
+              ]
+            }
+          ]}
+        />
       </div>
     </>
   )
