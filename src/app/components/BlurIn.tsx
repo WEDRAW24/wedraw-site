@@ -12,6 +12,7 @@ interface BlurInProps {
   duration?: number
   delay?: number
   staggerChildren?: boolean
+  staggerDelay?: number
 }
 
 const BlurIn = ({ 
@@ -20,7 +21,8 @@ const BlurIn = ({
   variant,
   duration = 1,
   delay = 0,
-  staggerChildren = true
+  staggerChildren = true,
+  staggerDelay = 0.15
 }: BlurInProps) => {
   const defaultVariants = {
     hidden: { filter: 'blur(10px)', opacity: 0 },
@@ -37,7 +39,7 @@ const BlurIn = ({
         initial="hidden"
         animate="visible"
         transition={{ 
-          staggerChildren: 0.15,
+          staggerChildren: staggerDelay,
           delayChildren: delay
         }}
         className={className}

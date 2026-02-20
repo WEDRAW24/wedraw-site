@@ -9,8 +9,8 @@ export const metadata: ProjectMetadata = {
   description: "Europe's largest annual hot air balloon gathering, approaching its 50th year at Ashton Court. Mass ascents, nightglows and hundreds of thousands of visitors beneath Bristol's skyline.",
   category: 'festivals',
   coverImage: images.hero,
-  gridColumn: 2,
-  gridRow: 22,
-  gridWidth: 10,
-  gridHeight: 6
+  gridColumn: 4,
+  gridRow: 23,
+  gridWidth: 8,
+  gridHeight: 5
 } as const 

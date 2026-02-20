@@ -6,11 +6,11 @@ export const metadata: ProjectMetadata = {
   title: 'Stonehenge Solstice',
   year: 2025,
   location: 'Stonehenge',
-  description: 'Site design and planning for the summer solstice celebrations at Stonehenge.',
+  description: 'Site planning for the summer and winter solstice gatherings at one of Britain\'s most significant ancient monuments.',
   category: 'cultural',
   coverImage: images.hero,
   gridColumn: 2,
-  gridRow: 32,
+  gridRow: 15,
   gridWidth: 10,
   gridHeight: 5
 } as const

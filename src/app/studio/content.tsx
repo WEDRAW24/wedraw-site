@@ -67,34 +67,9 @@ export default function StudioContent() {
           <div className="relative h-1/2 w-full flex flex-col">
             {/* Green section with content */}
             <div className="relative flex-1 bg-meadow flex flex-col justify-end px-6 py-6">
-              <Button 
-                variant="white-meadow"
-                className="mb-4 self-start"
-                href="/work/projects/bristol-international-balloon-fiesta-2024"
-              >
-                BRISTOL BALLOON FIESTA
-              </Button>
-              <div style={{ fontSize: 'clamp(36px, 8vw, 65px)' }}>
-                <h1 className="text-white font-area-black leading-[120%] text-[1em]">
-                  <div className="flex items-center">
-                    <div className="relative flex-shrink-0" style={{ marginBottom: '-0.118em' }}>
-                      <Image
-                        src={images.WE_SVG}
-                        alt="WE"
-                        width={160}
-                        height={85}
-                        style={{ 
-                          height: '1em',
-                          width: '1.882em',
-                          marginRight: '0.188em'
-                        }}
-                      />
-                    </div>
-                    <span className="flex-shrink-0">ELEVATE</span>
-                  </div>
-                  EVENTS
-                </h1>
-              </div>
+              <h1 className="text-white font-area-black leading-[110%]" style={{ fontSize: 'clamp(36px, 8vw, 65px)' }}>
+                A STUDIO FOR HANDS ON THINKING
+              </h1>
             </div>
             
             {/* Hatched Pattern section */}
@@ -139,34 +114,9 @@ export default function StudioContent() {
         
         {/* Content Overlay - aligned to bottom-left of solid green area */}
         <div className="absolute top-0 right-0 bottom-[28vh] left-1/2 flex flex-col justify-end p-[clamp(32px,5vw,60px)] pr-[clamp(48px,8vw,80px)]">
-          <Button 
-            variant="white-meadow"
-            className="mb-6 self-start"
-            href="/work/projects/bristol-international-balloon-fiesta-2024"
-          >
-            BRISTOL BALLOON FIESTA
-          </Button>
-          <div style={{ fontSize: 'clamp(40px, 4.5vw, 85px)' }}>
-            <h1 className="text-white font-area-black leading-[120%] text-[1em]">
-              <div className="flex items-center">
-                <div className="relative flex-shrink-0" style={{ marginBottom: '-0.153em' }}>
-                  <Image
-                    src={images.WE_SVG}
-                    alt="WE"
-                    width={160}
-                    height={85}
-                    style={{ 
-                      height: '0.98em',
-                      width: '1.845em',
-                      marginRight: '0.188em'
-                    }}
-                  />
-                </div>
-                <span className="flex-shrink-0">ELEVATE</span>
-              </div>
-              EVENTS
-            </h1>
-          </div>
+          <h1 className="text-white font-area-black leading-[110%]" style={{ fontSize: 'clamp(40px, 4.5vw, 85px)' }}>
+            A STUDIO FOR HANDS-ON THINKING
+          </h1>
         </div>
         </div>
       </section>
@@ -214,7 +164,7 @@ export default function StudioContent() {
       */}
 
       {/* How We Work Section */}
-      <section className={`relative py-fluid-2xl ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
+      <section id="our-studio" className={`relative py-fluid-2xl ${DEBUG ? 'border-4 border-purple-500' : ''}`}>
         <div className={`container mx-auto px-6 mb-fluid-lg ${DEBUG ? 'border-4 border-blue-500' : ''}`}>
           <SectionHeader title="Our Studio" color="meadow" />
         </div>
@@ -222,6 +172,7 @@ export default function StudioContent() {
       </section>
 
       {/* Our Expertise Section - Mobile, Tablet & Small Desktop Accordion */}
+      <div id="our-expertise" />
       <section className="xl:hidden relative py-fluid-2xl min-h-screen">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-12 gap-fluid-sm">

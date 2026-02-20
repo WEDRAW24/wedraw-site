@@ -160,6 +160,11 @@ body {
     @apply font-sans font-area-extrabold text-display-xxl;
   }
   
+  /* HOME HERO - WE DRAW EVENTS */
+  .display-hero {
+    @apply font-sans font-area-black text-display-hero;
+  }
+  
   /* HERO HEADINGS - Main page heroes (Home, Contact) */
   .display-xl {
     @apply font-sans font-area-extrabold text-display-xl;

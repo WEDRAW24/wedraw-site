@@ -14,7 +14,7 @@ export default function SelectedProjectsSection() {
   // Debug mode - set to false to hide all container borders
   const DEBUG = false;
 
-  const projects = [riverOfLightMetadata, blenheimMetadata, balloonFiestaMetadata]
+  const projects = [balloonFiestaMetadata, riverOfLightMetadata, blenheimMetadata]
 
   return (
     <div className={`relative pb-[100px] pt-[30px] overflow-x-hidden ${DEBUG ? 'border-4 border-purple-500' : ''}`}>

@@ -47,6 +47,9 @@ const config: Config = {
 			// Hero Headings (for main page heroes - Home, Contact)
 			'display-xl': ['clamp(48px, 8vw, 85px)', { lineHeight: '120%', letterSpacing: '0%' }],
 			
+			// Home Hero - WE DRAW EVENTS
+			'display-hero': ['clamp(52px, 9vw, 96px)', { lineHeight: '110%', letterSpacing: '-1%' }],
+			
 			// Subtitle (for taglines/subtitles under headings)
 			'subtitle': ['clamp(20px, 3.5vw, 30px)', { lineHeight: '130%', letterSpacing: '0%' }],
 			

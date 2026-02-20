@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { projects } from "@/app/work/projects/registry";
 
 interface NavDrawerProps {
@@ -12,7 +12,24 @@ interface NavDrawerProps {
 
 export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
+  const [desktopScale, setDesktopScale] = useState(1);
+  const desktopContentRef = useRef<HTMLDivElement>(null);
   
+  const DESKTOP_REFERENCE_HEIGHT = 900;
+
+  const updateDesktopScale = useCallback(() => {
+    const scale = Math.min(1, window.innerHeight / DESKTOP_REFERENCE_HEIGHT);
+    setDesktopScale(scale);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      updateDesktopScale();
+      window.addEventListener('resize', updateDesktopScale);
+      return () => window.removeEventListener('resize', updateDesktopScale);
+    }
+  }, [isOpen, updateDesktopScale]);
+
   // Debug mode - set to false to hide all container borders
   const DEBUG = false
 
@@ -49,9 +66,8 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
       color: "meadow",
       href: "/studio",
       links: [
-        { label: "EXPERTISE", href: "/studio/expertise" },
-        { label: "VALUES", href: "/studio/values" },
-        { label: "ABOUT US", href: "/studio/about-us" }
+        { label: "OUR STUDIO", href: "/studio#our-studio" },
+        { label: "OUR EXPERTISE", href: "/studio#our-expertise" }
       ]
     },
     {
@@ -102,12 +118,22 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
                          'bg-white'}
                        ${DEBUG ? 'border-4 border-purple-500' : ''}`}
           >
-          <div className={`h-screen max-w-[1440px] relative flex flex-col pl-24 ${DEBUG ? 'border-4 border-blue-500' : ''}`} style={{ paddingRight: 'clamp(48px, 25vw, 400px)' }}>
-            <ul className={`flex-1 pt-12 flex flex-col ${DEBUG ? 'border-4 border-orange-500' : ''}`} style={{ gap: 'clamp(40px, 3vw, 48px)' }}>
+          <div
+            ref={desktopContentRef}
+            className={`max-w-[1440px] relative flex flex-col pl-24 ${DEBUG ? 'border-4 border-blue-500' : ''}`}
+            style={{
+              height: `${DESKTOP_REFERENCE_HEIGHT}px`,
+              paddingRight: 'clamp(48px, 25vw, 400px)',
+              transform: `scale(${desktopScale})`,
+              transformOrigin: 'top left',
+              width: `${100 / desktopScale}%`,
+            }}
+          >
+            <ul className={`pt-12 flex flex-col ${DEBUG ? 'border-4 border-orange-500' : ''}`} style={{ gap: 'clamp(40px, 3vw, 48px)' }}>
               {navigationContent.map(({ title, href, color, links }) => (
                 <li
                   key={title}
-                  className={`border-b-2 border-${color} group transition-all duration-300 ${
+                  className={`relative border-b-2 border-${color} group flex justify-between items-end transition-all duration-300 ${
                     hoveredSection ? 
                       title === hoveredSection ? 'border-white' : 'border-white border-opacity-50'
                       : ''
@@ -116,7 +142,6 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
                   onMouseEnter={() => setHoveredSection(title)}
                   onMouseLeave={() => setHoveredSection(null)}
                 >
-                  <div className={`flex justify-between items-end ${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
                     <h2
                       className={`nav-heading text-${color} transition-all duration-300 ${
                         hoveredSection ? 
@@ -146,13 +171,47 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
                         </Link>
                       ))}
                     </div>
-                  </div>
+
+                    {title === 'Contact' && (
+                      <div
+                        className={`hidden min-[1000px]:block absolute bottom-0 text-right space-y-12 transition-all duration-300 ${
+                          hoveredSection ? 'text-white opacity-50' : ''
+                        } ${DEBUG ? 'border-4 border-pink-500' : ''}`}
+                        style={{ left: '100%', paddingLeft: '80px' }}
+                      >
+                        <div>
+                          <h3 className={`tag mb-2 text-blueprint transition-all duration-300 ${
+                            hoveredSection ? 'text-white opacity-50' : ''
+                          }`}>OFFICE</h3>
+                          <p className={`body-md !text-black transition-all duration-300 ${
+                            hoveredSection ? '!text-white opacity-50' : ''
+                          }`}>
+                            59 Prince Street<br />
+                            Bristol<br />
+                            BS1 4QH
+                          </p>
+                        </div>
+                        <div>
+                          <h3 className={`tag mb-2 text-blueprint transition-all duration-300 ${
+                            hoveredSection ? 'text-white opacity-50' : ''
+                          }`}>EMAIL ADDRESS</h3>
+                          <a
+                            href="mailto:info@wedraw.uk"
+                            className={`body-md !text-black transition-all duration-300 ${
+                              hoveredSection ? '!text-white opacity-50' : ''
+                            }`}
+                          >
+                            info@wedraw.uk
+                          </a>
+                        </div>
+                      </div>
+                    )}
                 </li>
               ))}
             </ul>
 
-            {/* Contact Info - Desktop only */}
-            <div className={`absolute bottom-[40px] right-12 space-y-12 transition-all duration-300 ${
+            {/* Contact Info - narrow desktop fallback (below 1000px) */}
+            <div className={`block min-[1000px]:hidden pt-8 text-left space-y-12 transition-all duration-300 ${
               hoveredSection ? 'text-white opacity-50' : ''
             } ${DEBUG ? 'border-4 border-pink-500' : ''}`}>
               <div>
@@ -216,9 +275,8 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
               {navigationContent.map(({ title, href, color, links }) => (
                 <li
                   key={title}
-                  className={`border-b-2 border-${color} pb-5 ${DEBUG ? 'border-4 border-red-500' : ''}`}
+                  className={`border-b-2 border-${color} pb-5 flex justify-between items-end ${DEBUG ? 'border-4 border-red-500' : ''}`}
                 >
-                  <div className="flex justify-between items-end">
                     <h2 className={`nav-heading-mobile text-${color} ${DEBUG ? 'border-2 border-yellow-500' : ''}`}>
                       <Link href={href} onClick={onClose} className="block">
                         {title}
@@ -238,7 +296,6 @@ export default function NavDrawer({ isOpen, onClose }: NavDrawerProps) {
                         </Link>
                       ))}
                     </div>
-                  </div>
                 </li>
               ))}
             </ul>

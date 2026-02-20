@@ -9,8 +9,8 @@ export const metadata: ProjectMetadata = {
   description: "An international equestrian competition inside a UNESCO World Heritage landscape. Precision site design for a fixture where history, reputation and responsibility come as standard.",
   category: 'sports',
   coverImage: images.hero,
-  gridColumn: 2,
-  gridRow: 14,
+  gridColumn: 1,
+  gridRow: 31,
   gridWidth: 10,
   gridHeight: 4
 } as const 

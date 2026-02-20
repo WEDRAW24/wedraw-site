@@ -8,9 +8,9 @@ import { images } from './images'
 
 // Gallery grid – asymmetric layout with overhang and visible grid (24-column grid)
 const galleryImages = [
-  { image: images.all.pb9901, gridPosition: { x: 1, y: -1, width: 10, height: 8 } },
-  { image: images.all.fiesta75, gridPosition: { x: 13, y: 1, width: 10, height: 9 } },
-  { image: images.all.pb8377, gridPosition: { x: 11, y: 12, width: 14, height: 11 } },
+  { image: images.all.pb9901, gridPosition: { x: 0, y: -1, width: 10, height: 8 } },
+  { image: images.all.pb9909, gridPosition: { x: 12, y: 1, width: 13, height: 9 } },
+  { image: images.all.pb8377, gridPosition: { x: 11, y: 12, width: 12, height: 11 } },
   { image: images.all.pb9858, gridPosition: { x: -1, y: 10, width: 10, height: 15 } }
 ]
 

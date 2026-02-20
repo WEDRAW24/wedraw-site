@@ -6,6 +6,7 @@ export const metadata: ProjectMetadata = {
   title: 'The Game Fair',
   year: 2024,
   location: 'Blenheim Palace',
+  description: "Europe's largest countryside festival. Survey, site design and mark out for hundreds of exhibitors across expansive Oxfordshire parkland.",
   category: 'exhibitions',
   coverImage: images.hero,
   gridColumn: 1,

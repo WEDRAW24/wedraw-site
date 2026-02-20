@@ -90,8 +90,8 @@ export default function Footer() {
 
             {/* Footer Credits */}
             <div className={`flex flex-col gap-4 font-mono text-link pb-6 ${DEBUG ? 'border-4 border-lime-500' : ''}`}>
-              <div className="flex gap-3">
-                <span>© {new Date().getFullYear()}</span>
+              <div className="flex flex-col gap-4">
+                <span>© {new Date().getFullYear()} WEDRAW LTD. All rights reserved.</span>
                 <Link href="/privacy-policy" className="link">
                   Privacy Policy
                 </Link>
@@ -160,7 +160,7 @@ export default function Footer() {
 
           {/* Footer Credits */}
           <div className={`flex justify-center items-center ${DEBUG ? 'border-4 border-lime-500' : ''}`} style={{ gap: 'clamp(8px, 2vw, 32px)', paddingTop: 'clamp(8px, 2vw, 24px)', paddingBottom: 'clamp(8px, 2vw, 24px)' }}>
-            <span className="link">© {new Date().getFullYear()}</span>
+            <span className="link">© {new Date().getFullYear()} WEDRAW LTD. All rights reserved.</span>
             <Link href="/privacy-policy" className="link">
               Privacy Policy
             </Link>

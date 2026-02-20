@@ -1,6 +1,14 @@
 'use client'
 
 import Credits from '@/app/components/Credits'
+import GalleryGrid from '@/app/components/GalleryGrid'
+import { images } from './images'
+
+const galleryImages = [
+  { image: images.all.sf00588, gridPosition: { x: 1, y: 15, width: 22, height: 10 } },
+  { image: images.all.sunriseHighlights, gridPosition: { x: 13, y: 5, width: 12, height: 8 } },
+  { image: images.all.sunsetHighlights7, gridPosition: { x: -1, y: 1, width: 12, height: 8 } }
+]
 
 export default function ProjectContent() {
   return (
@@ -14,26 +22,13 @@ export default function ProjectContent() {
         </div>
       </div>
 
-      {/* Second body text section */}
-      <div className="grid grid-cols-12 gap-4 mb-20">
-        <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
-          <p className="body-lg">
-            Stonehenge is widely regarded as one of the earliest known ceremonial gathering sites in Britain. Its precise alignment with the solstices reflects the ingenuity of its builders and their deep connection to the rhythms of the natural world. Supporting an event rooted in such historic significance carries both honour and responsibility.
-          </p>
-        </div>
-      </div>
+      {/* Gallery Grid */}
+      <GalleryGrid className="my-48 mb-48" images={galleryImages} />
 
-      {/* Third body text section with Credits – credits last on mobile */}
+      {/* Body text section with Credits – credits last on mobile */}
       <div className="grid grid-cols-12 gap-4 mb-20">
-        {/* Body text – right column on desktop */}
-        <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8">
-          <p className="body-lg">
-            Working on an English Heritage site demands careful balance between operational delivery and long-term conservation. Managing traffic, visitor movement and temporary infrastructure within a World Heritage landscape calls for clear coordination and disciplined planning. At Stonehenge, that approach supports safe access today while protecting a monument that has stood for over four thousand years.
-          </p>
-        </div>
-
         {/* Credits – desktop only (left column); mobile version rendered at end of article */}
-        <div className="hidden md:block col-span-12 md:col-start-1 md:col-span-3">
+        <div className="hidden md:block col-span-12 md:col-start-1 md:col-span-3 md:row-start-1">
           <Credits 
             sections={[
               {
@@ -47,11 +42,21 @@ export default function ProjectContent() {
               {
                 title: "PHOTOGRAPHY",
                 items: [
-                  { name: "TBC" }
+                  { name: "English Heritage" }
                 ]
               }
             ]}
           />
+        </div>
+
+        {/* Body text – right column on desktop */}
+        <div className="col-span-12 px-2 md:px-0 md:col-start-5 md:col-span-8 md:row-start-1">
+          <p className="body-lg mb-12">
+            Stonehenge is widely regarded as one of the earliest known ceremonial gathering sites in Britain. Its precise alignment with the solstices reflects the ingenuity of its builders and their deep connection to the rhythms of the natural world. Supporting an event rooted in such historic significance carries both honour and responsibility.
+          </p>
+          <p className="body-lg">
+            Working on an English Heritage site demands careful balance between operational delivery and long-term conservation. Managing traffic, visitor movement and temporary infrastructure within a World Heritage landscape calls for clear coordination and disciplined planning. At Stonehenge, that approach supports safe access today while protecting a monument that has stood for over four thousand years.
+          </p>
         </div>
       </div>
 

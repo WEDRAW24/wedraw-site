@@ -6,6 +6,7 @@ import Button from '../../components/Button'
 import UnderlineLink from '../../components/UnderlineLink'
 import { motion } from 'framer-motion'
 import BlurIn from '../../components/BlurIn'
+import heroImage from '../../work/projects/stonehenge-solstice-2025/assets/250621_SF00466.jpg'
 
 export default function HeroSection() {
   // Debug mode - set to false to hide all container borders
@@ -30,10 +31,10 @@ export default function HeroSection() {
               }}
             >
               <Image
-                src="/home-hero.jpg"
-                alt="Hot air balloons at festival"
+                src={heroImage}
+                alt="Stonehenge Solstice 2025"
                 fill
-                className="object-cover object-top scale-x-[-1]"
+                className="object-cover object-center scale-x-[-1]"
                 priority
                 sizes="100vw"
               />
@@ -51,12 +52,13 @@ export default function HeroSection() {
             <div className={`relative z-10 h-full flex flex-col px-fluid-md pt-fluid-xl ${DEBUG ? 'border-4 border-yellow-500' : ''}`}>
               {/* Heading - Overlaid on image, positioned higher - Blur In Animation */}
               <BlurIn 
-                className="display-xl text-blueprint max-w-[90%]"
+                className="display-hero text-blueprint max-w-[90%] [&>span]:block"
                 duration={3.0}
                 delay={0.5}
                 staggerChildren={true}
+                staggerDelay={1.0}
               >
-                Hands-on thinking for events
+                WE DRAW EVENTS
               </BlurIn>
             </div>
           </div>
@@ -73,10 +75,10 @@ export default function HeroSection() {
             }}
           >
             <Link 
-              href="/work/projects/bristol-international-balloon-fiesta-2024"
+              href="/work/projects/stonehenge-solstice-2025"
               className="link text-blueprint uppercase inline-block"
             >
-              BRISTOL BALLOON FIESTA | 2024
+              STONEHENGE SOLSTICE | 2025
             </Link>
           </motion.div>
         </div>
@@ -107,10 +109,10 @@ export default function HeroSection() {
               }}
             >
               <Image
-                src="/home-hero.jpg"
-                alt="Hot air balloons at festival"
+                src={heroImage}
+                alt="Stonehenge Solstice 2025"
                 fill
-                className="object-cover object-top scale-x-[-1]"
+                className="object-cover object-center scale-x-[-1]"
                 priority
                 sizes="(max-width: 768px) 100vw, 80vw"
               />
@@ -118,7 +120,7 @@ export default function HeroSection() {
 
             {/* Vertical Text - Project Label */}
             <Link 
-              href="/work/projects/bristol-international-balloon-fiesta-2024"
+              href="/work/projects/stonehenge-solstice-2025"
               className={`link text-blueprint uppercase absolute ${DEBUG ? 'border-2 border-pink-500' : ''}`}
               style={{
                 left: 'calc(20% - 40px)',
@@ -127,7 +129,7 @@ export default function HeroSection() {
                 transform: 'rotate(180deg)',
               }}
             >
-              BRISTOL BALLOON FIESTA | 2024
+              STONEHENGE SOLSTICE | 2025
             </Link>
 
             {/* Heading overlapping the image */}
@@ -140,12 +142,13 @@ export default function HeroSection() {
               }}
             >
               <BlurIn 
-                className="display-xl text-blueprint"
-                duration={6.0}
+                className="display-hero text-blueprint [&>span]:block"
+                duration={3.0}
                 delay={0.5}
                 staggerChildren={true}
+                staggerDelay={1.0}
               >
-                Hands-on thinking for events
+                WE DRAW EVENTS
               </BlurIn>
             </div>
           </div>
@@ -169,18 +172,18 @@ export default function HeroSection() {
                   {/* Left Column - Bold intro */}
                   <div className={`mb-fluid-lg md:mb-0 ${DEBUG ? 'border-2 border-red-500' : ''}`}>
                     <p className="body-xl">
-                      We are a specialised event design and site planning studio dedicated to transforming spaces into unforgettable experiences.
+                      We are an innovative studio dedicated to enhancing the process of event site planning.
                     </p>
                   </div>
 
                   {/* Right Column - Body text */}
                   <div className={`space-y-fluid-md md:space-y-8 ${DEBUG ? 'border-2 border-red-500' : ''}`}>
                     <p className="body-md">
-                      At the core of our process is the belief that the best events are built on clear communication and effective collaboration. Before we begin, we take the time to understand who you are, what drives you and the goals you want to achieve.
+                      Our philosophy is one of curiosity, collaboration and hands-on thinking. We bring our toolkit and perspective to collaborate alongside event and venue teams to transform spaces into unforgettable experiences.
                     </p>
 
                     <p className="body-md">
-                      The primary aim is to enable us to deliver tailored solutions that are specific to your needs and enhance your workflow.
+                      We facilitate team and stakeholder conversations through an iterative design workflow, informed by accurate venue data and event industry insight, balancing design aspirations with operational readiness.
                     </p>
 
                     <UnderlineLink href="/studio" className="text-blueprint uppercase inline-block mt-fluid-sm">
