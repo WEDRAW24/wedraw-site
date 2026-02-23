@@ -6,7 +6,7 @@ import Button from '../../components/Button'
 import UnderlineLink from '../../components/UnderlineLink'
 import { motion } from 'framer-motion'
 import BlurIn from '../../components/BlurIn'
-import heroImage from '../../work/projects/stonehenge-solstice-2025/assets/250621_SF00466.jpg'
+import heroImage from '../../work/projects/stonehenge-solstice-2025/assets/250621_SF00466_edit.jpg'
 
 export default function HeroSection() {
   // Debug mode - set to false to hide all container borders
@@ -34,7 +34,7 @@ export default function HeroSection() {
                 src={heroImage}
                 alt="Stonehenge Solstice 2025"
                 fill
-                className="object-cover object-center scale-x-[-1]"
+                className="object-cover object-center"
                 priority
                 sizes="100vw"
               />
@@ -112,7 +112,7 @@ export default function HeroSection() {
                 src={heroImage}
                 alt="Stonehenge Solstice 2025"
                 fill
-                className="object-cover object-center scale-x-[-1]"
+                className="object-cover object-center"
                 priority
                 sizes="(max-width: 768px) 100vw, 80vw"
               />
