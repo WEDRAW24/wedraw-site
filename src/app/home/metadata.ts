@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'WEDRAW - Shaping Unforgettable Experiences',
-  description: 'We are a specialised event design and site planning studio dedicated to transforming spaces into unforgettable experiences.',
+  title: 'Event design, survey & mark out',
+  description:
+    'WEDRAW is an innovative event design and site planning studio. We design, we survey, we mark out — transforming spaces into unforgettable events.',
 }
 
