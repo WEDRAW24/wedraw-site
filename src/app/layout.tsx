@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    google: "JN4vZPD40XlfFC8k_pBBdJ1_kDaKIK1gl0SP2ODje_Y",
+  },
 };
 
 function Providers({ children }: { children: ReactNode }) {
