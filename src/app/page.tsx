@@ -1,5 +1,8 @@
-import { redirect } from 'next/navigation'
+import HomeContent from './home/content'
+import { metadata } from './home/metadata'
+
+export { metadata }
 
 export default function RootPage() {
-  redirect('/home')
+  return <HomeContent />
 }

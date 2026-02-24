@@ -1,6 +1,5 @@
-import HomeContent from './content'
+import { permanentRedirect } from 'next/navigation'
 
 export default function HomePage() {
-  return <HomeContent />
+  permanentRedirect('/')
 }
-
