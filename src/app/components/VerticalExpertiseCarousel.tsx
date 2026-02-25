@@ -143,6 +143,33 @@ export default function VerticalExpertiseCarousel({ debug = false, onExpertiseCh
     setTouchEnd(0)
   }
 
+  const handleClickItem = (targetIndex: number) => {
+    if (isAnimating) return
+    if (targetIndex === currentIndex) return
+    
+    setIsAnimating(true)
+    setIsTransitioning(true)
+    
+    setCurrentIndex(targetIndex)
+    
+    setTimeout(() => {
+      setIsAnimating(false)
+      if (targetIndex < totalItems) {
+        setTimeout(() => {
+          setIsTransitioning(false)
+          setCurrentIndex(targetIndex + totalItems)
+          setTimeout(() => setIsTransitioning(true), 50)
+        }, 50)
+      } else if (targetIndex >= totalItems * 2) {
+        setTimeout(() => {
+          setIsTransitioning(false)
+          setCurrentIndex(targetIndex - totalItems)
+          setTimeout(() => setIsTransitioning(true), 50)
+        }, 50)
+      }
+    }, 500)
+  }
+
   // Calculate track offset
   const trackOffset = -(currentIndex * rowHeight)
 
@@ -188,11 +215,12 @@ export default function VerticalExpertiseCarousel({ debug = false, onExpertiseCh
           return (
             <div
               key={`${item}-${index}`}
-              className={`flex items-center ${debug ? 'border-2 border-green-500' : ''}`}
+              className={`flex items-center ${distance <= 2 ? 'cursor-pointer' : ''} ${debug ? 'border-2 border-green-500' : ''}`}
               style={{ height: `${rowHeight}px` }}
+              onClick={() => handleClickItem(index)}
             >
               <p 
-                className="text-meadow font-area-black"
+                className="text-meadow font-area-black select-none"
                 style={{ 
                   fontSize: 'clamp(32px, 12cqi, 84px)',
                   lineHeight: '85%',
