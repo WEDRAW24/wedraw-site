@@ -15,7 +15,10 @@ export const metadata: Metadata = {
   description:
     "WEDRAW is an innovative event design and site planning studio. We design, we survey, we mark out — transforming spaces into unforgettable events.",
   icons: {
-    icon: "/icon.svg",
+    icon: [
+      { url: "/wedrawfavicon.ico", type: "image/x-icon" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
     apple: "/icon.svg",
   },
   openGraph: {

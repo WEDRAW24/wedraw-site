@@ -5,7 +5,7 @@ import Image from 'next/image'
 // Client logos
 import LogoBristol from '../../assets/logos_client/Logo_bristol_balloon_fiesta.svg'
 import LogoRoyalWindsor from '../../assets/logos_client/Logo_royal_windsor_horse_show.svg'
-import LogoFarmFest from '../../assets/logos_client/Logo_farm_fest.svg'
+import LogoTheLiveCrew from '../../assets/logos_client/Logo_the_live_crew.svg'
 import LogoFEI from '../../assets/logos_client/Logo_fei_european_champs.svg'
 import LogoHPowerGroup from '../../assets/logos_client/Logo_h_power_group.svg'
 import LogoREM from '../../assets/logos_client/Logo_rem.svg'
@@ -24,7 +24,7 @@ export default function ProvenInTheFieldSection() {
     { logo: LogoRoyalWindsor, alt: 'Royal Windsor Horse Show', width: 160 },
     { logo: LogoGameFair, alt: 'The Game Fair', width: 130 },
     { logo: LogoFEI, alt: 'FEI European Championships', width: 130 },
-    { logo: LogoFarmFest, alt: 'Farm Fest', width: 140 },
+    { logo: LogoTheLiveCrew, alt: 'The Live Crew', width: 160 },
   ]
 
   return (
